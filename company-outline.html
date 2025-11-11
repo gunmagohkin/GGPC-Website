@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Gunma Gohkin Philippines Corporation - Company Profile</title>
+    
+    <!-- External Libraries (JS) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- External Libraries (CSS) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <!-- Your Master Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    
+   <!-- Tailwind Config & Site Scripts -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00529B", "background-light": "#F8FAFC", "background-dark": "#0B1120",
+                        "card-light": "#FFFFFF", "card-dark": "#1E293B", "text-light": "#1E293B",
+                        "text-dark": "#E2E8F0", "text-muted-light": "#64748B", "text-muted-dark": "#94A3B8",
+                    },
+                    fontFamily: { display: ["Poppins", "sans-serif"], },
+                    borderRadius: { DEFAULT: "0.5rem", },
+                },
+            },
+        };
+    </script>
+    <script>
+        // --- UTILITY & SETUP SCRIPTS ---
+        function toggleDarkMode() { document.documentElement.classList.toggle('dark'); localStorage.setItem('darkMode', document.documentElement.classList.contains('dark')); loadParticles(); }
+        const isDarkMode = () => localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode()) { document.documentElement.classList.add('dark'); }
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        function loadParticles() {
+            if (!document.getElementById("particles-js")) return;
+            const particleColor = isDarkMode() ? "#94a3b8" : "#9ca3af";
+            tsParticles.load("particles-js", { background: { color: "transparent" }, particles: { number: { value: 60 }, color: { value: particleColor }, opacity: { value: 0.6 }, size: { value: { min: 1, max: 3 } }, links: { enable: true, distance: 150, color: particleColor, opacity: 0.4, width: 1 }, move: { enable: true, speed: 1, direction: "none", out_mode: "out", } }, interactivity: { events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } } }, });
+        }
+        
+        // --- MAIN INITIALIZATION SCRIPT (UPDATED TO INCLUDE HERO ANIMATION) ---
+        document.addEventListener('DOMContentLoaded', function() {
+            loadParticles();
+            
+            // Staggered Hero Title Animation (Copied from homepage)
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent.trim();
+                heroTitle.textContent = '';
+                originalText.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.className = 'letter-reveal-hero';
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    span.style.animationDelay = `${index * 50}ms`;
+                    heroTitle.appendChild(span);
+                });
+                heroTitle.style.opacity = '1';
+            }
+            
+            const sectionObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('section-visible'); } });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('main > section:not(#profile-hero)').forEach(section => {
+                section.classList.add('section-hidden');
+                sectionObserver.observe(section);
+            });
+
+            // Number Counter Animation
+            const counterCard = document.getElementById('company-overview-card');
+            if (counterCard) {
+                const counterObserver = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) {
+                        const counters = entries[0].target.querySelectorAll('.counter');
+                        counters.forEach(counter => {
+                            if (counter.getAttribute('data-animated') === 'true') return;
+                            counter.setAttribute('data-animated', 'true');
+                            const target = +counter.getAttribute('data-target'); const duration = 1500; const increment = target / (duration / 16); let current = 0;
+                            const updateCount = () => { current += increment; if (current < target) { counter.innerText = Math.ceil(current).toLocaleString(); requestAnimationFrame(updateCount); } else { counter.innerText = target.toLocaleString(); } }; updateCount();
+                        });
+                        counterObserver.unobserve(entries[0].target);
+                    }
+                }, { threshold: 0.8 });
+                counterObserver.observe(counterCard);
+            }
+
+            // Staggered Titles for Sections
+            const staggeredTitles = document.querySelectorAll('.staggered-reveal-title');
+            staggeredTitles.forEach(title => {
+                const originalText = title.textContent.trim(); title.textContent = '';
+                originalText.split('').forEach((char, index) => {
+                    const span = document.createElement('span'); span.className = 'letter-reveal';
+                    span.textContent = char === ' ' ? '\u00A0' : char; span.style.animationDelay = `${index * 30}ms`; title.appendChild(span);
+                });
+            });
+
+            // History Carousel Initialization
+            const historyCaption = document.getElementById('history-caption');
+            function updateCaption(swiperInstance) {
+                if (historyCaption) {
+                    const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+                    historyCaption.innerHTML = `<p class="font-bold text-lg">${activeSlide.getAttribute('data-title')}</p><p class="text-sm text-text-muted-light dark:text-text-muted-dark">${activeSlide.getAttribute('data-year')}</p>`;
+                }
+            }
+            const historySwiper = new Swiper(".history-carousel", {
+                effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto", loop: true,
+                autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true, },
+                coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: false, },
+                navigation: { nextEl: ".history-button-next", prevEl: ".history-button-prev", },
+                on: { init: function() { updateCaption(this); }, slideChange: function () { updateCaption(this); } }
+            });
+
+            // Philosophy Carousel Initialization
+            const philosophySwiper = new Swiper(".philosophy-carousel", {
+                loop: true, slidesPerView: 1, spaceBetween: 20,
+                pagination: { el: ".philosophy-pagination", clickable: true, },
+                navigation: { nextEl: ".philosophy-button-next", prevEl: ".philosophy-button-prev", },
+                breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }
+            });
+
+            // Parallax Image Hover Effect
+            const parallaxContainers = document.querySelectorAll('.parallax-hover-container');
+            parallaxContainers.forEach(container => {
+                const img = container.querySelector('.parallax-img'); const intensity = 20;
+                container.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.1)'; });
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                    const dx = (x - rect.width / 2) / (rect.width / 2); const dy = (y - rect.height / 2) / (rect.height / 2);
+                    const tiltX = -dy * intensity; const tiltY = dx * intensity;
+                    img.style.transform = `scale(1.1) translate(${tiltY}px, ${tiltX}px)`;
+                });
+                container.addEventListener('mouseleave', () => { img.style.transform = 'scale(1) translate(0, 0)'; });
+            });
+        });
+
+        // --- WINDOW-LEVEL EVENT LISTENERS ---
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) { preloader.classList.add('hidden'); }
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header) { window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); }
+
+            const scrollProgressBar = document.getElementById('scroll-progress');
+            if (scrollProgressBar) {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                scrollProgressBar.style.width = scrollPercent + '%';
+            }
+        });
+    </script>
+    <script src="chatbot/js/loader.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+
+<div id="preloader">
+    <img src="images/Picture14.png" alt="Loading GGPC Logo"/>
+</div>
+
+<div id="scroll-progress"></div>
+
+<div id="particles-js"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a class="flex items-center" href="index.html">
+            <img class="h-12 mr-3 transition-all duration-300" src="images/Picture14.png" alt="GGPC Logo"/>
+            <span class="text-base sm:text-xl font-bold text-primary leading-tight">
+                <span class="hidden sm:inline">GUNMA GOHKIN PHILIPPINES CORPORATION</span>
+                <span class="sm:hidden">GUNMA GOHKIN<br/>PHILIPPINES<br/>CORPORATION</span>
+            </span>
+        </a>
+        <div class="flex items-center">
+            <nav class="hidden md:flex items-center space-x-6">
+                <a class="text-text-light dark:text-text-dark" href="index.html">Home</a>
+                <a class="text-text-light dark:text-text-dark active" href="company-outline.html">Profile</a>
+                <a class="text-text-light dark:text-text-dark" href="business-outline.html">Outline</a>
+                <a class="text-text-light dark:text-text-dark" href="initiatives.html">Initiatives</a>
+                <a class="text-text-light dark:text-text-dark" href="opportunities.html">Opportunities</a>
+            </nav>
+            <div class="flex items-center ml-6">
+                <button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" onclick="toggleDarkMode()">
+                    <span class="material-icons dark:hidden">dark_mode</span>
+                    <span class="material-icons hidden dark:inline">light_mode</span>
+                </button>
+                <button class="md:hidden ml-4 p-2 rounded-md text-text-light dark:text-text-dark" onclick="toggleMobileMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark shadow-lg">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="index.html">Home</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-primary/10 dark:text-blue-300 dark:bg-blue-500/10" href="company-outline.html">Company Outline</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="business-outline.html">Business Outline</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="initiatives.html">Initiatives</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="opportunities.html">Opportunities</a>
+        </div>
+    </div>
+</header>
+
+<main class="relative z-10">
+
+    <!-- === NEW HERO SECTION ADDED HERE === -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20" id="profile-hero">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20"></div>
+        <!-- IMPORTANT: Change this image to one that fits the company profile page -->
+        <img alt="Our Team at Gunma Gohkin" class="absolute inset-0 w-full h-full object-cover -z-10" src="images/office-interior.jpg"/>
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="overflow-hidden mb-4 pb-2">
+                <h1 id="hero-title" class="text-4xl md:text-6xl font-bold leading-tight text-shadow-strong opacity-0">Our Story & Values</h1>
+            </div>
+            <div class="overflow-hidden pb-2">
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-shadow-strong animate-reveal-up animation-delay-300">Discover the history, philosophy, and people that define Gunma Gohkin Philippines Corporation.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- === EXISTING CONTENT STARTS HERE (WITH ADJUSTED PADDING) === -->
+    <section class="py-20"> <!-- Adjusted padding from pt-12 to py-20 for consistency -->
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Company History</h2>
+            </div>
+            <div class="relative max-w-6xl mx-auto stagger-child">
+                <div class="swiper history-carousel">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slide-1" data-title="Founding of GGPC" data-year="1995" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider">FOUNDING</h3><p class="mt-2 text-2xl font-semibold">1995</p></div> </div>
+                        <div class="swiper-slide slide-2" data-title="First Major Expansion" data-year="2001" style="background-image: url('dummy/1317-010-conference\ _\ Office\ Snapshots.jpg');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider">EXPANSION</h3><p class="mt-2 text-2xl font-semibold">2001</p></div> </div>
+                        <div class="swiper-slide slide-3" data-title="ISO Certification" data-year="2005" style="background-image: url('https://images.unsplash.com/photo-1554042301-0814421689c3?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-widest leading-tight">ISO<br/>CERTIFIED</h3><p class="mt-2 text-2xl font-semibold">2005</p></div> </div>
+                        <div class="swiper-slide slide-4" data-title="Cavite Plant Opening" data-year="2012" style="background-image: url('https://images.unsplash.com/photo-1623954363486-3e3334867142?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">CAVITE<br>PLANT</h3><p class="mt-2 text-2xl font-semibold">2012</p></div> </div>
+                        <div class="swiper-slide slide-5" data-title="25th Anniversary" data-year="2020" style="background-image: url('https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider">25 YEARS</h3><p class="mt-2 text-2xl font-semibold">2020</p></div> </div>
+                    </div>
+                </div>
+                <!-- Corrected navigation class names to match Swiper init -->
+                <div class="swiper-button-prev history-button-prev history-carousel-nav absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> </div>
+                <div class="swiper-button-next history-button-next history-carousel-nav absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg> </div>
+            </div>
+            <div id="history-caption" class="text-center mt-8 text-text-light dark:text-text-dark"></div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-100 dark:bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Philosophy</h2>
+            </div>
+            <div class="relative max-w-6xl mx-auto stagger-child">
+                <div class="swiper philosophy-carousel">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">precision_manufacturing</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Uncompromising Precision</h3><p class="text-text-muted-light dark:text-text-muted-dark">We are dedicated to the highest standards of quality and accuracy in every component we produce, ensuring reliability and customer satisfaction.</p></div> </div>
+                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">psychology</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Continuous Innovation</h3><p class="text-text-muted-light dark:text-text-muted-dark">We embrace new technologies and methodologies to continually improve our processes, efficiency, and the value we deliver to our partners.</p></div> </div>
+                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">energy_savings_leaf</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Sustainable Responsibility</h3><p class="text-text-muted-light dark:text-text-muted-dark">Our commitment extends to our people and our planet. We foster a safe workplace and operate with respect for the environment and our community.</p></div> </div>
+                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">groups</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Collaborative Partnership</h3><p class="text-text-muted-light dark:text-text-muted-dark">We build lasting relationships with our clients, acting as a trusted partner to achieve mutual success and drive innovation together.</p></div> </div>
+                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">health_and_safety</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Safety & Well-being</h3><p class="text-text-muted-light dark:text-text-muted-dark">The health and safety of our employees is our top priority. We are committed to maintaining the highest standards for a secure work environment.</p></div> </div>
+                    </div>
+                </div>
+                <div class="philosophy-button-prev philosophy-carousel-nav absolute top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> </div>
+                <div class="philosophy-button-next philosophy-carousel-nav absolute top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg> </div>
+                <div class="philosophy-pagination swiper-pagination !bottom-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div id="company-overview-card" class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Company Overview</h3>
+                    <div class="space-y-4 text-text-light dark:text-text-dark">
+                        <div class="flex flex-wrap justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="font-semibold mr-2">Company Name:</span><span class="text-right">Gunma Gohkin Philippines Corporation</span></div>
+                        <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="font-semibold">Established:</span><span>September 12, 1995</span></div>
+                        <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="font-semibold">Number of Employees:</span><span class="counter font-bold" data-target="308">0</span></div>
+                        <div class="flex flex-wrap justify-between"><span class="font-semibold mr-2">Type of Industry:</span><span class="text-right">Aluminum Die-Casting</span></div>
+                    </div>
+                </div>
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child" style="transition-delay: 150ms;">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Message</h3>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-20 h-20 rounded-full bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                             <img src="images/pres.JPG" alt="President Junichi Roponggi" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div>
+                            <blockquote class="italic text-text-light dark:text-text-dark border-l-4 border-primary pl-4">"Since its establishment as a pioneer in die-casting technology, Gunma Gohkin Group has been providing transport vehicle parts for the local and global markets. In 1995, the demand brought about by the prevailing market conditions became an opportunity for Gunma Gohkin Co., Ltd. to establish its overseas subsidiary in the Philippines. While in 2010, "Technical Center" was established to pursue a technology-driven company. In 2011, a carbon dioxide reduction project was launched to uphold its commitment to the environment. Also, a group-wide company activity on Compact-Total Productivity Management/Maintenance (C-TPM), was launched and supported by all its employees, which has provided them the opportunity to become UNITED for continuous improvement. Now, the company focuses on three areas, namely, TECHNOLOGY, KNOWLEDGE, and PASSION, to achieve its 100th Year of high-quality service."</blockquote>
+                            <div class="text-right mt-4"><p class="font-bold text-text-light dark:text-text-dark">Junichi Roponggi</p><p class="text-sm text-text-muted-light dark:text-text-muted-dark">President</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-100 dark:bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Laguna Plant Column -->
+                <div class="stagger-child">
+                    <h3 class="text-2xl font-bold text-primary text-center mb-6">Laguna Plant</h3>
+                    <div class="parallax-hover-container rounded-lg shadow-lg mb-6 overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <img src="images/gate.png" alt="Laguna Plant Facility" class="parallax-img w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg shadow-lg overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.551804791773!2d121.05041181534438!3d14.39515918809188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d096b7972043%3A0x6b8f36538b810f88!2sLaguna%20Technopark!5e0!3m2!1sen!2sph!4v1671234567890!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <!-- Cavite Plant Column -->
+                <div class="stagger-child" style="transition-delay: 150ms;">
+                    <h3 class="text-2xl font-bold text-primary text-center mb-6">Cavite Plant</h3>
+                    <div class="parallax-hover-container rounded-lg shadow-lg mb-6 overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <img src="images/cavite.png" alt="Cavite Plant Facility" class="parallax-img w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg shadow-lg overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.089849568771!2d120.92383191534466!3d14.42171248792039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d26c59b20b77%3A0x8085d688c227845!2sCavite%20Economic%20Zone!5e0!3m2!1sen!2sph!4v1671234678901!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="relative z-10 bg-card-dark text-gray-300">
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-sm">© 2025 Gunma Gohkin Philippines Corporation. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a class="hover:text-primary transition-colors text-sm" href="terms.html">Terms of Use</a>
+                <a class="hover:text-primary transition-colors text-sm" href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
