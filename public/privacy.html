@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Gunma Gohkin Philippines Corporation - Privacy Policy</title>
+    
+    <!-- External Libraries (JS) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <!-- Master Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Tailwind Config & Site Scripts -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00529B", "background-light": "#F8FAFC", "background-dark": "#0B1120",
+                        "card-light": "#FFFFFF", "card-dark": "#1E293B", "text-light": "#1E293B",
+                        "text-dark": "#E2E8F0", "text-muted-light": "#64748B", "text-muted-dark": "#94A3B8",
+                    },
+                    fontFamily: { display: ["Poppins", "sans-serif"], },
+                    borderRadius: { DEFAULT: "0.5rem", },
+                },
+            },
+        };
+    </script>
+    <script>
+        // --- DARK MODE & MOBILE MENU SCRIPT ---
+        function toggleDarkMode() { document.documentElement.classList.toggle('dark'); localStorage.setItem('darkMode', document.documentElement.classList.contains('dark')); loadParticles(); }
+        const isDarkMode = () => localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode()) { document.documentElement.classList.add('dark'); }
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
+        // --- PARTICLE LOADER FUNCTION ---
+        function loadParticles() {
+            if (!document.getElementById("particles-js")) return;
+            const particleColor = isDarkMode() ? "#94a3b8" : "#9ca3af";
+            tsParticles.load("particles-js", {
+                background: { color: "transparent" },
+                particles: {
+                    number: { value: 60 }, color: { value: particleColor },
+                    opacity: { value: 0.6 }, size: { value: { min: 1, max: 3 } },
+                    links: { enable: true, distance: 150, color: particleColor, opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 1, direction: "none", out_mode: "out", }
+                },
+                interactivity: { events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } } },
+            });
+        }
+        
+        // --- DOM CONTENT LOADED SCRIPTS ---
+        document.addEventListener('DOMContentLoaded', function() {
+            loadParticles();
+        });
+
+        // --- WINDOW-LEVEL EVENT LISTENERS ---
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) { preloader.classList.add('hidden'); }
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header) { window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); }
+
+            const scrollProgressBar = document.getElementById('scroll-progress');
+            if (scrollProgressBar) {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                scrollProgressBar.style.width = scrollPercent + '%';
+            }
+        });
+    </script>
+    <script src="chatbot/js/loader.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+
+<div id="preloader">
+    <img src="images/Picture14.png" alt="Loading GGPC Logo"/>
+</div>
+
+<div id="scroll-progress"></div>
+
+<div id="particles-js"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a class="flex items-center" href="index.html">
+            <img class="h-12 mr-3 transition-all duration-300" src="images/Picture14.png" alt="GGPC Logo"/>
+            <span class="text-base sm:text-xl font-bold text-primary leading-tight">
+                <span class="hidden sm:inline">GUNMA GOHKIN PHILIPPINES CORPORATION</span>
+                <span class="sm:hidden">GUNMA GOHKIN<br/>PHILIPPINES<br/>CORPORATION</span>
+            </span>
+        </a>
+        <div class="flex items-center">
+            <nav class="hidden md:flex items-center space-x-6">
+                <a class="text-text-light dark:text-text-dark" href="index.html">Home</a>
+                <a class="text-text-light dark:text-text-dark" href="company-outline.html">Profile</a>
+                <a class="text-text-light dark:text-text-dark" href="business-outline.html">Outline</a>
+                <a class="text-text-light dark:text-text-dark" href="initiatives.html">Initiatives</a>
+                <a class="text-text-light dark:text-text-dark" href="opportunities.html">Opportunities</a>
+            </nav>
+            <div class="flex items-center ml-6">
+                <button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" onclick="toggleDarkMode()">
+                    <span class="material-icons dark:hidden">dark_mode</span>
+                    <span class="material-icons hidden dark:inline">light_mode</span>
+                </button>
+                <button class="md:hidden ml-4 p-2 rounded-md text-text-light dark:text-text-dark" onclick="toggleMobileMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark shadow-lg">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="index.html">Home</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="company-outline.html">Company Outline</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="business-outline.html">Business Outline</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="initiatives.html">Initiatives</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="opportunities.html">Opportunities</a>
+        </div>
+    </div>
+</header>
+
+<main class="relative z-10">
+    <section class="py-28 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-card-light dark:bg-card-dark p-8 md:p-12 rounded-lg shadow-lg">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">Privacy Policy</h1>
+                <p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-8">Gunma Gohkin Co., Ltd. (<em>hereinafter referred to as "our company"</em>) treats personal information in accordance with the Personal Information Protection Law and other related laws and regulations and handles the following in order to protect customer's personal information.</p>
+
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+                <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">Provision of Personal Information</h2>
+                <p class="text-text-light dark:text-text-dark leading-relaxed">Our company observes the restricted policy on providing personal information on customer's whereabouts. All personal information will be made available only upon the customer's consent.</p>
+
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+                
+                <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">Purposes of Using Personal Information</h2>
+                <ol class="list-decimal list-inside space-y-3 pl-4 mb-4 text-text-light dark:text-text-dark leading-relaxed">
+                    <li>To provide customers with our product information, company information, services, and other related information;</li>
+                    <li>To respond to the inquiries of customers;</li>
+                    <li>To contact the customer for necessary information;</li>
+                    <li>To provide information related to recruitment and application, and to respond to their inquiries;</li>
+                    <li>Other purposes for use based on laws and regulations;</li>
+                </ol>
+                <p class="text-text-light dark:text-text-dark leading-relaxed">In order to acquire/use personal information for purposes not stipulated above, customer's consent is necessary in advance.</p>
+
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+                <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">Use and Disclosure of Personal Information</h2>
+                 <div class="space-y-4 text-text-light dark:text-text-dark leading-relaxed">
+                    <p>All personal information provided shall only be used for its intended purpose only. Also, personal information provided shall only be shared within the range of purpose of utilization between our company and its subsidiaries and/or affiliates, the responsible department is Gunma Gohkin Co., Ltd. General Affairs Department.</p>
+                    <p>Our company will not disclose any personal information provided by customers to third parties without the customer's consent or other justifiable reason based on laws and regulations.</p>
+                </div>
+
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+                
+                <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">Personal Information Management</h2>
+                <p class="text-text-light dark:text-text-dark leading-relaxed">Our company will properly manage the personal information provided by the customer and make efforts for safety measures against improper access, divulgence, loss, destruction, falsification, and misuse of personal information.</p>
+
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+                
+                <h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">Others</h2>
+                <div class="space-y-4 text-text-light dark:text-text-dark leading-relaxed">
+                    <p>In compliance with the rules and regulations on information technology, modification and revision of the contents of this website is possible, especially if it is for improvement purposes.</p>
+                    <p>Our company is not, however, responsible for the protection of personal information on other websites if it is linked to this website.</p>
+                    <p>Please check these policies before providing your personal information.</p>
+                </div>
+                
+                <div class="mt-10 border-l-4 border-primary bg-primary/10 p-6 rounded-md">
+                    <h3 class="text-xl font-bold text-primary mb-3">Inquiries Concerning Personal Information</h3>
+                    <p class="font-semibold text-text-light dark:text-text-dark">Gunma Gohkin Philippines Corporation</p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mt-1">Lot 1 Blk. 7 Circuit St., Light Industry & Science Park of the Philippines 1, Diezmo, Cabuyao, Laguna, 4025, Philippines</p>
+                    <p class="text-text-muted-light dark:text-text-muted-dark mt-2">Contact No. +63-049-543-0121</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="relative z-10 bg-card-dark text-gray-300">
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-sm">© 2025 Gunma Gohkin Philippines Corporation. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a class="hover:text-primary transition-colors text-sm" href="terms.html">Terms of Use</a>
+                <a class="hover:text-primary transition-colors text-sm" href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

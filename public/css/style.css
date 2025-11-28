@@ -54,7 +54,7 @@ body::before {
     50% { transform: scale(1.05); opacity: 0.8; }
 }
 #preloader img {
-    width: 100px;
+    width: 500px;
     animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
@@ -259,3 +259,111 @@ header nav a.active::after {
     transform: scaleX(1);
     transform-origin: left;
 }
+/* 
+================================
+--- BUSINESS OUTLINE PAGE STYLES ---
+================================
+*/
+
+/* --- PRODUCT CAROUSEL --- */
+.product-carousel-wrapper .swiper-button-next,
+.product-carousel-wrapper .swiper-button-prev {
+    color: #00529B; background-color: rgba(255, 255, 255, 0.9); border-radius: 9999px;
+    width: 56px; height: 56px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.product-carousel-wrapper .swiper-button-next:hover,
+.product-carousel-wrapper .swiper-button-prev:hover { background-color: #FFFFFF; transform: scale(1.1); }
+.product-carousel-wrapper .swiper-button-next::after,
+.product-carousel-wrapper .swiper-button-prev::after { font-size: 32px; font-weight: bold; }
+.product-carousel-wrapper .swiper-button-prev { left: -28px; }
+.product-carousel-wrapper .swiper-button-next { right: -28px; }
+
+@media (max-width: 768px) {
+    .product-carousel-wrapper .swiper-button-next,
+    .product-carousel-wrapper .swiper-button-prev { width: 44px; height: 44px; }
+    .product-carousel-wrapper .swiper-button-next::after,
+    .product-carousel-wrapper .swiper-button-prev::after { font-size: 24px; }
+    .product-carousel-wrapper .swiper-button-prev { left: 10px; }
+    .product-carousel-wrapper .swiper-button-next { right: 10px; }
+}
+
+.dark .product-carousel-wrapper .swiper-button-next,
+.dark .product-carousel-wrapper .swiper-button-prev { color: #E2E8F0; background-color: rgba(30, 41, 59, 0.8); }
+.dark .product-carousel-wrapper .swiper-button-next:hover,
+.dark .product-carousel-wrapper .swiper-button-prev:hover { background-color: #1E293B; }
+
+.swiper-slide { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right { background-image: none !important; }
+
+/* --- CARD HOVER EFFECT --- */
+.card-hover-effect { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+.card-hover-effect:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+.dark .card-hover-effect:hover { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.3); }
+.card-hover-effect img { transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.card-hover-effect:hover img { transform: scale(1.05); }
+
+/* --- GENERAL SCROLL ANIMATION --- */
+.animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; transform: translateY(40px); }
+.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+/* 
+================================
+--- ADVANCED PROCESS TIMELINE ANIMATION (CORRECTED) ---
+================================
+*/
+/* The ::after pseudo-element creates the connecting line for each item */
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: #032877; /* Yellow accent color from Tailwind config */
+    /* Positioning: Start below the icon (h-14 -> 3.5rem) */
+    top: 3.5rem; 
+    left: 50%;
+    /* Height: Stretch from the bottom of the current icon to the top of the next one */
+    height: calc(100% - 1.75rem); 
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease-out;
+}
+.dark .timeline-item:not(:last-child)::after {
+    background-color: #2448fb;
+}
+
+/* Animate the line "drawing" when the section becomes visible */
+.section-visible .timeline-item:nth-child(1)::after { transition-delay: 0.6s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(2)::after { transition-delay: 0.8s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(3)::after { transition-delay: 1.0s; transform: translateX(-50%) scaleY(1); }
+
+/* Base transition for the icons and cards */
+#process-timeline .timeline-icon,
+#process-timeline .timeline-card {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Initial (hidden) state */
+.section-hidden #process-timeline .timeline-icon,
+.section-hidden #process-timeline .timeline-card { opacity: 0; }
+.section-hidden #process-timeline .timeline-icon { transform: scale(0.5); }
+.section-hidden #process-timeline .right-timeline .timeline-card { transform: translateX(-30px); }
+.section-hidden #process-timeline .left-timeline .timeline-card { transform: translateX(30px); }
+
+/* Final (visible) state */
+.section-visible #process-timeline .timeline-icon { opacity: 1; transform: scale(1); }
+.section-visible #process-timeline .timeline-card { opacity: 1; transform: translateX(0); }
+
+/* Staggering the animation for each item's icon and card */
+.section-visible #process-timeline .timeline-item:nth-child(1) .timeline-icon,
+.section-visible #process-timeline .timeline-item:nth-child(1) .timeline-card { transition-delay: 0.4s; }
+.section-visible #process-timeline .timeline-item:nth-child(2) .timeline-icon,
+.section-visible #process-timeline .timeline-item:nth-child(2) .timeline-card { transition-delay: 0.6s; }
+.section-visible #process-timeline .timeline-item:nth-child(3) .timeline-icon,
+.section-visible #process-timeline .timeline-item:nth-child(3) .timeline-card { transition-delay: 0.8s; }
+.section-visible #process-timeline .timeline-item:nth-child(4) .timeline-icon,
+.section-visible #process-timeline .timeline-item:nth-child(4) .timeline-card { transition-delay: 1.0s; }

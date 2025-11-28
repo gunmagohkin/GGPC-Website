@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Details - GGPC</title>
+
+<!-- External Libraries (JS) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+<!-- Your Master Stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Tailwind Config -->
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#00529B", "background-light": "#F8FAFC", "background-dark": "#0B1120",
+                    "card-light": "#FFFFFF", "card-dark": "#1E293B", "text-light": "#1E293B",
+                    "text-dark": "#E2E8F0", "text-muted-light": "#64748B", "text-muted-dark": "#94A3B8",
+                },
+                fontFamily: { display: ["Poppins", "sans-serif"], },
+                borderRadius: { DEFAULT: "0.5rem", },
+            },
+        },
+    };
+</script>
+
+<!-- Site & Page-Specific Scripts -->
+<script>
+    // --- UTILITY SCRIPTS ---
+    function toggleDarkMode() { document.documentElement.classList.toggle('dark'); localStorage.setItem('darkMode', document.documentElement.classList.contains('dark')); loadParticles(); }
+    const isDarkMode = () => localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode()) { document.documentElement.classList.add('dark'); }
+    function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+    function loadParticles() {
+        if(!document.getElementById("particles-js")) return;
+        const particleColor = isDarkMode() ? "#94a3b8" : "#9ca3af";
+        tsParticles.load("particles-js", { background: { color: "transparent" }, particles: { number: { value: 60 }, color: { value: particleColor }, opacity: { value: 0.6 }, size: { value: { min: 1, max: 3 } }, links: { enable: true, distance: 150, color: particleColor, opacity: 0.4, width: 1 }, move: { enable: true, speed: 1, direction: "none", out_mode: "out", } }, interactivity: { events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } } }, });
+    }
+
+    // --- JOB DETAILS FETCHING & POPULATION ---
+    document.addEventListener('DOMContentLoaded', function() {
+        loadParticles();
+        document.addEventListener('mousemove', e => {
+            document.body.style.setProperty('--x', e.clientX + 'px');
+            document.body.style.setProperty('--y', e.clientY + 'px');
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const jobCode = params.get('jobCode');
+        const jobDetailsContainer = document.getElementById('job-details-container');
+        const loadingState = document.getElementById('loading-state');
+        const errorState = document.getElementById('error-state');
+
+        if (!jobCode) {
+            loadingState.style.display = 'none';
+            errorState.style.display = 'block';
+            errorState.textContent = 'Error: No Job Code provided in the URL.';
+            return;
+        }
+
+        // Fetch from our own secure proxy server endpoint
+        fetch(`/api/job/${jobCode}`)
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error || `Server responded with status ${response.status}`); });
+                }
+                return response.json();
+            })
+            .then(result => {
+                if (result.success) {
+                    populateJobDetails(result.data);
+                    loadingState.style.display = 'none';
+                    jobDetailsContainer.style.display = 'block';
+                } else {
+                    throw new Error(result.error || 'Job not found.');
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                loadingState.style.display = 'none';
+                errorState.style.display = 'block';
+                errorState.textContent = `Error: ${error.message}`;
+            });
+    });
+
+    function populateJobDetails(record) {
+        // Field codes are placeholders, used to access keys from the server's response.
+        const codes = {
+            job: 'Job', jobCode: 'Job_Code', location: 'Location', jobType: 'Job_Type',
+            employmentStatus: 'Employment_Status', shiftAndSchedule: 'Shift_and_Schedule',
+            positionCategory: 'Position_Category', experienceLevel: 'Experience_Level',
+            jobDescription: 'Job_Description', qualifications: 'Qualifications',
+            benefits: 'Benefits', supplementalPay: 'Supplemental_Pay',
+        };
+
+        const data = {
+            jobTitle: record[codes.job]?.value || 'N/A',
+            jobCode: record[codes.jobCode]?.value || 'N/A',
+            location: record[codes.location]?.value || 'N/A',
+            jobType: record[codes.jobType]?.value || [], // Is an array
+            employmentStatus: record[codes.employmentStatus]?.value, // Is a single value (string)
+            shiftAndSchedule: record[codes.shiftAndSchedule]?.value || [], // Is an array
+            positionCategory: record[codes.positionCategory]?.value, // Is a single value (string)
+            experienceLevel: record[codes.experienceLevel]?.value || [], // Is an array
+            jobDescription: record[codes.jobDescription]?.value || '',
+            qualifications: record[codes.qualifications]?.value || '',
+            benefits: record[codes.benefits]?.value || '',
+            supplementalPay: record[codes.supplementalPay]?.value || ''
+        };
+        
+        document.title = `${data.jobTitle} - GGPC`;
+        document.getElementById('job-title').textContent = data.jobTitle;
+        document.getElementById('job-location').textContent = data.location;
+        
+        const tagsContainer = document.getElementById('tags-container');
+        const tagColors = { default: 'blue', Permanent: 'purple', 'Full-time': 'yellow', Open: 'green' };
+        const createTag = (text, colorClass) => `<span class="text-xs font-semibold px-3 py-1 bg-${colorClass}-100 text-${colorClass}-800 rounded-full dark:bg-${colorClass}-900/50 dark:text-${colorClass}-300">${text}</span>`;
+        tagsContainer.innerHTML = '';
+
+        // FIX APPLIED: Handle single vs. multi-value fields correctly
+        if (data.jobType) data.jobType.forEach(tag => tagsContainer.innerHTML += createTag(tag, tagColors[tag] || 'gray'));
+        if (data.employmentStatus) tagsContainer.innerHTML += createTag(data.employmentStatus, tagColors[data.employmentStatus] || 'green');
+        if (data.shiftAndSchedule) data.shiftAndSchedule.forEach(tag => tagsContainer.innerHTML += createTag(tag, 'pink'));
+        if (data.positionCategory) tagsContainer.innerHTML += createTag(data.positionCategory, 'indigo');
+        if (data.experienceLevel) data.experienceLevel.forEach(tag => tagsContainer.innerHTML += createTag(tag, 'blue'));
+
+        const populateList = (elementId, text) => {
+            const list = document.getElementById(elementId);
+            if (text && list) {
+                list.innerHTML = String(text).split('\n').filter(line => line.trim() !== '').map(item => `<li>${item.trim().replace(/^[\*\-\•]\s*/, '')}</li>`).join('');
+            }
+        };
+        
+        document.getElementById('job-description-lead').textContent = String(data.jobDescription).split('\n')[0];
+        populateList('qualifications-list', data.qualifications);
+        populateList('description-list', data.jobDescription);
+        populateList('benefits-list', data.benefits);
+        populateList('supp-pay-list', data.supplementalPay);
+        
+        const applyButton = document.getElementById('apply-now-button');
+        applyButton.href = `mailto:careers@gunmagohkin.ph?subject=Application for ${data.jobTitle} (${data.jobCode})`;
+    }
+
+    // --- WINDOW-LEVEL EVENT LISTENERS ---
+    window.addEventListener('load', () => document.getElementById('preloader')?.classList.add('hidden'));
+    window.addEventListener('scroll', () => {
+        document.querySelector('header')?.classList.toggle('scrolled', window.scrollY > 50);
+        const scrollProgressBar = document.getElementById('scroll-progress');
+        if(scrollProgressBar) {
+            const scrollPercent = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
+            scrollProgressBar.style.width = scrollPercent + '%';
+        }
+    });
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+
+<div id="preloader"><img src="images/Picture14.png" alt="Loading GGPC Logo"/></div>
+<div id="scroll-progress"></div>
+<div id="particles-js"></div>
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a class="flex items-center" href="index.html">
+            <img class="h-12 mr-3 transition-all duration-300" src="images/Picture14.png" alt="GGPC Logo"/>
+            <span class="text-base sm:text-xl font-bold text-primary leading-tight">
+                <span class="hidden sm:inline">GUNMA GOHKIN PHILIPPINES CORPORATION</span>
+                <span class="sm:hidden">GUNMA GOHKIN<br/>PHILIPPINES<br/>CORPORATION</span>
+            </span>
+        </a>
+        <div class="flex items-center">
+            <nav class="hidden md:flex items-center space-x-6">
+                <a class="text-text-light dark:text-text-dark" href="index.html">Home</a>
+                <a class="text-text-light dark:text-text-dark" href="company-outline.html">Profile</a>
+                <a class="text-text-light dark:text-text-dark" href="business-outline.html">Outline</a>
+                <a class="text-text-light dark:text-text-dark" href="initiatives.html">Initiatives</a>
+                <a class="text-text-light dark:text-text-dark active" href="opportunities.html">Opportunities</a>
+            </nav>
+            <div class="flex items-center ml-6">
+                <button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" onclick="toggleDarkMode()"><span class="material-icons dark:hidden">dark_mode</span><span class="material-icons hidden dark:inline">light_mode</span></button>
+                <button class="md:hidden ml-4 p-2 rounded-md text-text-light dark:text-text-dark" onclick="toggleMobileMenu()"><span class="material-icons">menu</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark shadow-lg">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark" href="index.html">Home</a><a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark" href="company-outline.html">Company Outline</a><a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark" href="business-outline.html">Business Outline</a><a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark" href="initiatives.html">Initiatives</a><a class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-primary/10" href="opportunities.html">Opportunities</a>
+        </div>
+    </div>
+</header>
+
+<main class="relative z-10 pt-32 pb-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto bg-card-light dark:bg-card-dark p-8 md:p-12 rounded-lg shadow-xl">
+            <div id="loading-state" class="text-center py-10"><p class="text-lg text-text-muted-light dark:text-text-muted-dark">Loading job details...</p></div>
+            <div id="error-state" class="text-center py-10 text-red-600 dark:text-red-400 font-semibold" style="display: none;"></div>
+            <div id="job-details-container" style="display: none;">
+                <div class="flex items-start space-x-5 mb-6"><span id="job-icon" class="material-icons text-5xl text-primary mt-1">work</span><div><h1 id="job-title" class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark"></h1><p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-1 flex items-center"><span class="material-icons mr-2 text-base">location_on</span><span id="job-location"></span></p></div></div>
+                <div id="tags-container" class="flex flex-wrap gap-2 border-t border-b border-gray-200 dark:border-gray-700 py-4 mb-8"></div>
+                <div class="prose prose-lg dark:prose-invert max-w-none prose-h2:text-2xl prose-h2:font-bold prose-h2:text-primary prose-h2:mb-4 prose-h2:mt-8 prose-ul:list-disc prose-ul:pl-6 prose-li:mb-2 text-text-light dark:text-text-dark">
+                    <p id="job-description-lead" class="lead"></p>
+                    <h2>Qualifications</h2><ul id="qualifications-list"></ul>
+                    <h2>Job Description</h2><ul id="description-list"></ul>
+                    <h2>Benefits</h2><ul id="benefits-list"></ul>
+                    <h2>Supplemental Pay</h2><ul id="supp-pay-list"></ul>
+                </div>
+                <div class="mt-12 text-center border-t border-gray-200 dark:border-gray-700 pt-8"><p class="text-text-muted-light dark:text-text-muted-dark mb-4">For interested applicants, click the button below to begin your application process.</p><a id="apply-now-button" href="#" class="inline-flex items-center justify-center py-3 px-10 bg-primary text-white font-bold rounded-full shadow-lg transform transition-all hover:scale-105 hover:bg-blue-700"><span class="mr-2">APPLY NOW!</span><span class="material-icons">double_arrow</span></a></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="relative z-10 bg-card-dark text-gray-300">
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-sm">© 2025 Gunma Gohkin Philippines Corporation. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a class="hover:text-primary transition-colors text-sm" href="terms.html">Terms of Use</a>
+                <a class="hover:text-primary transition-colors text-sm" href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
