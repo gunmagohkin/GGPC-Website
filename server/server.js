@@ -9,7 +9,7 @@ const app = express();
 const PORT = 3000;
 
 // Serve your static files (HTML, CSS, images) from the 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Securely load Kintone credentials and Field Codes from the .env file
 const {
