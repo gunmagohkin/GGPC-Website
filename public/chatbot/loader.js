@@ -1,6 +1,6 @@
 // In /js/loader.js
 document.addEventListener("DOMContentLoaded", function() {
-    const CHATBOT_BASE_PATH = '';
+    const CHATBOT_BASE_PATH = '/chatbot/';
     const CHATBOT_HTML_PATH = `${CHATBOT_BASE_PATH}chatbot.html`;
     const CHATBOT_CSS_PATH = `${CHATBOT_BASE_PATH}chatbot.css`;
     const CHATBOT_JS_PATH = `${CHATBOT_BASE_PATH}chatbot.js`;
