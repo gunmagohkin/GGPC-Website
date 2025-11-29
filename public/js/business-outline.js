@@ -40,8 +40,6 @@ function toggleMobileMenu() {
 
 function loadParticles() {
     if (!document.getElementById("particles-js")) return;
-    
-    // Check if tsParticles is loaded
     if (typeof tsParticles === 'undefined') return;
 
     const particleColor = isDarkMode() ? "#94a3b8" : "#9ca3af";
@@ -112,11 +110,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const swiperOptions = {
         loop: true,
         speed: 800,
-        effect: 'coverflow', // Adds depth to slides
+        effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 'auto',
+        // IMPORTANT: Always use 'auto' so it relies on the CSS width (320px)
+        slidesPerView: 'auto', 
         spaceBetween: 32,
+        observer: true,
+        observeParents: true,
         coverflowEffect: {
             rotate: 0, 
             stretch: 0,
@@ -129,9 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },
+        // Remove specific slidesPerView numbers here to fix the alignment bug
         breakpoints: {
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            640: { slidesPerView: 'auto' },
+            1024: { slidesPerView: 'auto' },
         }
     };
 
