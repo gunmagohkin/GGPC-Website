@@ -183,18 +183,68 @@ header nav a.active::after {
 --- COMPANY OUTLINE SPECIFIC STYLES ---
 ================================
 */
-/* History Carousel */
+
+/* 
+   HISTORY CAROUSEL - FADE ANIMATION 
+   This animation sequence makes the overlay fade out to show the image behind it
+*/
+@keyframes revealImageSequence {
+    0% { opacity: 1; }       /* Start fully visible (Color + Text) */
+    15% { opacity: 1; }      /* Wait a moment so user can read */
+    30% { opacity: 0; }      /* Fade out completely (Show Image) */
+    70% { opacity: 0; }      /* Keep showing image for ~3 seconds */
+    85% { opacity: 1; }      /* Fade back in */
+    100% { opacity: 1; }     /* End fully visible */
+}
+
 .history-carousel { width: 100%; padding-top: 50px; padding-bottom: 80px; }
-.history-carousel .swiper-slide { background-position: center; background-size: cover; width: 320px; height: 320px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; border-radius: 0.75rem; overflow: hidden; -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.2)); }
+
+.history-carousel .swiper-slide { 
+    background-position: center; 
+    background-size: cover; 
+    width: 320px; 
+    height: 320px; 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    color: white; 
+    border-radius: 0.75rem; 
+    overflow: hidden; 
+    -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.2)); 
+}
+
 .history-carousel .swiper-container { overflow: visible; }
-.slide-overlay, .slide-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; transition: opacity 0.5s ease 0.7s, visibility 0.5s ease 0.7s; }
-.cover-hidden { opacity: 0 !important; visibility: hidden !important; }
+
+.slide-overlay, .slide-content { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 1; 
+    /* Default state: Visible */
+    opacity: 1; 
+}
+
+/* Only apply the fading animation when the slide is ACTIVE (Centered) */
+.swiper-slide-active .slide-overlay,
+.swiper-slide-active .slide-content {
+    animation: revealImageSequence 8s infinite ease-in-out;
+}
+
 .slide-content { z-index: 2; padding: 1rem; }
-.slide-1 .slide-overlay { background: rgba(29, 78, 216, 0.85); }
-.slide-2 .slide-overlay { background: rgba(22, 163, 74, 0.85); }
-.slide-3 .slide-overlay { background: rgba(220, 38, 38, 0.85); }
-.slide-4 .slide-overlay { background: rgba(100, 116, 139, 0.85); }
-.slide-5 .slide-overlay { background: rgba(126, 34, 206, 0.85); }
+
+/* Slide Colors */
+.slide-1 .slide-overlay { background: rgba(29, 78, 216, 0.90); } /* Blue */
+.slide-2 .slide-overlay { background: rgba(22, 163, 74, 0.90); }  /* Green */
+.slide-3 .slide-overlay { background: rgba(220, 38, 38, 0.90); }  /* Red */
+.slide-4 .slide-overlay { background: rgba(234, 88, 12, 0.90); }  /* Orange/Gold */
+.slide-5 .slide-overlay { background: rgba(126, 34, 206, 0.90); } /* Purple */
+
 .history-carousel-nav { width: 44px; height: 44px; background-color: rgba(0, 82, 155, 0.7); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease; cursor: pointer; }
 .history-carousel-nav:hover { background-color: #00529B; }
 .swiper-button-disabled { opacity: 0.3; cursor: not-allowed; }
@@ -210,174 +260,3 @@ header nav a.active::after {
 @media (max-width: 640px) { .philosophy-button-prev { left: 0px; } .philosophy-button-next { right: 0px; } }
 .philosophy-pagination.swiper-pagination-bullets .swiper-pagination-bullet { background-color: #94A3B8; }
 .philosophy-pagination.swiper-pagination-bullets .swiper-pagination-bullet-active { background-color: #00529B; }
-
-/* Add this to your css/style.css file */
-
-/* Style for the active navigation link */
-header nav a.active {
-    font-weight: 600; /* Makes the text slightly bolder */
-    color: #00529B; /* Use your primary color */
-}
-
-.dark header nav a.active {
-    color: #3B82F6; /* A lighter blue for dark mode */
-}
-
-/* Make the underline appear automatically for the active link */
-header nav a.active::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* 
-================================
---- BUSINESS OUTLINE PAGE STYLES ---
-================================
-*/
-
-/* --- PRODUCT CAROUSEL --- */
-.product-carousel-wrapper {
-    position: relative;
-    /* Vertical padding prevents hover clip, Horizontal padding spaces buttons */
-    padding: 40px 80px; 
-}
-
-/* Button Styles */
-.product-carousel-wrapper .swiper-button-next,
-.product-carousel-wrapper .swiper-button-prev {
-    width: 48px;
-    height: 48px;
-    background-color: #4A89C1;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    z-index: 20;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-}
-
-.product-carousel-wrapper .swiper-button-prev {
-    left: 15px; 
-    right: auto;
-}
-
-.product-carousel-wrapper .swiper-button-next {
-    right: 15px;
-    left: auto;
-}
-
-.product-carousel-wrapper .swiper-button-next:hover,
-.product-carousel-wrapper .swiper-button-prev:hover {
-    background-color: #3b76a8;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.product-carousel-wrapper .swiper-button-next::after,
-.product-carousel-wrapper .swiper-button-prev::after {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .product-carousel-wrapper {
-        padding: 20px 1rem;
-    }
-    .product-carousel-wrapper .swiper-button-next,
-    .product-carousel-wrapper .swiper-button-prev {
-        display: none; 
-    }
-}
-
-/* --- SWIPER SLIDE FIXES --- */
-/* IMPORTANT: Force width so 'auto' slides work consistently */
-.swiper-slide { 
-    width: 320px !important; /* Matches w-80 (20rem) exactly */
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-    padding: 10px 0; /* Internal padding for hover space */
-    height: auto;
-}
-
-.swiper-slide-shadow-left,
-.swiper-slide-shadow-right { background-image: none !important; }
-
-/* --- CARD HOVER EFFECT --- */
-.card-hover-effect { 
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
-    will-change: transform;
-    height: 100%;
-}
-.card-hover-effect:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    z-index: 10;
-}
-.dark .card-hover-effect:hover { 
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3); 
-}
-.card-hover-effect img { 
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
-}
-.card-hover-effect:hover img { 
-    transform: scale(1.05); 
-}
-
-/* --- GENERAL SCROLL ANIMATION --- */
-.animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; transform: translateY(40px); }
-.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-
-/* 
-================================
---- ADVANCED PROCESS TIMELINE ANIMATION ---
-================================
-*/
-.timeline-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    background-color: #032877; 
-    top: 3.5rem; 
-    left: 50%;
-    height: calc(100% - 1.75rem); 
-    transform: translateX(-50%) scaleY(0);
-    transform-origin: top;
-    transition: transform 0.4s ease-out;
-}
-.dark .timeline-item:not(:last-child)::after {
-    background-color: #2448fb;
-}
-
-.section-visible .timeline-item:nth-child(1)::after { transition-delay: 0.6s; transform: translateX(-50%) scaleY(1); }
-.section-visible .timeline-item:nth-child(2)::after { transition-delay: 0.8s; transform: translateX(-50%) scaleY(1); }
-.section-visible .timeline-item:nth-child(3)::after { transition-delay: 1.0s; transform: translateX(-50%) scaleY(1); }
-
-#process-timeline .timeline-icon,
-#process-timeline .timeline-card {
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.section-hidden #process-timeline .timeline-icon,
-.section-hidden #process-timeline .timeline-card { opacity: 0; }
-.section-hidden #process-timeline .timeline-icon { transform: scale(0.5); }
-.section-hidden #process-timeline .right-timeline .timeline-card { transform: translateX(-30px); }
-.section-hidden #process-timeline .left-timeline .timeline-card { transform: translateX(30px); }
-
-.section-visible #process-timeline .timeline-icon { opacity: 1; transform: scale(1); }
-.section-visible #process-timeline .timeline-card { opacity: 1; transform: translateX(0); }
-
-.section-visible #process-timeline .timeline-item:nth-child(1) .timeline-icon,
-.section-visible #process-timeline .timeline-item:nth-child(1) .timeline-card { transition-delay: 0.4s; }
-.section-visible #process-timeline .timeline-item:nth-child(2) .timeline-icon,
-.section-visible #process-timeline .timeline-item:nth-child(2) .timeline-card { transition-delay: 0.6s; }
-.section-visible #process-timeline .timeline-item:nth-child(3) .timeline-icon,
-.section-visible #process-timeline .timeline-item:nth-child(3) .timeline-card { transition-delay: 0.8s; }
-.section-visible #process-timeline .timeline-item:nth-child(4) .timeline-icon,
-.section-visible #process-timeline .timeline-item:nth-child(4) .timeline-card { transition-delay: 1.0s; }

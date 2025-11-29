@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="css/style.css">
     
   <script src="js/company-outline.js"></script>
-    <script src="loader.js"></script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
 
@@ -74,10 +73,8 @@
 
 <main class="relative z-10">
 
-    <!-- === NEW HERO SECTION ADDED HERE === -->
     <section class="relative min-h-screen flex items-center justify-center pt-20" id="profile-hero">
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20"></div>
-        <!-- IMPORTANT: Change this image to one that fits the company profile page -->
         <img alt="Our Team at Gunma Gohkin" class="absolute inset-0 w-full h-full object-cover -z-10" src="images/office-interior.jpg"/>
         <div class="relative z-10 text-center text-white px-6">
             <div class="overflow-hidden mb-4 pb-2">
@@ -89,8 +86,7 @@
         </div>
     </section>
     
-    <!-- === EXISTING CONTENT STARTS HERE (WITH ADJUSTED PADDING) === -->
-    <section class="py-20"> <!-- Adjusted padding from pt-12 to py-20 for consistency -->
+    <section class="py-20"> 
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Company History</h2>
@@ -98,18 +94,52 @@
             <div class="relative max-w-6xl mx-auto stagger-child">
                 <div class="swiper history-carousel">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide slide-1" data-title="Founding of GGPC" data-year="1995" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider">FOUNDING</h3><p class="mt-2 text-2xl font-semibold">1995</p></div> </div>
-                        <div class="swiper-slide slide-2" data-title="First Major Expansion" data-year="2001" style="background-image: url('dummy/1317-010-conference\ _\ Office\ Snapshots.jpg');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider">EXPANSION</h3><p class="mt-2 text-2xl font-semibold">2001</p></div> </div>
-                        <div class="swiper-slide slide-3" data-title="ISO Certification" data-year="2005" style="background-image: url('https://images.unsplash.com/photo-1554042301-0814421689c3?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-widest leading-tight">ISO<br/>CERTIFIED</h3><p class="mt-2 text-2xl font-semibold">2005</p></div> </div>
-                        <div class="swiper-slide slide-4" data-title="Cavite Plant Opening" data-year="2012" style="background-image: url('https://images.unsplash.com/photo-1623954363486-3e3334867142?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">CAVITE<br>PLANT</h3><p class="mt-2 text-2xl font-semibold">2012</p></div> </div>
-                        <div class="swiper-slide slide-5" data-title="25th Anniversary" data-year="2020" style="background-image: url('https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800&h=800');"> <div class="slide-overlay"></div><div class="slide-content"><h3 class="text-4xl font-bold uppercase tracking-wider">25 YEARS</h3><p class="mt-2 text-2xl font-semibold">2020</p></div> </div>
+                        <!-- Slide 1: Purple/Blue -->
+                        <div class="swiper-slide slide-1" data-title="Founding of GGPC" data-year="1995" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800&h=800');"> 
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3 class="text-4xl font-bold uppercase tracking-wider">FOUNDING</h3>
+                                <p class="mt-2 text-2xl font-semibold">1995</p>
+                            </div> 
+                        </div>
+                        <!-- Slide 2: Green -->
+                        <div class="swiper-slide slide-2" data-title="First Major Expansion" data-year="2001" style="background-image: url('images/factory-floor.jpg');"> 
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3 class="text-4xl font-bold uppercase tracking-wider">EXPANSION</h3>
+                                <p class="mt-2 text-2xl font-semibold">2001</p>
+                            </div> 
+                        </div>
+                        <!-- Slide 3: Red -->
+                        <div class="swiper-slide slide-3" data-title="ISO Certification" data-year="2005" style="background-image: url('https://images.unsplash.com/photo-1554042301-0814421689c3?auto=format&fit=crop&q=80&w=800&h=800');"> 
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3 class="text-4xl font-bold uppercase tracking-widest leading-tight">ISO<br/>CERTIFIED</h3>
+                                <p class="mt-2 text-2xl font-semibold">2005</p>
+                            </div> 
+                        </div>
+                        <!-- Slide 4: Orange -->
+                        <div class="swiper-slide slide-4" data-title="Cavite Plant Opening" data-year="2012" style="background-image: url('https://images.unsplash.com/photo-1623954363486-3e3334867142?auto=format&fit=crop&q=80&w=800&h=800');"> 
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">CAVITE<br>PLANT</h3>
+                                <p class="mt-2 text-2xl font-semibold">2012</p>
+                            </div> 
+                        </div>
+                        <!-- Slide 5: Purple -->
+                        <div class="swiper-slide slide-5" data-title="25th Anniversary" data-year="2020" style="background-image: url('https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800&h=800');"> 
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3 class="text-4xl font-bold uppercase tracking-wider">25 YEARS</h3>
+                                <p class="mt-2 text-2xl font-semibold">2020</p>
+                            </div> 
+                        </div>
                     </div>
                 </div>
-                <!-- Corrected navigation class names to match Swiper init -->
                 <div class="swiper-button-prev history-button-prev history-carousel-nav absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> </div>
                 <div class="swiper-button-next history-button-next history-carousel-nav absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg> </div>
             </div>
-            <div id="history-caption" class="text-center mt-8 text-text-light dark:text-text-dark"></div>
+            <div id="history-caption" class="text-center mt-8 text-text-light dark:text-text-dark min-h-[4rem]"></div>
         </div>
     </section>
 

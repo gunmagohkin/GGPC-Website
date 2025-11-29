@@ -4,14 +4,14 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                primary: "#00529B",
-                "background-light": "#F8FAFC",
+                primary: "#00529B", 
+                "background-light": "#F8FAFC", 
                 "background-dark": "#0B1120",
-                "card-light": "#FFFFFF",
-                "card-dark": "#1E293B",
-                "text-light": "#1E293B",
-                "text-dark": "#E2E8F0",
-                "text-muted-light": "#64748B",
+                "card-light": "#FFFFFF", 
+                "card-dark": "#1E293B", 
+                "text-light": "#1E293B", 
+                "text-dark": "#E2E8F0", 
+                "text-muted-light": "#64748B", 
                 "text-muted-dark": "#94A3B8",
                 "accent": "#FBBF24"
             },
@@ -29,10 +29,7 @@ function toggleDarkMode() {
 }
 
 const isDarkMode = () => localStorage.getItem('darkMode') === 'true';
-
-if (isDarkMode()) {
-    document.documentElement.classList.add('dark');
-}
+if (isDarkMode()) { document.documentElement.classList.add('dark'); }
 
 function toggleMobileMenu() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
@@ -41,7 +38,6 @@ function toggleMobileMenu() {
 function loadParticles() {
     if (!document.getElementById("particles-js")) return;
     if (typeof tsParticles === 'undefined') return;
-
     const particleColor = isDarkMode() ? "#94a3b8" : "#9ca3af";
     tsParticles.load("particles-js", {
         background: { color: "transparent" },
@@ -53,15 +49,19 @@ function loadParticles() {
             links: { enable: true, distance: 150, color: particleColor, opacity: 0.4, width: 1 },
             move: { enable: true, speed: 1, direction: "none", out_mode: "out" }
         },
-        interactivity: {
-            events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } }
-        },
+        interactivity: { events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } } },
     });
 }
 
 // 3. Main Logic (DOM Ready)
 document.addEventListener('DOMContentLoaded', function() {
     loadParticles();
+
+    // --- SPOTLIGHT CURSOR LOGIC ---
+    document.addEventListener('mousemove', (e) => {
+        document.body.style.setProperty('--x', e.clientX + 'px');
+        document.body.style.setProperty('--y', e.clientY + 'px');
+    });
 
     // Hero Text Animation
     const heroTitle = document.getElementById('hero-title');
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         heroTitle.style.opacity = '1';
     }
 
-    // Scroll Animations (Section Reveal)
+    // Scroll Animations
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -106,15 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- SWIPER CAROUSEL CONFIG ---
+    // --- SWIPER CAROUSEL CONFIG (Flashcard Fix) ---
     const swiperOptions = {
         loop: true,
         speed: 800,
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
-        // IMPORTANT: Always use 'auto' so it relies on the CSS width (320px)
-        slidesPerView: 'auto', 
+        slidesPerView: 'auto', // Must be 'auto' for CSS width to work
         spaceBetween: 32,
         observer: true,
         observeParents: true,
@@ -126,11 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
             slideShadows: false,
         },
         autoplay: {
-            delay: 4000,
+            delay: 3000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },
-        // Remove specific slidesPerView numbers here to fix the alignment bug
+        // Remove specific breakpoints to allow CSS width: 320px to control size
         breakpoints: {
             640: { slidesPerView: 'auto' },
             1024: { slidesPerView: 'auto' },
@@ -149,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Industrial Carousel
     new Swiper('.industrial-carousel', {
         ...swiperOptions,
-        autoplay: { ...swiperOptions.autoplay, delay: 4500 },
+        autoplay: { ...swiperOptions.autoplay, delay: 3500 },
         navigation: {
             nextEl: '.industrial-carousel-wrapper .swiper-button-next',
             prevEl: '.industrial-carousel-wrapper .swiper-button-prev',
@@ -158,11 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // General Animate on Scroll (Cards)
     const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
     }, { threshold: 0.1 });
     
     document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
@@ -172,10 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', () => document.getElementById('preloader')?.classList.add('hidden'));
 
 window.addEventListener('scroll', () => {
-    // Header background toggle
     document.querySelector('header')?.classList.toggle('scrolled', window.scrollY > 50);
-    
-    // Top Progress Bar
     const progressBar = document.getElementById('scroll-progress');
     if (progressBar) {
         const scrollPercent = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
