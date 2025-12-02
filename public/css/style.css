@@ -180,6 +180,143 @@ header nav a.active::after {
 
 /* 
 ================================
+--- BUSINESS OUTLINE PAGE STYLES ---
+================================
+*/
+
+/* --- PRODUCT CAROUSEL --- */
+.product-carousel-wrapper {
+    position: relative;
+    padding: 40px 80px; 
+}
+
+/* Button Styles */
+.product-carousel-wrapper .swiper-button-next,
+.product-carousel-wrapper .swiper-button-prev {
+    width: 48px;
+    height: 48px;
+    background-color: #4A89C1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+.product-carousel-wrapper .swiper-button-prev { left: 15px; right: auto; }
+.product-carousel-wrapper .swiper-button-next { right: 15px; left: auto; }
+
+.product-carousel-wrapper .swiper-button-next:hover,
+.product-carousel-wrapper .swiper-button-prev:hover {
+    background-color: #3b76a8;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-carousel-wrapper .swiper-button-next::after,
+.product-carousel-wrapper .swiper-button-prev::after { display: none; }
+
+@media (max-width: 768px) {
+    .product-carousel-wrapper { padding: 20px 1rem; }
+    .product-carousel-wrapper .swiper-button-next,
+    .product-carousel-wrapper .swiper-button-prev { display: none; }
+}
+
+/* --- SWIPER SLIDE FIXES (Fixed Width) --- */
+.swiper-slide { 
+    width: 320px !important; /* Force fixed width */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    padding: 10px 0; 
+    height: auto;
+}
+.swiper-slide-shadow-left, .swiper-slide-shadow-right { background-image: none !important; }
+
+/* --- CARD HOVER & IMAGE AUTO-RESIZE FIXES --- */
+.card-hover-effect { 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    will-change: transform;
+    height: 100%;
+}
+.card-hover-effect:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    z-index: 10;
+}
+.dark .card-hover-effect:hover { 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3); 
+}
+
+/* --- THE FIX: AUTO RESIZE LOGIC --- */
+/* 1. Create a dedicated container for the image */
+.product-image-wrapper {
+    height: 18rem; /* Equivalent to h-72 */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff; /* Clean white bg behind transparent images */
+    padding: 1.5rem; /* Padding prevents image from touching borders */
+    overflow: hidden;
+}
+.dark .product-image-wrapper {
+    background-color: #1e293b;
+}
+
+/* 2. The Image itself: Contain fitting */
+.auto-resize-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* The magic property: Shows full image without cropping */
+    transition: transform 0.5s ease;
+}
+
+/* Animation: Slight zoom when active */
+@keyframes highlightActiveImage {
+    0% { transform: scale(0.95); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1.0); }
+}
+
+.swiper-slide-active .auto-resize-img {
+    animation: highlightActiveImage 2.5s ease-out forwards;
+}
+
+/* --- GENERAL SCROLL ANIMATION --- */
+.animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; transform: translateY(40px); }
+.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+/* --- TIMELINE --- */
+.timeline-item:not(:last-child)::after { content: ''; position: absolute; width: 3px; background-color: #032877; top: 3.5rem; left: 50%; height: calc(100% - 1.75rem); transform: translateX(-50%) scaleY(0); transform-origin: top; transition: transform 0.4s ease-out; }
+.dark .timeline-item:not(:last-child)::after { background-color: #2448fb; }
+.section-visible .timeline-item:nth-child(1)::after { transition-delay: 0.6s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(2)::after { transition-delay: 0.8s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(3)::after { transition-delay: 1.0s; transform: translateX(-50%) scaleY(1); }
+#process-timeline .timeline-icon, #process-timeline .timeline-card { transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.section-hidden #process-timeline .timeline-icon, .section-hidden #process-timeline .timeline-card { opacity: 0; }
+.section-hidden #process-timeline .timeline-icon { transform: scale(0.5); }
+.section-hidden #process-timeline .right-timeline .timeline-card { transform: translateX(-30px); }
+.section-hidden #process-timeline .left-timeline .timeline-card { transform: translateX(30px); }
+.section-visible #process-timeline .timeline-icon { opacity: 1; transform: scale(1); }
+.section-visible #process-timeline .timeline-card { opacity: 1; transform: translateX(0); }
+.section-visible #process-timeline .timeline-item:nth-child(1) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(1) .timeline-card { transition-delay: 0.4s; }
+.section-visible #process-timeline .timeline-item:nth-child(2) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(2) .timeline-card { transition-delay: 0.6s; }
+.section-visible #process-timeline .timeline-item:nth-child(3) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(3) .timeline-card { transition-delay: 0.8s; }
+.section-visible #process-timeline .timeline-item:nth-child(4) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(4) .timeline-card { transition-delay: 1.0s; }
+
+/* 
+================================
 --- COMPANY OUTLINE SPECIFIC STYLES ---
 ================================
 */
@@ -249,7 +386,6 @@ header nav a.active::after {
 .history-carousel-nav:hover { background-color: #00529B; }
 .swiper-button-disabled { opacity: 0.3; cursor: not-allowed; }
 
-/* Philosophy Carousel */
 .philosophy-carousel { padding: 1rem 0 3.5rem 0; width: 100%; }
 .philosophy-carousel .swiper-slide { height: auto; padding: 0.5rem; }
 .philosophy-carousel .card { height: 100%; display: flex; flex-direction: column; }
