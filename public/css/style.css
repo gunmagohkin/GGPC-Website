@@ -6,7 +6,7 @@
 body {
     overflow-x: hidden;
     background-color: var(--bg-color); 
-    position: relative; /* Context for particles */
+    position: relative;
 }
 
 /* Spotlight Cursor Effect */
@@ -16,7 +16,7 @@ body::before {
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 999; /* Above content for cursor glow */
+    z-index: 999; /* High z-index to sit on top */
     background: radial-gradient(
         circle 400px at var(--x, 50%) var(--y, 50%),
         rgba(0, 82, 155, 0.08),
@@ -62,18 +62,10 @@ body::before {
     width: 0%; z-index: 9998; transition: width 0.1s ease-out;
 }
 
-/* 
---- INTERACTIVE LINES (PARTICLES) --- 
-Ensures lines appear behind content
-*/
+/* Global Background Particles */
 #particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 0; /* Behind content, above body bg */
-    pointer-events: none;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
 }
 
 header { transition: all 0.3s ease-in-out; }
@@ -97,8 +89,8 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
 .section-visible { opacity: 1; }
 .stagger-child { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .section-visible .stagger-child { opacity: 1; transform: translateY(0); }
-.parallax-img { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
 .text-shadow-strong { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); }
+
 @keyframes revealLetterUp { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
 .staggered-reveal-title { overflow: hidden; padding-bottom: 0.1em; }
 .letter-reveal { display: inline-block; opacity: 0; transform: translateY(100%); }
@@ -116,7 +108,7 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
 /* Wrapper */
 .product-carousel-wrapper { position: relative; padding: 40px 80px; }
 
-/* Swiper Slides for Products (Fixed Width 320px) */
+/* Swiper Slides (Fixed Width 320px for Business Outline) */
 .product-carousel-wrapper .swiper-slide { 
     width: 320px !important; 
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
@@ -125,7 +117,7 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
 .product-carousel-wrapper .swiper-slide-shadow-left, 
 .product-carousel-wrapper .swiper-slide-shadow-right { background-image: none !important; }
 
-/* Navigation Buttons (Business) */
+/* Navigation Buttons */
 .product-carousel-wrapper .swiper-button-next, .product-carousel-wrapper .swiper-button-prev {
     width: 48px; height: 48px; background-color: #4A89C1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: none; outline: none; cursor: pointer; z-index: 20; transition: all 0.2s ease-in-out; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); position: absolute; top: 50%; transform: translateY(-50%); margin: 0;
 }
@@ -139,14 +131,34 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
 .card-hover-effect:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); z-index: 10; }
 .dark .card-hover-effect:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3); }
 
-/* Product Image Auto-Resize Fix */
+/* Image Auto-Resize Fix */
 .product-image-wrapper { height: 18rem; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #fff; padding: 1rem; overflow: hidden; }
 .dark .product-image-wrapper { background-color: #1e293b; }
 .auto-resize-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: transform 0.5s ease; }
 @keyframes highlightActiveImage { 0% { transform: scale(0.95); } 50% { transform: scale(1.1); } 100% { transform: scale(1.0); } }
 .swiper-slide-active .auto-resize-img { animation: highlightActiveImage 2.5s ease-out forwards; }
 
-/* Process Timeline */
+/* 
+--- TIMELINE & PROCESS SECTION --- 
+*/
+
+/* Timeline Particles Container (Behind content) */
+#timeline-particles {
+    pointer-events: none; 
+    opacity: 0.6;
+}
+
+/* 3D Tilt Effect for Cards */
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    will-change: transform;
+}
+.tilt-card > * {
+    transform: translateZ(20px); /* Pop content */
+}
+
+/* Timeline Lines & Animations */
 .timeline-item:not(:last-child)::after { content: ''; position: absolute; width: 3px; background-color: #032877; top: 3.5rem; left: 50%; height: calc(100% - 1.75rem); transform: translateX(-50%) scaleY(0); transform-origin: top; transition: transform 0.4s ease-out; }
 .dark .timeline-item:not(:last-child)::after { background-color: #2448fb; }
 .section-visible .timeline-item:nth-child(1)::after { transition-delay: 0.6s; transform: translateX(-50%) scaleY(1); }
@@ -156,6 +168,11 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
 .section-visible .timeline-item:nth-child(5)::after { transition-delay: 1.4s; transform: translateX(-50%) scaleY(1); }
 .section-visible .timeline-item:nth-child(6)::after { transition-delay: 1.6s; transform: translateX(-50%) scaleY(1); }
 .section-visible .timeline-item:nth-child(7)::after { transition-delay: 1.8s; transform: translateX(-50%) scaleY(1); }
+
+/* Timeline Icons Interactive Hover */
+#process-timeline .timeline-icon { transition: transform 0.3s ease; cursor: pointer; z-index: 10; }
+#process-timeline .timeline-icon:hover { transform: scale(1.2) rotate(10deg); box-shadow: 0 0 15px rgba(0, 82, 155, 0.5); }
+
 #process-timeline .timeline-icon, #process-timeline .timeline-card { transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .section-hidden #process-timeline .timeline-icon, .section-hidden #process-timeline .timeline-card { opacity: 0; }
 .section-hidden #process-timeline .timeline-icon { transform: scale(0.5); }
@@ -172,77 +189,34 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
 .section-visible #process-timeline .timeline-item:nth-child(7) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(7) .timeline-card { transition-delay: 1.6s; }
 .section-visible #process-timeline .timeline-item:nth-child(8) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(8) .timeline-card { transition-delay: 1.8s; }
 
-
 /* 
 ================================
 --- COMPANY OUTLINE SPECIFIC STYLES ---
 ================================
 */
-
-/* 
-   FADE TO REVEAL ANIMATION 
-   Sequence: Text visible -> Text fades out (Image shown) -> Text fades in
-*/
-@keyframes revealImageSequence {
-    0%, 15% { opacity: 1; }      /* Show Text/Color */
-    30%, 70% { opacity: 0; }     /* Hide Text/Color (Reveal Image) for 3s */
-    85%, 100% { opacity: 1; }    /* Show Text/Color again */
-}
-
-/* History Carousel Scoping */
+@keyframes revealImageSequence { 0%, 15% { opacity: 1; } 30%, 70% { opacity: 0; } 85%, 100% { opacity: 1; } }
 .history-carousel { width: 100%; padding-top: 50px; padding-bottom: 80px; }
-
-/* History Slides (Fixed 320px for Coverflow) */
-.history-carousel .swiper-slide { 
-    background-position: center; 
-    background-size: cover; 
-    width: 320px !important; /* FIXED WIDTH ONLY FOR HISTORY */
-    height: 320px; 
-    position: relative; 
-    display: flex; align-items: center; justify-content: center; text-align: center; color: white; border-radius: 0.75rem; overflow: hidden; 
-    -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.2)); 
-}
+.history-carousel .swiper-slide { background-position: center; background-size: cover; width: 320px !important; height: 320px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; border-radius: 0.75rem; overflow: hidden; -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.2)); }
 .history-carousel .swiper-container { overflow: visible; }
-
-/* Content Wrapper for Fading Effect */
-.slide-content-wrapper { 
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 1; 
-}
-.swiper-slide-active .slide-content-wrapper { 
-    animation: revealImageSequence 6s infinite ease-in-out; 
-}
-
+.slide-content-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 1; }
+.swiper-slide-active .slide-content-wrapper { animation: revealImageSequence 6s infinite ease-in-out; }
 .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
 .slide-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; padding: 1rem; }
-
-/* Slide Colors */
 .slide-1 .slide-overlay { background: rgba(29, 78, 216, 0.90); }
 .slide-2 .slide-overlay { background: rgba(22, 163, 74, 0.90); }
 .slide-3 .slide-overlay { background: rgba(220, 38, 38, 0.90); }
 .slide-4 .slide-overlay { background: rgba(234, 88, 12, 0.90); }
 .slide-5 .slide-overlay { background: rgba(126, 34, 206, 0.90); }
-
-/* Navigation */
 .history-carousel-nav { width: 44px; height: 44px; background-color: rgba(0, 82, 155, 0.7); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease; cursor: pointer; }
 .history-carousel-nav:hover { background-color: #00529B; }
 
-/* Philosophy Carousel (Responsive Widths) */
 .philosophy-carousel { padding: 1rem 0 3.5rem 0; width: 100%; }
-.philosophy-carousel .swiper-slide { 
-    height: auto; padding: 0.5rem; width: auto; /* Auto width for responsive columns */
-}
+.philosophy-carousel .swiper-slide { height: auto; padding: 0.5rem; width: auto; }
 .philosophy-carousel .card { height: 100%; display: flex; flex-direction: column; }
 .philosophy-carousel-nav { width: 44px; height: 44px; background-color: #00529B; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 .philosophy-carousel-nav:hover { background-color: #003d73; transform: scale(1.05); }
 .philosophy-button-prev { left: -20px; }
 .philosophy-button-next { right: -20px; }
-@media (max-width: 640px) { .philosophy-button-prev { left: 0px; } .philosophy-button-next { right: 0px; } }
+@media (max-width: 640px) { .product-carousel-wrapper { padding: 20px 1rem; } .product-carousel-wrapper .swiper-button-next, .product-carousel-wrapper .swiper-button-prev { display: none; } .philosophy-button-prev { left: 0px; } .philosophy-button-next { right: 0px; } }
 .philosophy-pagination.swiper-pagination-bullets .swiper-pagination-bullet { background-color: #94A3B8; }
 .philosophy-pagination.swiper-pagination-bullets .swiper-pagination-bullet-active { background-color: #00529B; }
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .product-carousel-wrapper { padding: 20px 1rem; }
-    .product-carousel-wrapper .swiper-button-next,
-    .product-carousel-wrapper .swiper-button-prev { display: none; }
-}

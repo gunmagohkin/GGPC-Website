@@ -35,27 +35,53 @@ function toggleMobileMenu() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
 }
 
+// Global Particles (Subtle)
 function loadParticles() {
     if (!document.getElementById("particles-js")) return;
     if (typeof tsParticles === 'undefined') return;
+
     const particleColor = isDarkMode() ? "#94a3b8" : "#9ca3af";
     tsParticles.load("particles-js", {
         background: { color: "transparent" },
         particles: {
-            number: { value: 60 },
+            number: { value: 30 }, // Reduced count
             color: { value: particleColor },
-            opacity: { value: 0.6 },
-            size: { value: { min: 1, max: 3 } },
-            links: { enable: true, distance: 150, color: particleColor, opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 1, direction: "none", out_mode: "out" }
+            opacity: { value: 0.4 },
+            size: { value: { min: 1, max: 2 } },
+            links: { enable: true, distance: 150, color: particleColor, opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 0.5, direction: "none", out_mode: "out" }
         },
         interactivity: { events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } } },
+    });
+}
+
+// Specific Particles for Timeline Section (Interactive Lines)
+function loadTimelineParticles() {
+    if (!document.getElementById("timeline-particles")) return;
+    if (typeof tsParticles === 'undefined') return;
+    
+    const particleColor = "#00529B"; // Primary Blue
+    
+    tsParticles.load("timeline-particles", {
+        background: { color: "transparent" },
+        particles: {
+            number: { value: 20 }, // Minimal count for section
+            color: { value: particleColor },
+            opacity: { value: 0.3 },
+            size: { value: { min: 2, max: 4 } },
+            links: { enable: true, distance: 130, color: particleColor, opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 1, direction: "none", out_mode: "bounce" }
+        },
+        interactivity: { 
+            events: { onhover: { enable: true, mode: "connect" } } 
+        },
     });
 }
 
 // 3. Main Logic (DOM Ready)
 document.addEventListener('DOMContentLoaded', function() {
     loadParticles();
+    loadTimelineParticles(); // Load section specific particles
 
     // --- SPOTLIGHT CURSOR LOGIC ---
     document.addEventListener('mousemove', (e) => {
@@ -106,14 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- SWIPER CAROUSEL CONFIG (Flashcard Fix) ---
+    // --- SWIPER CAROUSEL CONFIG ---
     const swiperOptions = {
         loop: true,
         speed: 800,
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 'auto', // Must be 'auto' for CSS width to work
+        slidesPerView: 'auto', 
         spaceBetween: 32,
         observer: true,
         observeParents: true,
@@ -129,14 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },
-        // Remove specific breakpoints to allow CSS width: 320px to control size
         breakpoints: {
             640: { slidesPerView: 'auto' },
             1024: { slidesPerView: 'auto' },
         }
     };
 
-    // Initialize Automobile Carousel
     new Swiper('.automobile-carousel', {
         ...swiperOptions,
         navigation: {
@@ -145,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
 
-    // Initialize Industrial Carousel
     new Swiper('.industrial-carousel', {
         ...swiperOptions,
         autoplay: { ...swiperOptions.autoplay, delay: 3500 },
@@ -154,6 +177,16 @@ document.addEventListener('DOMContentLoaded', function() {
             prevEl: '.industrial-carousel-wrapper .swiper-button-prev',
         },
     });
+
+    // --- VANILLA TILT INIT (For Timeline Cards) ---
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1
+        });
+    }
 
     // General Animate on Scroll (Cards)
     const scrollObserver = new IntersectionObserver((entries) => {
