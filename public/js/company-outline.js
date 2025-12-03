@@ -116,8 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
         centeredSlides: true, 
         slidesPerView: "auto", 
         loop: true,
-        speed: 600, // Smooth transition
-        autoplay: { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true }, // Slower autoplay to allow animation to finish
+        speed: 600, 
+        autoplay: { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true }, 
         coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
         navigation: { nextEl: ".history-button-next", prevEl: ".history-button-prev" },
         on: { 
@@ -128,7 +128,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Philosophy Carousel
     const philosophySwiper = new Swiper(".philosophy-carousel", {
-        loop: true, slidesPerView: 1, spaceBetween: 20,
+        loop: true, 
+        slidesPerView: 1, 
+        spaceBetween: 20,
+        autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
         pagination: { el: ".philosophy-pagination", clickable: true, },
         navigation: { nextEl: ".philosophy-button-next", prevEl: ".philosophy-button-prev", },
         breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }

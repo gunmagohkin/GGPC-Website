@@ -6,6 +6,7 @@
 body {
     overflow-x: hidden;
     background-color: var(--bg-color); 
+    position: relative; /* Context for particles */
 }
 
 /* Spotlight Cursor Effect */
@@ -15,7 +16,7 @@ body::before {
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 100;
+    z-index: 999; /* Above content for cursor glow */
     background: radial-gradient(
         circle 400px at var(--x, 50%) var(--y, 50%),
         rgba(0, 82, 155, 0.08),
@@ -30,22 +31,18 @@ body::before {
     );
 }
 
-.material-icons {
-    vertical-align: middle;
-}
+.material-icons { vertical-align: middle; }
 
 /* 
 ================================
---- PRELOADER, SCROLLBAR, HEADER ---
+--- PRELOADER & SCROLLBAR ---
 ================================
 */
 #preloader {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-color: #F8FAFC;
     display: flex; align-items: center; justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.7s ease, visibility 0.7s ease;
+    z-index: 9999; transition: opacity 0.7s ease, visibility 0.7s ease;
 }
 .dark #preloader { background-color: #0B1120; }
 #preloader.hidden { opacity: 0; visibility: hidden; }
@@ -54,255 +51,111 @@ body::before {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.05); opacity: 0.8; }
 }
-
 #preloader img {
-    width: auto;
-    height: auto;
-    max-width: 300px;
-    max-height: 150px;
-    object-fit: contain;
-    animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    width: auto; height: auto; max-width: 300px; max-height: 150px;
+    object-fit: contain; animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 #scroll-progress {
-    position: fixed;
-    top: 0; left: 0; height: 4px;
+    position: fixed; top: 0; left: 0; height: 4px;
     background: linear-gradient(to right, #00529B, #3B82F6);
-    width: 0%;
-    z-index: 9998;
-    transition: width 0.1s ease-out;
-}
-
-header {
-    transition: all 0.3s ease-in-out;
-}
-header.scrolled {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    background-color: hsla(210, 80%, 98%, 0.9);
-}
-.dark header.scrolled {
-    background-color: hsla(222, 47%, 11%, 0.9);
-}
-header.scrolled .h-12 { 
-    height: 2.5rem; 
-}
-
-/* Navigation Link Underline Animation */
-header nav a { position: relative; text-decoration: none; padding-bottom: 4px; }
-header nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(to right, #00529B, #3B82F6); transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease-in-out; }
-header nav a:hover::after { transform: scaleX(1); transform-origin: left; }
-
-/* Active Navigation Link */
-header nav a.active {
-    font-weight: 600; 
-    color: #00529B; 
-}
-.dark header nav a.active {
-    color: #3B82F6; 
-}
-header nav a.active::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    width: 0%; z-index: 9998; transition: width 0.1s ease-out;
 }
 
 /* 
+--- INTERACTIVE LINES (PARTICLES) --- 
+Ensures lines appear behind content
+*/
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Behind content, above body bg */
+    pointer-events: none;
+}
+
+header { transition: all 0.3s ease-in-out; }
+header.scrolled { padding-top: 0.5rem; padding-bottom: 0.5rem; background-color: hsla(210, 80%, 98%, 0.9); }
+.dark header.scrolled { background-color: hsla(222, 47%, 11%, 0.9); }
+header.scrolled .h-12 { height: 2.5rem; }
+
+header nav a { position: relative; text-decoration: none; padding-bottom: 4px; }
+header nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(to right, #00529B, #3B82F6); transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease-in-out; }
+header nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+header nav a.active { font-weight: 600; color: #00529B; }
+.dark header nav a.active { color: #3B82F6; }
+header nav a.active::after { transform: scaleX(1); transform-origin: left; }
+
+/* 
 ================================
---- GENERAL ANIMATIONS & EFFECTS ---
+--- ANIMATIONS & EFFECTS ---
 ================================
 */
-#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-
 .section-hidden { opacity: 0; }
 .section-visible { opacity: 1; }
 .stagger-child { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .section-visible .stagger-child { opacity: 1; transform: translateY(0); }
-
+.parallax-img { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+.text-shadow-strong { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); }
 @keyframes revealLetterUp { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
 .staggered-reveal-title { overflow: hidden; padding-bottom: 0.1em; }
 .letter-reveal { display: inline-block; opacity: 0; transform: translateY(100%); }
 .section-visible .letter-reveal { animation: revealLetterUp 0.6s cubic-bezier(0.3, 0.8, 0.2, 1) forwards; }
-
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-.animated-gradient-text {
-    background: linear-gradient(90deg, #00529B, #3B82F6, #00529B);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-animation 6s ease infinite;
-}
-.dark .animated-gradient-text {
-     background: linear-gradient(90deg, #3B82F6, #93C5FD, #3B82F6);
-     background-size: 200% 200%;
-     animation: gradient-animation 6s ease infinite;
-}
-
-/* Parallax Image Hover */
-.parallax-img { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-
-/* 
-================================
---- HOME PAGE SPECIFIC STYLES ---
-================================
-*/
-.text-shadow-strong { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); }
-
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(0, 82, 155, 0.7); }
-    100% { box-shadow: 0 0 0 15px rgba(0, 82, 155, 0); }
-}
-.animate-pulse-glow { animation: pulseGlow 2s infinite; }
-
-@keyframes revealUp {
-    from { opacity: 0; transform: translateY(100%); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.animate-reveal-up {
-    transform: translateY(100%);
-    opacity: 0;
-    animation-name: revealUp;
-    animation-duration: 0.8s;
-    animation-timing-function: cubic-bezier(0.3, 0.8, 0.2, 1);
-    animation-fill-mode: forwards;
-}
-.animation-delay-300 { animation-delay: 300ms; }
-
-.letter-reveal-hero { 
-    display: inline-block; 
-    opacity: 0; 
-    transform: translateY(100%); 
-    animation: revealLetterUp 0.8s cubic-bezier(0.3, 0.8, 0.2, 1) forwards; 
-}
-
-/* 
-================================
---- BUSINESS OUTLINE PAGE STYLES ---
-================================
-*/
-
-/* --- PRODUCT CAROUSEL --- */
-.product-carousel-wrapper {
-    position: relative;
-    padding: 40px 80px; 
-}
-
-/* Button Styles */
-.product-carousel-wrapper .swiper-button-next,
-.product-carousel-wrapper .swiper-button-prev {
-    width: 48px;
-    height: 48px;
-    background-color: #4A89C1;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    z-index: 20;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-}
-
-.product-carousel-wrapper .swiper-button-prev { left: 15px; right: auto; }
-.product-carousel-wrapper .swiper-button-next { right: 15px; left: auto; }
-
-.product-carousel-wrapper .swiper-button-next:hover,
-.product-carousel-wrapper .swiper-button-prev:hover {
-    background-color: #3b76a8;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.product-carousel-wrapper .swiper-button-next::after,
-.product-carousel-wrapper .swiper-button-prev::after { display: none; }
-
-@media (max-width: 768px) {
-    .product-carousel-wrapper { padding: 20px 1rem; }
-    .product-carousel-wrapper .swiper-button-next,
-    .product-carousel-wrapper .swiper-button-prev { display: none; }
-}
-
-/* --- SWIPER SLIDE FIXES (Fixed Width) --- */
-.swiper-slide { 
-    width: 320px !important; /* Force fixed width */
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-    padding: 10px 0; 
-    height: auto;
-}
-.swiper-slide-shadow-left, .swiper-slide-shadow-right { background-image: none !important; }
-
-/* --- CARD HOVER & IMAGE AUTO-RESIZE FIXES --- */
-.card-hover-effect { 
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
-    will-change: transform;
-    height: 100%;
-}
-.card-hover-effect:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    z-index: 10;
-}
-.dark .card-hover-effect:hover { 
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3); 
-}
-
-/* --- THE FIX: AUTO RESIZE LOGIC --- */
-/* 1. Create a dedicated container for the image */
-.product-image-wrapper {
-    height: 18rem; /* Equivalent to h-72 */
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff; /* Clean white bg behind transparent images */
-    padding: 1.5rem; /* Padding prevents image from touching borders */
-    overflow: hidden;
-}
-.dark .product-image-wrapper {
-    background-color: #1e293b;
-}
-
-/* 2. The Image itself: Contain fitting */
-.auto-resize-img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain; /* The magic property: Shows full image without cropping */
-    transition: transform 0.5s ease;
-}
-
-/* Animation: Slight zoom when active */
-@keyframes highlightActiveImage {
-    0% { transform: scale(0.95); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1.0); }
-}
-
-.swiper-slide-active .auto-resize-img {
-    animation: highlightActiveImage 2.5s ease-out forwards;
-}
-
-/* --- GENERAL SCROLL ANIMATION --- */
+.letter-reveal-hero { display: inline-block; opacity: 0; transform: translateY(100%); animation: revealLetterUp 0.8s cubic-bezier(0.3, 0.8, 0.2, 1) forwards; }
 .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; transform: translateY(40px); }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 
-/* --- TIMELINE --- */
+/* 
+================================
+--- BUSINESS OUTLINE SPECIFIC STYLES ---
+================================
+*/
+
+/* Wrapper */
+.product-carousel-wrapper { position: relative; padding: 40px 80px; }
+
+/* Swiper Slides for Products (Fixed Width 320px) */
+.product-carousel-wrapper .swiper-slide { 
+    width: 320px !important; 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    padding: 10px 0; height: auto; 
+}
+.product-carousel-wrapper .swiper-slide-shadow-left, 
+.product-carousel-wrapper .swiper-slide-shadow-right { background-image: none !important; }
+
+/* Navigation Buttons (Business) */
+.product-carousel-wrapper .swiper-button-next, .product-carousel-wrapper .swiper-button-prev {
+    width: 48px; height: 48px; background-color: #4A89C1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: none; outline: none; cursor: pointer; z-index: 20; transition: all 0.2s ease-in-out; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); position: absolute; top: 50%; transform: translateY(-50%); margin: 0;
+}
+.product-carousel-wrapper .swiper-button-prev { left: 15px; right: auto; }
+.product-carousel-wrapper .swiper-button-next { right: 15px; left: auto; }
+.product-carousel-wrapper .swiper-button-next:hover, .product-carousel-wrapper .swiper-button-prev:hover { background-color: #3b76a8; transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); }
+.product-carousel-wrapper .swiper-button-next::after, .product-carousel-wrapper .swiper-button-prev::after { display: none; }
+
+/* Card Hover Effect */
+.card-hover-effect { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; will-change: transform; height: 100%; }
+.card-hover-effect:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); z-index: 10; }
+.dark .card-hover-effect:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3); }
+
+/* Product Image Auto-Resize Fix */
+.product-image-wrapper { height: 18rem; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #fff; padding: 1rem; overflow: hidden; }
+.dark .product-image-wrapper { background-color: #1e293b; }
+.auto-resize-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: transform 0.5s ease; }
+@keyframes highlightActiveImage { 0% { transform: scale(0.95); } 50% { transform: scale(1.1); } 100% { transform: scale(1.0); } }
+.swiper-slide-active .auto-resize-img { animation: highlightActiveImage 2.5s ease-out forwards; }
+
+/* Process Timeline */
 .timeline-item:not(:last-child)::after { content: ''; position: absolute; width: 3px; background-color: #032877; top: 3.5rem; left: 50%; height: calc(100% - 1.75rem); transform: translateX(-50%) scaleY(0); transform-origin: top; transition: transform 0.4s ease-out; }
 .dark .timeline-item:not(:last-child)::after { background-color: #2448fb; }
 .section-visible .timeline-item:nth-child(1)::after { transition-delay: 0.6s; transform: translateX(-50%) scaleY(1); }
 .section-visible .timeline-item:nth-child(2)::after { transition-delay: 0.8s; transform: translateX(-50%) scaleY(1); }
 .section-visible .timeline-item:nth-child(3)::after { transition-delay: 1.0s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(4)::after { transition-delay: 1.2s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(5)::after { transition-delay: 1.4s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(6)::after { transition-delay: 1.6s; transform: translateX(-50%) scaleY(1); }
+.section-visible .timeline-item:nth-child(7)::after { transition-delay: 1.8s; transform: translateX(-50%) scaleY(1); }
 #process-timeline .timeline-icon, #process-timeline .timeline-card { transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .section-hidden #process-timeline .timeline-icon, .section-hidden #process-timeline .timeline-card { opacity: 0; }
 .section-hidden #process-timeline .timeline-icon { transform: scale(0.5); }
@@ -314,6 +167,11 @@ header nav a.active::after {
 .section-visible #process-timeline .timeline-item:nth-child(2) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(2) .timeline-card { transition-delay: 0.6s; }
 .section-visible #process-timeline .timeline-item:nth-child(3) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(3) .timeline-card { transition-delay: 0.8s; }
 .section-visible #process-timeline .timeline-item:nth-child(4) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(4) .timeline-card { transition-delay: 1.0s; }
+.section-visible #process-timeline .timeline-item:nth-child(5) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(5) .timeline-card { transition-delay: 1.2s; }
+.section-visible #process-timeline .timeline-item:nth-child(6) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(6) .timeline-card { transition-delay: 1.4s; }
+.section-visible #process-timeline .timeline-item:nth-child(7) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(7) .timeline-card { transition-delay: 1.6s; }
+.section-visible #process-timeline .timeline-item:nth-child(8) .timeline-icon, .section-visible #process-timeline .timeline-item:nth-child(8) .timeline-card { transition-delay: 1.8s; }
+
 
 /* 
 ================================
@@ -322,72 +180,57 @@ header nav a.active::after {
 */
 
 /* 
-   HISTORY CAROUSEL - FADE ANIMATION 
-   This animation sequence makes the overlay fade out to show the image behind it
+   FADE TO REVEAL ANIMATION 
+   Sequence: Text visible -> Text fades out (Image shown) -> Text fades in
 */
 @keyframes revealImageSequence {
-    0% { opacity: 1; }       /* Start fully visible (Color + Text) */
-    15% { opacity: 1; }      /* Wait a moment so user can read */
-    30% { opacity: 0; }      /* Fade out completely (Show Image) */
-    70% { opacity: 0; }      /* Keep showing image for ~3 seconds */
-    85% { opacity: 1; }      /* Fade back in */
-    100% { opacity: 1; }     /* End fully visible */
+    0%, 15% { opacity: 1; }      /* Show Text/Color */
+    30%, 70% { opacity: 0; }     /* Hide Text/Color (Reveal Image) for 3s */
+    85%, 100% { opacity: 1; }    /* Show Text/Color again */
 }
 
+/* History Carousel Scoping */
 .history-carousel { width: 100%; padding-top: 50px; padding-bottom: 80px; }
 
+/* History Slides (Fixed 320px for Coverflow) */
 .history-carousel .swiper-slide { 
     background-position: center; 
     background-size: cover; 
-    width: 320px; 
+    width: 320px !important; /* FIXED WIDTH ONLY FOR HISTORY */
     height: 320px; 
     position: relative; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
-    color: white; 
-    border-radius: 0.75rem; 
-    overflow: hidden; 
+    display: flex; align-items: center; justify-content: center; text-align: center; color: white; border-radius: 0.75rem; overflow: hidden; 
     -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.2)); 
 }
-
 .history-carousel .swiper-container { overflow: visible; }
 
-.slide-overlay, .slide-content { 
-    position: absolute; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    z-index: 1; 
-    /* Default state: Visible */
-    opacity: 1; 
+/* Content Wrapper for Fading Effect */
+.slide-content-wrapper { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 1; 
+}
+.swiper-slide-active .slide-content-wrapper { 
+    animation: revealImageSequence 6s infinite ease-in-out; 
 }
 
-/* Only apply the fading animation when the slide is ACTIVE (Centered) */
-.swiper-slide-active .slide-overlay,
-.swiper-slide-active .slide-content {
-    animation: revealImageSequence 8s infinite ease-in-out;
-}
-
-.slide-content { z-index: 2; padding: 1rem; }
+.slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.slide-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; padding: 1rem; }
 
 /* Slide Colors */
-.slide-1 .slide-overlay { background: rgba(29, 78, 216, 0.90); } /* Blue */
-.slide-2 .slide-overlay { background: rgba(22, 163, 74, 0.90); }  /* Green */
-.slide-3 .slide-overlay { background: rgba(220, 38, 38, 0.90); }  /* Red */
-.slide-4 .slide-overlay { background: rgba(234, 88, 12, 0.90); }  /* Orange/Gold */
-.slide-5 .slide-overlay { background: rgba(126, 34, 206, 0.90); } /* Purple */
+.slide-1 .slide-overlay { background: rgba(29, 78, 216, 0.90); }
+.slide-2 .slide-overlay { background: rgba(22, 163, 74, 0.90); }
+.slide-3 .slide-overlay { background: rgba(220, 38, 38, 0.90); }
+.slide-4 .slide-overlay { background: rgba(234, 88, 12, 0.90); }
+.slide-5 .slide-overlay { background: rgba(126, 34, 206, 0.90); }
 
+/* Navigation */
 .history-carousel-nav { width: 44px; height: 44px; background-color: rgba(0, 82, 155, 0.7); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease; cursor: pointer; }
 .history-carousel-nav:hover { background-color: #00529B; }
-.swiper-button-disabled { opacity: 0.3; cursor: not-allowed; }
 
+/* Philosophy Carousel (Responsive Widths) */
 .philosophy-carousel { padding: 1rem 0 3.5rem 0; width: 100%; }
-.philosophy-carousel .swiper-slide { height: auto; padding: 0.5rem; }
+.philosophy-carousel .swiper-slide { 
+    height: auto; padding: 0.5rem; width: auto; /* Auto width for responsive columns */
+}
 .philosophy-carousel .card { height: 100%; display: flex; flex-direction: column; }
 .philosophy-carousel-nav { width: 44px; height: 44px; background-color: #00529B; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease, transform 0.3s ease; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 .philosophy-carousel-nav:hover { background-color: #003d73; transform: scale(1.05); }
@@ -396,3 +239,10 @@ header nav a.active::after {
 @media (max-width: 640px) { .philosophy-button-prev { left: 0px; } .philosophy-button-next { right: 0px; } }
 .philosophy-pagination.swiper-pagination-bullets .swiper-pagination-bullet { background-color: #94A3B8; }
 .philosophy-pagination.swiper-pagination-bullets .swiper-pagination-bullet-active { background-color: #00529B; }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .product-carousel-wrapper { padding: 20px 1rem; }
+    .product-carousel-wrapper .swiper-button-next,
+    .product-carousel-wrapper .swiper-button-prev { display: none; }
+}

@@ -5,19 +5,17 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Gunma Gohkin Philippines Corporation - Company Profile</title>
     
-    <!-- External Libraries (JS) -->
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
-    <!-- External Libraries (CSS) -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
-    <!-- Your Master Stylesheet -->
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     
   <script src="js/company-outline.js"></script>
@@ -30,6 +28,7 @@
 
 <div id="scroll-progress"></div>
 
+<!-- PARTICLES CONTAINER (Z-INDEX FIXED IN CSS) -->
 <div id="particles-js"></div>
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
@@ -94,45 +93,55 @@
             <div class="relative max-w-6xl mx-auto stagger-child">
                 <div class="swiper history-carousel">
                     <div class="swiper-wrapper">
-                        <!-- Slide 1: Purple/Blue -->
+                        <!-- Slide 1 -->
                         <div class="swiper-slide slide-1" data-title="Founding of GGPC" data-year="1995" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800&h=800');"> 
-                            <div class="slide-overlay"></div>
-                            <div class="slide-content">
-                                <h3 class="text-4xl font-bold uppercase tracking-wider">FOUNDING</h3>
-                                <p class="mt-2 text-2xl font-semibold">1995</p>
-                            </div> 
+                            <div class="slide-content-wrapper">
+                                <div class="slide-overlay"></div>
+                                <div class="slide-text">
+                                    <h3 class="text-4xl font-bold uppercase tracking-wider">FOUNDING</h3>
+                                    <p class="mt-2 text-2xl font-semibold">1995</p>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Slide 2: Green -->
+                        <!-- Slide 2 -->
                         <div class="swiper-slide slide-2" data-title="First Major Expansion" data-year="2001" style="background-image: url('images/factory-floor.jpg');"> 
-                            <div class="slide-overlay"></div>
-                            <div class="slide-content">
-                                <h3 class="text-4xl font-bold uppercase tracking-wider">EXPANSION</h3>
-                                <p class="mt-2 text-2xl font-semibold">2001</p>
-                            </div> 
+                            <div class="slide-content-wrapper">
+                                <div class="slide-overlay"></div>
+                                <div class="slide-text">
+                                    <h3 class="text-4xl font-bold uppercase tracking-wider">EXPANSION</h3>
+                                    <p class="mt-2 text-2xl font-semibold">2001</p>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Slide 3: Red -->
+                        <!-- Slide 3 -->
                         <div class="swiper-slide slide-3" data-title="ISO Certification" data-year="2005" style="background-image: url('https://images.unsplash.com/photo-1554042301-0814421689c3?auto=format&fit=crop&q=80&w=800&h=800');"> 
-                            <div class="slide-overlay"></div>
-                            <div class="slide-content">
-                                <h3 class="text-4xl font-bold uppercase tracking-widest leading-tight">ISO<br/>CERTIFIED</h3>
-                                <p class="mt-2 text-2xl font-semibold">2005</p>
-                            </div> 
+                            <div class="slide-content-wrapper">
+                                <div class="slide-overlay"></div>
+                                <div class="slide-text">
+                                    <h3 class="text-4xl font-bold uppercase tracking-widest leading-tight">ISO<br/>CERTIFIED</h3>
+                                    <p class="mt-2 text-2xl font-semibold">2005</p>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Slide 4: Orange -->
+                        <!-- Slide 4 -->
                         <div class="swiper-slide slide-4" data-title="Cavite Plant Opening" data-year="2012" style="background-image: url('https://images.unsplash.com/photo-1623954363486-3e3334867142?auto=format&fit=crop&q=80&w=800&h=800');"> 
-                            <div class="slide-overlay"></div>
-                            <div class="slide-content">
-                                <h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">CAVITE<br>PLANT</h3>
-                                <p class="mt-2 text-2xl font-semibold">2012</p>
-                            </div> 
+                            <div class="slide-content-wrapper">
+                                <div class="slide-overlay"></div>
+                                <div class="slide-text">
+                                    <h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">CAVITE<br>PLANT</h3>
+                                    <p class="mt-2 text-2xl font-semibold">2012</p>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Slide 5: Purple -->
+                        <!-- Slide 5 -->
                         <div class="swiper-slide slide-5" data-title="25th Anniversary" data-year="2020" style="background-image: url('https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800&h=800');"> 
-                            <div class="slide-overlay"></div>
-                            <div class="slide-content">
-                                <h3 class="text-4xl font-bold uppercase tracking-wider">25 YEARS</h3>
-                                <p class="mt-2 text-2xl font-semibold">2020</p>
-                            </div> 
+                            <div class="slide-content-wrapper">
+                                <div class="slide-overlay"></div>
+                                <div class="slide-text">
+                                    <h3 class="text-4xl font-bold uppercase tracking-wider">25 YEARS</h3>
+                                    <p class="mt-2 text-2xl font-semibold">2020</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
