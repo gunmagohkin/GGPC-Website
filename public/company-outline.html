@@ -12,11 +12,191 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
-    <!-- Styles -->
+    <!-- Main Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- PAGE SPECIFIC STYLES (STRICT FIXES) -->
+    <style>
+        /* --- HISTORY CAROUSEL --- */
+        @keyframes revealImageSequence {
+            0%, 15% { opacity: 1; }      
+            30%, 70% { opacity: 0; }     
+            85%, 100% { opacity: 1; }    
+        }
+        .history-carousel .swiper-slide {
+            width: 320px !important;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+        }
+        .swiper-slide-active .slide-overlay,
+        .swiper-slide-active .slide-text {
+            animation: revealImageSequence 6s infinite ease-in-out;
+        }
+
+        /* --- PHILOSOPHY SECTION (REVAMPED) --- */
+        
+        /* 1. Main Container: Constrained width, centered */
+        .philosophy-section-container {
+            width: 100%;
+            max-width: 1200px; /* Limits spread on huge screens */
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* 2. Carousel Wrapper */
+        .philosophy-carousel {
+            padding: 40px 0 60px 0 !important;
+            overflow: visible; /* Allows shadows to breathe */
+        }
+
+        /* 3. Slide Sizing: Fixed Aspect Ratio */
+        .philosophy-carousel .swiper-slide {
+            width: 700px !important; /* Wide Landscape */
+            height: auto;
+            display: flex;
+            justify-content: center;
+            opacity: 0.4;
+            transform: scale(0.9);
+            transition: all 0.4s ease-out;
+        }
+
+        /* 4. Active Slide */
+        .philosophy-carousel .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        /* 5. Card Design: Modern & Clean */
+        .phil-card {
+            width: 100%;
+            min-height: 450px; /* Fixed Height */
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
+            border-top: 6px solid #00529B;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0; /* Content box handles padding */
+        }
+        html.dark .phil-card {
+            background: #1e293b;
+            border-top: 6px solid #3B82F6;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Content Wrapper */
+        .phil-content-box {
+            padding: 3rem 4rem;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Typography */
+        .phil-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #00529B;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            border-bottom: 3px solid #f1f5f9;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+        html.dark .phil-title { color: #60a5fa; border-color: #334155; }
+
+        .phil-content {
+            font-size: 1.05rem;
+            color: #334155;
+            line-height: 1.7;
+            width: 100%;
+            text-align: left;
+        }
+        html.dark .phil-content { color: #cbd5e1; }
+
+        /* List Styles */
+        .phil-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* --- PYRAMID SVG --- */
+        .pyramid-svg {
+            width: 300px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+        }
+        .svg-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            fill: #ffffff;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        .p-arrow { font-size: 2.5rem; color: #00529B; margin-top: 15px; }
+        .p-vision { font-size: 1.5rem; font-weight: 900; color: #1e293b; text-transform: uppercase; margin-top: 5px; }
+        html.dark .p-vision { color: white; }
+
+        /* --- NAVIGATION BUTTONS (FIXED OUTSIDE) --- */
+        .philosophy-carousel-nav {
+            width: 50px !important;
+            height: 50px !important;
+            background-color: #00529B;
+            border-radius: 50%;
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        .philosophy-carousel-nav:hover { background-color: #003d73; transform: translateY(-50%) scale(1.1); }
+        
+        /* 
+           Position buttons relative to the .philosophy-section-container 
+           (Not the swiper container) so they stay fixed
+        */
+        .btn-wrapper-prev {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+        }
+        .btn-wrapper-next {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+        }
+
+        /* Mobile */
+        @media (max-width: 850px) {
+            .philosophy-carousel .swiper-slide { width: 90% !important; }
+            .btn-wrapper-prev, .btn-wrapper-next { display: none; } /* Hide buttons on mobile */
+            .phil-content-box { padding: 2rem; }
+        }
+    </style>
     
   <script src="js/company-outline.js"></script>
 </head>
@@ -27,8 +207,6 @@
 </div>
 
 <div id="scroll-progress"></div>
-
-<!-- PARTICLES CONTAINER -->
 <div id="particles-js"></div>
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
@@ -72,6 +250,7 @@
 
 <main class="relative z-10">
 
+    <!-- Hero -->
     <section class="relative min-h-screen flex items-center justify-center pt-20" id="profile-hero">
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20"></div>
         <img alt="Our Team at Gunma Gohkin" class="absolute inset-0 w-full h-full object-cover -z-10" src="images/office-interior.jpg"/>
@@ -85,6 +264,7 @@
         </div>
     </section>
     
+    <!-- History -->
     <section class="py-20"> 
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -93,141 +273,64 @@
             <div class="relative max-w-6xl mx-auto stagger-child">
                 <div class="swiper history-carousel">
                     <div class="swiper-wrapper">
-                        
-                        <!-- 1. 1947 (Blue) -->
+                        <!-- 1. 1947 -->
                         <div class="swiper-slide slide-1" data-title="Takeyasu Foundry" data-year="1947">
-                            <img src="images/company history pics/1947 - Takeyasu Foundry.JPG" class="history-bg-img" alt="Takeyasu Foundry">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">Takeyasu<br>Foundry</h3>
-                                    <p class="mt-2 text-2xl font-semibold">1947</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/1947%20-%20Takeyasu%20Foundry.JPG" class="history-bg-img" alt="Takeyasu Foundry">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">Takeyasu<br>Foundry</h3><p class="mt-2 text-2xl font-semibold">1947</p></div></div>
                         </div>
-
-                        <!-- 2. 1995 (Green) -->
+                        <!-- 2. 1995 -->
                         <div class="swiper-slide slide-2" data-title="GGPC Established" data-year="1995">
                             <img src="images/company history pics/1995-GGPCEstablished.png" class="history-bg-img" alt="GGPC Established">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">GGPC<br>Established</h3>
-                                    <p class="mt-2 text-2xl font-semibold">1995</p>
-                                </div>
-                            </div>
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">GGPC<br>Established</h3><p class="mt-2 text-2xl font-semibold">1995</p></div></div>
                         </div>
-
-                        <!-- 3. 1996 (Red) -->
+                        <!-- 3. 1996 -->
                         <div class="swiper-slide slide-3" data-title="Commercial Operations Start" data-year="1996">
-                            <img src="images/company history pics/1996 - Commercial Operations Start.JPG" class="history-bg-img" alt="Commercial Operations">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-widest leading-tight">Commercial<br>Operations</h3>
-                                    <p class="mt-2 text-2xl font-semibold">1996</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/1996%20-%20Commercial%20Operations%20Start.JPG" class="history-bg-img" alt="Commercial Operations">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-widest leading-tight">Commercial<br>Operations</h3><p class="mt-2 text-2xl font-semibold">1996</p></div></div>
                         </div>
-
-                        <!-- 4. 2001 (Orange) -->
+                        <!-- 4. 2001 -->
                         <div class="swiper-slide slide-4" data-title="ISO Certification" data-year="2001">
-                            <img src="images/company history pics/2001 - ISO Certification.JPG" class="history-bg-img" alt="ISO Certification">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">ISO<br>Certified</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2001</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2001%20-%20ISO%20Certification.JPG" class="history-bg-img" alt="ISO Certification">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-4xl font-bold uppercase tracking-wider leading-tight">ISO<br>Certified</h3><p class="mt-2 text-2xl font-semibold">2001</p></div></div>
                         </div>
-
-                        <!-- 5. 2003 (Purple) -->
+                        <!-- 5. 2003 -->
                         <div class="swiper-slide slide-5" data-title="Machining Process Added" data-year="2003">
                             <img src="images/company history pics/2003 - Machining Process Added.JPG" class="history-bg-img" alt="Machining Process">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">Machining<br>Process</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2003</p>
-                                </div>
-                            </div>
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">Machining<br>Process</h3><p class="mt-2 text-2xl font-semibold">2003</p></div></div>
                         </div>
-
-                        <!-- 6. 2011 NC ROAD (Blue) -->
+                        <!-- 6. 2011 NC -->
                         <div class="swiper-slide slide-1" data-title="NC ROAD Joins Group" data-year="2011">
-                            <img src="images/company history pics/2011 1st - NC ROAD Joins Group.JPG" class="history-bg-img" alt="NC ROAD Joins Group">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">NC ROAD<br>Joins</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2011</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2011%201st%20-%20NC%20ROAD%20Joins%20Group.JPG" class="history-bg-img" alt="NC ROAD Joins Group">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">NC ROAD<br>Joins</h3><p class="mt-2 text-2xl font-semibold">2011</p></div></div>
                         </div>
-
-                         <!-- 7. 2011 Factory Expansion (Green) -->
+                         <!-- 7. 2011 Factory -->
                         <div class="swiper-slide slide-2" data-title="Factory Expansion Work" data-year="2011">
-                            <img src="images/company history pics/2011 2nd - Factory Expansion Work Fulfilled.JPG" class="history-bg-img" alt="Factory Expansion">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">Factory<br>Expansion</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2011</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2011%202nd%20-%20Factory%20Expansion%20Work%20Fulfilled.JPG" class="history-bg-img" alt="Factory Expansion">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">Factory<br>Expansion</h3><p class="mt-2 text-2xl font-semibold">2011</p></div></div>
                         </div>
-
-                        <!-- 8. 2014 (Red) -->
+                        <!-- 8. 2014 -->
                         <div class="swiper-slide slide-3" data-title="CDPC joins Gunma Gohkin Group" data-year="2014">
-                            <img src="images/company history pics/2014 - CDPC joins Gunma Gohkin Group.png" class="history-bg-img" alt="CDPC Joins">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">CDPC<br>Joins</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2014</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2014%20-%20CDPC%20joins%20Gunma%20Gohkin%20Group.png" class="history-bg-img" alt="CDPC Joins">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">CDPC<br>Joins</h3><p class="mt-2 text-2xl font-semibold">2014</p></div></div>
                         </div>
-
-                        <!-- 9. 2018 (Orange) -->
+                        <!-- 9. 2018 -->
                         <div class="swiper-slide slide-4" data-title="IATF Certified" data-year="2018">
-                            <img src="images/company history pics/2018 - IATF Certified.JPG" class="history-bg-img" alt="IATF Certified">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">IATF<br>Certified</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2018</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2018%20-%20IATF%20Certified.JPG" class="history-bg-img" alt="IATF Certified">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">IATF<br>Certified</h3><p class="mt-2 text-2xl font-semibold">2018</p></div></div>
                         </div>
-
-                         <!-- 10. 2023 (Purple) -->
+                         <!-- 10. 2023 -->
                         <div class="swiper-slide slide-5" data-title="Product Warehouse & Loading Dock" data-year="2023">
-                            <img src="images/company history pics/2023 - Product Warehouse & Loading Dock.png" class="history-bg-img" alt="Warehouse & Dock">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-2xl font-bold uppercase tracking-wider">Warehouse<br>& Dock</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2023</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2023%20-%20Product%20Warehouse%20%26%20Loading%20Dock.png" class="history-bg-img" alt="Warehouse & Dock">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-2xl font-bold uppercase tracking-wider">Warehouse<br>& Dock</h3><p class="mt-2 text-2xl font-semibold">2023</p></div></div>
                         </div>
-
-                         <!-- 11. 2025 (Blue) -->
+                         <!-- 11. 2025 -->
                         <div class="swiper-slide slide-1" data-title="30th Anniversary" data-year="2025">
-                            <img src="images/company history pics/2025 - 30th Anniversary.JPG" class="history-bg-img" alt="30th Anniversary">
-                            <div class="slide-content-wrapper">
-                                <div class="slide-overlay"></div>
-                                <div class="slide-text">
-                                    <h3 class="text-3xl font-bold uppercase tracking-wider">30th<br>Anniv</h3>
-                                    <p class="mt-2 text-2xl font-semibold">2025</p>
-                                </div>
-                            </div>
+                            <img src="images/company%20history%20pics/2025%20-%2030th%20Anniversary.JPG" class="history-bg-img" alt="30th Anniversary">
+                            <div class="slide-content-wrapper"><div class="slide-overlay"></div><div class="slide-text"><h3 class="text-3xl font-bold uppercase tracking-wider">30th<br>Anniv</h3><p class="mt-2 text-2xl font-semibold">2025</p></div></div>
                         </div>
-
                     </div>
                 </div>
+                <!-- Navigation -->
                 <div class="swiper-button-prev history-button-prev history-carousel-nav absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> </div>
                 <div class="swiper-button-next history-button-next history-carousel-nav absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg> </div>
             </div>
@@ -235,19 +338,262 @@
         </div>
     </section>
 
+    <!-- PHILOSOPHY SECTION (FIXED: CENTERED, WIDE CARDS, BUTTONS OUTSIDE) -->
     <section class="py-20 bg-slate-100 dark:bg-slate-900">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Philosophy</h2>
             </div>
-            <div class="relative max-w-6xl mx-auto stagger-child">
+            
+            <!-- Width Limiter Container for Alignment -->
+            <div class="philosophy-section-container">
+                
+                <!-- Buttons Positioned OUTSIDE the Swiper Wrapper -->
+                <div class="swiper-button-prev philosophy-carousel-nav philosophy-button-prev btn-wrapper-prev"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> 
+                </div>
+                <div class="swiper-button-next philosophy-carousel-nav philosophy-button-next btn-wrapper-next"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg> 
+                </div>
+
                 <div class="swiper philosophy-carousel">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">precision_manufacturing</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Uncompromising Precision</h3><p class="text-text-muted-light dark:text-text-muted-dark">We are dedicated to the highest standards of quality and accuracy in every component we produce, ensuring reliability and customer satisfaction.</p></div> </div>
-                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">psychology</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Continuous Innovation</h3><p class="text-text-muted-light dark:text-text-muted-dark">We embrace new technologies and methodologies to continually improve our processes, efficiency, and the value we deliver to our partners.</p></div> </div>
-                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">energy_savings_leaf</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Sustainable Responsibility</h3><p class="text-text-muted-light dark:text-text-muted-dark">Our commitment extends to our people and our planet. We foster a safe workplace and operate with respect for the environment and our community.</p></div> </div>
-                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">groups</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Collaborative Partnership</h3><p class="text-text-muted-light dark:text-text-muted-dark">We build lasting relationships with our clients, acting as a trusted partner to achieve mutual success and drive innovation together.</p></div> </div>
-                        <div class="swiper-slide"> <div class="card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg text-center group h-full"><span class="material-icons text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110">health_and_safety</span><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Safety & Well-being</h3><p class="text-text-muted-light dark:text-text-muted-dark">The health and safety of our employees is our top priority. We are committed to maintaining the highest standards for a secure work environment.</p></div> </div>
+                        
+                        <!-- Slide 1: Title -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box">
+                                    <img src="images/Picture14.png" alt="Logo" class="h-24 mb-6">
+                                    <h3 class="phil-title" style="border: none;">GUNMA GOHKIN GROUP</h3>
+                                    <h4 class="text-4xl font-bold text-text-light dark:text-text-dark uppercase tracking-widest">PHILOSOPHY</h4>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 2: Welcome -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box">
+                                    <h3 class="phil-title">Welcome</h3>
+                                    <p class="phil-content text-center">
+                                        At Gunma Gohkin Group, we are committed to excellence, innovation, and sustainability. 
+                                        This Philosophy Book outlines our <b>principles</b>, <b>mission</b>, <b>management policies</b>, 
+                                        <b>vision</b>, and <b>environment and quality policy</b>—guiding us toward continuous growth.
+                                    </p>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 3: ROUNDED BLUE PYRAMID (SVG) -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box">
+                                    <h3 class="phil-title" style="border: none; margin-bottom: 5px;">Philosophy Pyramid</h3>
+                                    <div class="pyramid-container">
+                                        <svg viewBox="0 0 300 230" class="pyramid-svg">
+                                            <!-- Top (Light Blue) -->
+                                            <path d="M150,10 L210,60 L90,60 Z" fill="#38bdf8" stroke="#38bdf8" stroke-width="8" stroke-linejoin="round"/>
+                                            <text x="150" y="55" class="svg-text">Principle</text>
+                                            <!-- Mid (Medium Blue) -->
+                                            <path d="M80,75 L220,75 L240,125 L60,125 Z" fill="#0284c7" stroke="#0284c7" stroke-width="8" stroke-linejoin="round"/>
+                                            <text x="150" y="115" class="svg-text">Mission</text>
+                                            <!-- Base (Dark Blue) -->
+                                            <path d="M50,140 L250,140 L280,200 L20,200 Z" fill="#00529B" stroke="#00529B" stroke-width="8" stroke-linejoin="round"/>
+                                            <text x="150" y="185" class="svg-text">Management Policies</text>
+                                        </svg>
+                                        <span class="material-icons p-arrow">arrow_downward</span>
+                                        <h2 class="p-vision">GROUP VISION</h2>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 4: Principle -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box text-left">
+                                    <h3 class="phil-title">Principle</h3>
+                                    <p class="font-bold text-lg mb-4 text-primary text-center w-full">TOGETHER WE WORK,</p>
+                                    <ul class="phil-list pl-4">
+                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to make our workplace engaging and motivating.</li>
+                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to make our company grow and flourish.</li>
+                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to make our living standards better.</li>
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 5: Mission -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box text-left">
+                                    <h3 class="phil-title">Mission</h3>
+                                    <p class="font-bold text-lg mb-4 text-primary text-center w-full">We always stay a good partner,</p>
+                                    <ul class="phil-list pl-4">
+                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to bring our customers trust and satisfaction.</li>
+                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to bring our families thanks and happiness.</li>
+                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to bring the community harmony and contribution.</li>
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 6: Management Policy -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box text-left">
+                                    <h3 class="phil-title">Management Policy</h3>
+                                    <ol class="phil-list list-decimal pl-8 space-y-3">
+                                        <li><b>Leading Die-Casting Company:</b> Safe, clean, and earth-friendly to satisfy customers.</li>
+                                        <li><b>Enhance Profitability:</b> Collaborate domestic and overseas technical capabilities.</li>
+                                        <li><b>Foster a Workplace:</b> Enable employees to have hopes, aspirations, and self-growth.</li>
+                                    </ol>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 7: Policies -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box text-left">
+                                    <h3 class="phil-title">Policies</h3>
+                                    <div class="w-full grid grid-cols-2 gap-6">
+                                        <div>
+                                            <h4 class="font-bold text-green-600 mb-2 flex items-center uppercase text-sm"><span class="material-icons text-base mr-2">eco</span> Environment</h4>
+                                            <ul class="list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark space-y-2">
+                                                <li>Energy saving & 3Rs.</li>
+                                                <li>Green procurement compliance.</li>
+                                                <li>Plan-Do-Check-Action scheme.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-blue-600 mb-2 flex items-center uppercase text-sm"><span class="material-icons text-base mr-2">verified</span> Quality</h4>
+                                            <ul class="list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark space-y-2">
+                                                <li>Product Safety Launch.</li>
+                                                <li>Implement 3Ps & 3Gs.</li>
+                                                <li>Constant professional development.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Slide 8: Vision 2030 -->
+                        <div class="swiper-slide"> 
+                            <div class="phil-card">
+                                <div class="phil-content-box">
+                                    <h3 class="phil-title">Group Vision 2030</h3>
+                                    <p class="text-sm font-bold mb-6 text-center italic text-primary">"Leading Die-casting Company with technological strength and credibility."</p>
+                                    <div class="w-full space-y-3">
+                                        <div class="bg-blue-900 text-white p-3 rounded text-sm font-bold text-center shadow-md">FY22-24: DEVELOP AN ABILITY</div>
+                                        <div class="bg-blue-700 text-white p-3 rounded text-sm font-bold text-center shadow-md">FY25-27: PERFORM A CHALLENGE</div>
+                                        <div class="bg-blue-500 text-white p-3 rounded text-sm font-bold text-center shadow-md">FY28-30: MAKE A LEAP</div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+                    <div class="philosophy-pagination swiper-pagination !bottom-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview & Message -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div id="company-overview-card" class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Company Overview</h3>
+                    <div class="space-y-4 text-text-light dark:text-text-dark">
+                        <div class="flex flex-wrap justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="font-semibold mr-2">Company Name:</span><span class="text-right">Gunma Gohkin Philippines Corporation</span></div>
+                        <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="font-semibold">Established:</span><span>September 12, 1995</span></div>
+                        <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span class="font-semibold">Number of Employees:</span><span class="counter font-bold" data-target="308">0</span></div>
+                        <div class="flex flex-wrap justify-between"><span class="font-semibold mr-2">Type of Industry:</span><span class="text-right">Aluminum Die-Casting</span></div>
                     </div>
                 </div>
-                <div class="philosophy-button-prev philosophy-carousel-nav absolute top-1/2 -translate-y-1/2 z-10"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> </div>
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child" style="transition-delay: 150ms;">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Message</h3>
+                    <div class="flex flex-col sm:flex-row items-start gap-4">
+                        <div class="w-24 h-24 rounded-full bg-gray-200 dark:bg-gray-700 flex-shrink-0 overflow-hidden border-2 border-primary">
+                             <img src="images/pres.JPG" alt="President Junichi Roponggi" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <blockquote class="italic text-text-light dark:text-text-dark border-l-4 border-primary pl-4 text-sm leading-relaxed">
+                                "Since its establishment as a pioneer in die-casting technology, Gunma Gohkin Group has been providing transport vehicle parts for the local and global markets. In 1995, the demand brought about by the prevailing market conditions became an opportunity for Gunma Gohkin Co., Ltd. to establish its overseas subsidiary in the Philippines. While in 2010, 'Technical Center' was established to pursue a technology-driven company. In 2011, a carbon dioxide reduction project was launched to uphold its commitment to the environment. Also, a group-wide company activity on Compact-Total Productivity Management/Maintenance (C-TPM), was launched and supported by all its employees, which has provided them the opportunity to become UNITED for continuous improvement. Now, the company focuses on three areas, namely, TECHNOLOGY, KNOWLEDGE, and PASSION, to achieve its 100th Year of high-quality service."
+                            </blockquote>
+                            <div class="text-right mt-4">
+                                <p class="font-bold text-lg text-primary">Junichi Roponggi</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">President</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plants -->
+    <section class="py-20 bg-slate-100 dark:bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Laguna Plant Column -->
+                <div class="stagger-child">
+                    <h3 class="text-2xl font-bold text-primary text-center mb-6">Laguna Plant</h3>
+                    <div class="parallax-hover-container rounded-lg shadow-lg mb-6 overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <img src="images/gate.png" alt="Laguna Plant Facility" class="parallax-img w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg shadow-lg overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.551804791773!2d121.05041181534438!3d14.39515918809188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d096b7972043%3A0x6b8f36538b810f88!2sLaguna%20Technopark!5e0!3m2!1sen!2sph!4v1671234567890!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <!-- Cavite Plant Column -->
+                <div class="stagger-child" style="transition-delay: 150ms;">
+                    <h3 class="text-2xl font-bold text-primary text-center mb-6">Cavite Plant</h3>
+                    <div class="parallax-hover-container rounded-lg shadow-lg mb-6 overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <img src="images/cavite.png" alt="Cavite Plant Facility" class="parallax-img w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-lg shadow-lg overflow-hidden" style="aspect-ratio: 16 / 9;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.089849568771!2d120.92383191534466!3d14.42171248792039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d26c59b20b77%3A0x8085d688c227845!2sCavite%20Economic%20Zone!5e0!3m2!1sen!2sph!4v1671234678901!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="relative z-10 bg-card-dark text-gray-300">
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-sm">© 2025 Gunma Gohkin Philippines Corporation. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a class="hover:text-primary transition-colors text-sm" href="terms.html">Terms of Use</a>
+                <a class="hover:text-primary transition-colors text-sm" href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ENSURE SWIPER IS RE-INITIALIZED CORRECTLY -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force re-initialization of Philosophy Carousel to ensure correct centering logic
+        new Swiper(".philosophy-carousel", {
+            loop: true,
+            slidesPerView: 'auto',
+            centeredSlides: true, 
+            spaceBetween: 30, // Good gap between cards
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            pagination: { el: ".philosophy-pagination", clickable: true },
+            navigation: { nextEl: ".philosophy-button-next", prevEl: ".philosophy-button-prev" }
+        });
+    });
+</script>
+
+</body>
+</html>

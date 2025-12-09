@@ -127,15 +127,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Philosophy Carousel
-    const philosophySwiper = new Swiper(".philosophy-carousel", {
-        loop: true, 
-        slidesPerView: 1, 
-        spaceBetween: 20,
-        autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
-        pagination: { el: ".philosophy-pagination", clickable: true, },
-        navigation: { nextEl: ".philosophy-button-next", prevEl: ".philosophy-button-prev", },
-        breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }
-    });
+var philosophySwiper = new Swiper('.philosophy-carousel', {
+    slidesPerView: 'auto',  // Critical for centering custom-width slides
+    centeredSlides: true,   // Keeps active slide in dead center
+    spaceBetween: 40,       // Good gap between cards
+    initialSlide: 0,        // Starts at Slide 1 (Cover Page)
+    loop: true,             // Continuous scroll
+    grabCursor: true,
+    speed: 600,
+    navigation: {
+        nextEl: '.phil-next',
+        prevEl: '.phil-prev',
+    },
+    keyboard: { enabled: true }
+});
 
     // Parallax Hover
     const parallaxContainers = document.querySelectorAll('.parallax-hover-container');
