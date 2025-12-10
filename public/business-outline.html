@@ -300,35 +300,85 @@
             </div>
         </section>
 
-        <!-- Technology Section -->
-        <section class="py-20 bg-background-light dark:bg-background-dark">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="stagger-child"><div class="rounded-lg shadow-xl overflow-hidden" style="aspect-ratio: 4/3;"><img src="images/cnc-machine.jpg" alt="A modern CNC machine in operation" class="w-full h-full object-cover"/></div></div>
-                    <div class="stagger-child" style="transition-delay: 150ms;"><h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 staggered-reveal-title">Technology Spotlight</h2><p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-6">Our investment in state-of-the-art technology is at the core of our commitment to quality.</p><p class="text-text-light dark:text-text-dark leading-relaxed mb-4">We utilize fully automated die-casting cells and advanced CNC machining centers to produce components with exceptional precision and consistency.</p><ul class="space-y-3"><li class="flex items-start"><span class="material-icons text-primary mt-1 mr-3">check_circle</span><span><strong class="text-text-light dark:text-text-dark">Sub-micron Accuracy:</strong> Achieving tight tolerances required for complex components.</span></li><li class="flex items-start"><span class="material-icons text-primary mt-1 mr-3">check_circle</span><span><strong class="text-text-light dark:text-text-dark">Robotic Integration:</strong> Ensuring consistent cycle times and high-volume capabilities.</span></li><li class="flex items-start"><span class="material-icons text-primary mt-1 mr-3">check_circle</span><span><strong class="text-text-light dark:text-text-dark">Real-time Monitoring:</strong> Process parameters are monitored continuously.</span></li></ul></div>
-                </div>
-            </div>
-        </section>
+<section class="py-20 bg-background-light dark:bg-background-dark relative" id="what-is-diecasting">
+    <div class="container mx-auto px-6">
+        
+        <div class="mb-12 animate-on-scroll">
+    
+    <div id="tilt-card" class="rounded-lg shadow-lg overflow-hidden cursor-default transform-style-3d bg-white dark:bg-slate-800" 
+         style="transform-style: preserve-3d;">
+         
+        <div class="bg-primary px-6 py-4 flex items-center" style="transform: translateZ(20px)">
+            <span class="material-icons text-white text-2xl mr-3">info</span>
+            <h2 class="text-xl md:text-2xl font-bold text-white">What is Die-casting?</h2>
+        </div>
+        
+        <div class="p-6 md:p-8 transition-colors duration-300">
+            <p class="mb-4 leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-100" style="transform: translateZ(10px)">
+                Die-casting is a manufacturing process in which a high-precision mould is installed into a die-casting machine, and molten metal (mainly Aluminum, Zinc, and Magnesium) is injected into the mould at high pressure and high speed.
+            </p>
+            <p class="leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-100" style="transform: translateZ(10px)">
+                Compared to Iron metals, Aluminum is lighter and can produce geometrically complex metal parts. Aluminum is used in vehicles such as automobiles and motorcycles, as well as in electrical and information equipment. Aluminum die-casting is friendly to the environment since the low density of alloys can reduce waste and scrap materials are recyclable.
+            </p>
+        </div>
+    </div>
+</div>
 
-        <!-- Materials Section -->
-        <section class="py-20 bg-slate-100 dark:bg-slate-900">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="stagger-child md:col-start-2 md:row-start-1"><div class="rounded-lg shadow-xl overflow-hidden" style="aspect-ratio: 4/3;"><img src="images/aluminum-ingots.jpg" alt="Stack of high-purity aluminum ingots" class="w-full h-full object-cover"/></div></div>
-                    <div class="stagger-child md:col-start-1 md:row-start-1" style="transition-delay: 150ms;"><h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 staggered-reveal-title">Commitment to Material Excellence</h2><p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-6">The quality of the final product begins with the quality of the raw material.</p><p class="text-text-light dark:text-text-dark leading-relaxed mb-4">We exclusively use high-purity aluminum alloys sourced from certified suppliers. Aluminum is the ideal choice for modern manufacturing due to its unique combination of properties.</p></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="group animate-on-scroll" style="transition-delay: 0ms;">
+                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/incoming.png', 'Incoming Aluminum Ingots')">
+                    <img src="images/die casting pics/incoming.png" alt="Incoming Aluminum Ingots" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                    </div>
                 </div>
+                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Incoming</h3>
             </div>
-        </section>
 
-        <!-- Quality Section -->
-        <section class="py-20 bg-background-light dark:bg-background-dark">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="stagger-child md:col-start-2 md:row-start-1"><div class="rounded-lg shadow-xl overflow-hidden" style="aspect-ratio: 4/3;"><img src="images/quality-inspection.jpg" alt="Technician using a Coordinate-Measuring Machine (CMM)" class="w-full h-full object-cover"/></div></div>
-                    <div class="stagger-child md:col-start-1 md:row-start-1" style="transition-delay: 150ms;"><h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 staggered-reveal-title">Uncompromising Quality</h2><p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-6">Our Quality Policy is not just a statement; it's a practice embedded in every step.</p><p class="text-text-light dark:text-text-dark leading-relaxed mb-4">From raw material verification to final product inspection, we employ a multi-layered quality assurance strategy.</p><ul class="space-y-3"><li class="flex items-start"><span class="material-icons text-primary mt-1 mr-3">check_circle</span><span><strong class="text-text-light dark:text-text-dark">Coordinate-Measuring Machines (CMM):</strong> For automated, high-precision 3D measurement.</span></li><li class="flex items-start"><span class="material-icons text-primary mt-1 mr-3">check_circle</span><span><strong class="text-text-light dark:text-text-dark">X-Ray Inspection:</strong> To detect internal porosity and ensure structural integrity.</span></li></ul></div>
+            <div class="group animate-on-scroll" style="transition-delay: 100ms;">
+                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/melting.png', 'Melting Process')">
+                    <img src="images/die casting pics/melting.png" alt="Melting Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                    </div>
                 </div>
+                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Melting</h3>
             </div>
-        </section>
+
+            <div class="group animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/casting.png', 'Casting Process')">
+                    <img src="images/die casting pics/casting.png" alt="Casting Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Casting</h3>
+            </div>
+
+            <div class="group animate-on-scroll" style="transition-delay: 300ms;">
+                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/trimming.png', 'Trimming Process')">
+                    <img src="images/die casting pics/trimming.png" alt="Trimming Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Trimming</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-[110]">
+            <span class="material-icons text-5xl">close</span>
+        </button>
+        <div class="relative max-w-6xl w-full h-full flex items-center justify-center" onclick="event.stopPropagation()">
+            <img id="lightbox-image" src="" alt="Full Screen" class="max-h-[85vh] max-w-full object-contain rounded-md shadow-2xl scale-95 transition-transform duration-300"/>
+            <p id="lightbox-caption" class="absolute bottom-4 left-0 right-0 text-center text-white bg-black/50 p-3 backdrop-blur-sm font-bold text-lg translate-y-full transition-transform duration-300 rounded-b-md"></p>
+        </div>
+    </div>
+</section>
 
         <!-- Process Timeline (ADDED PARTICLES & TILT) -->
         <section id="process-timeline" class="relative py-20 bg-slate-100 dark:bg-slate-900">
@@ -462,5 +512,22 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/business-outline.js"></script>
+
+    <script>
+    // Force Vanilla Tilt Initialization (Subtle Version)
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof VanillaTilt !== 'undefined') {
+            const card = document.getElementById("tilt-card");
+            VanillaTilt.init(card, {
+                max: 1.5,             // Drastically reduced tilt (was 5)
+                speed: 1000,          // Slower, smoother movement
+                glare: true,          
+                "max-glare": 0.1,     // Faint glare (was 0.2)
+                scale: 1.0,           // No zoom (was 1.02)
+                perspective: 1500     // Flattens the 3D effect slightly
+            });
+        }
+    });
+</script>
 </body>
 </html>

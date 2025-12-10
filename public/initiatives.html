@@ -17,49 +17,6 @@
     <!-- Your Master Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- PAGE SPECIFIC STYLES FOR SLIDESHOW -->
-    <style>
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px; /* Ensure it doesn't stretch too wide */
-            height: 500px; /* Fixed height for aspect ratio */
-            margin: auto;
-            overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .mySlides {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f3f4f6;
-        }
-        
-        html.dark .mySlides { background-color: #1f2937; }
-
-        /* Active slide is visible */
-        .mySlides.active { opacity: 1; z-index: 1; }
-
-        /* Image styling: contain ensures full picture is seen, center alignment */
-        .mySlides img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
-            object-position: center;
-        }
-
-        /* Fade animation logic */
-        .fade { animation-name: fade; animation-duration: 1.5s; }
-        @keyframes fade { from {opacity: .4} to {opacity: 1} }
-    </style>
-
      <script src="js/initiatives.js"></script>
     <script src="loader.js"></script>
 </head>
@@ -180,8 +137,7 @@
         </div>
     </section>
 
-    <!-- Our People, Our Priority Section (UPDATED SLIDESHOW) -->
-    <section class="py-20 bg-slate-100 dark:bg-slate-900">
+     <section class="py-20 bg-slate-100 dark:bg-slate-900">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="stagger-child">
@@ -191,22 +147,9 @@
                         <p class="text-text-light dark:text-text-dark leading-relaxed">Through continuous training programs, comprehensive health and wellness benefits, and activities that promote camaraderie, we invest in the professional and personal growth of our team. Our culture is built on respect, teamwork, and a shared passion for excellence.</p>
                     </div>
                 </div>
-                
-                <!-- SLIDESHOW CONTAINER -->
                 <div class="stagger-child" style="transition-delay: 150ms;">
-                    <div class="slideshow-container">
-                        <!-- Image 1 -->
-                        <div class="mySlides fade active">
-                            <img src="images/people1.png" alt="GGPC Team Photo 1">
-                        </div>
-                        <!-- Image 2 -->
-                        <div class="mySlides fade">
-                            <img src="images/people2.png" alt="GGPC Team Photo 2">
-                        </div>
-                        <!-- Image 3 -->
-                        <div class="mySlides fade">
-                            <img src="images/people3.jpg" alt="GGPC Team Photo 3">
-                        </div>
+                    <div class="rounded-lg shadow-xl overflow-hidden" style="aspect-ratio: 16/9;">
+                         <img src="images/team-photo.jpg" alt="A group photo of diverse and happy employees" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
@@ -226,32 +169,6 @@
         </div>
     </div>
 </footer>
-
-<!-- SCRIPT FOR SLIDESHOW ANIMATION -->
-<script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        
-        // If no slides exist, stop
-        if (slides.length === 0) return;
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].classList.remove("active"); 
-        }
-        
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        
-        slides[slideIndex-1].classList.add("active");
-        
-        // Change image every 2.5 seconds
-        setTimeout(showSlides, 2500); 
-    }
-</script>
 
 </body>
 </html>

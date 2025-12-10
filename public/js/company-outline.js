@@ -174,3 +174,4 @@ window.addEventListener('scroll', () => {
         scrollProgressBar.style.width = scrollPercent + '%';
     }
 });
+

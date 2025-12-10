@@ -207,3 +207,110 @@ window.addEventListener('scroll', () => {
         progressBar.style.width = `${scrollPercent}%`;
     }
 });
+
+/* =========================================
+   Fullscreen / Zoom Logic
+   ========================================= */
+
+function openFullscreen(imageSrc, captionText) {
+    const modal = document.getElementById('fullscreen-modal');
+    const img = document.getElementById('fullscreen-image');
+    const caption = document.getElementById('fullscreen-caption');
+    
+    // Set source
+    img.src = imageSrc;
+    caption.textContent = captionText || '';
+    
+    // Show Modal
+    modal.classList.remove('hidden');
+    
+    // Animation timing
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        img.classList.remove('scale-95');
+        img.classList.add('scale-100'); // Zoom In
+        caption.classList.remove('translate-y-full'); // Slide caption up
+    }, 10);
+    
+    // Lock scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFullscreen() {
+    const modal = document.getElementById('fullscreen-modal');
+    const img = document.getElementById('fullscreen-image');
+    const caption = document.getElementById('fullscreen-caption');
+
+    // Fade Out
+    modal.classList.add('opacity-0');
+    img.classList.remove('scale-100');
+    img.classList.add('scale-95');
+    caption.classList.add('translate-y-full');
+
+    // Hide after animation
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        img.src = ''; 
+        document.body.style.overflow = ''; // Unlock scroll
+    }, 300);
+}
+
+// Escape Key Listener
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeFullscreen();
+    }
+});
+
+/* =========================================
+   Lightbox / Image Zoom Functionality
+   ========================================= */
+function openLightbox(imageSrc, captionText) {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-image');
+    const caption = document.getElementById('lightbox-caption');
+    
+    // 1. Set the image source and caption
+    img.src = imageSrc;
+    caption.textContent = captionText || '';
+    
+    // 2. Unhide the modal
+    modal.classList.remove('hidden');
+    
+    // 3. Trigger animations (Small delay to allow display:block to render)
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        img.classList.remove('scale-95'); 
+        img.classList.add('scale-100'); // Zoom in effect
+        caption.classList.remove('translate-y-full'); // Slide caption up
+    }, 10);
+    
+    // 4. Disable scrolling on the body while modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-image');
+    const caption = document.getElementById('lightbox-caption');
+
+    // 1. Start fade out animations
+    modal.classList.add('opacity-0');
+    img.classList.remove('scale-100');
+    img.classList.add('scale-95');
+    caption.classList.add('translate-y-full');
+
+    // 2. Hide modal after animation finishes (300ms matches CSS duration)
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        img.src = ''; // Clear source to prevent ghosting
+        document.body.style.overflow = ''; // Re-enable scrolling
+    }, 300);
+}
+
+// Close Lightbox when pressing the "Escape" key
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeLightbox();
+    }
+});
