@@ -339,185 +339,197 @@
     </section>
 
     <!-- PHILOSOPHY SECTION (FIXED: CENTERED, WIDE CARDS, BUTTONS OUTSIDE) -->
-<section id="philosophy" class="py-20 bg-gray-50 text-gray-800 transition-colors duration-300 dark:bg-slate-900 dark:text-gray-100">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div class="mb-16 text-center">
-      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
-        Our Philosophy
+<section id="philosophy" class="relative w-full overflow-hidden bg-[#F0F4F8] transition-colors duration-300 dark:bg-[#050914] text-slate-800 dark:text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
+  
+  <canvas id="geo-canvas" class="absolute inset-0 z-0 w-full h-full"></canvas>
+
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+
+    <div class="max-w-4xl mx-auto text-center mb-12 animate-fadeIn">
+      <div class="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full border border-blue-500/20 bg-blue-500/5 backdrop-blur-md">
+        <span class="text-blue-600 font-bold tracking-widest uppercase text-[10px] dark:text-blue-400">Gunma Gohkin Group</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
+        Welcome to Our Philosophy
       </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
-        Guided by the GGK Group Pyramid—uniting our principles, mission, and policies to drive sustainable growth and industry leadership.
+      <p class="mt-6 text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-normal max-w-2xl mx-auto">
+        Committed to excellence, innovation, and sustainability. This philosophy guides us toward continuous growth and industry leadership.
       </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-4 mb-12" role="tablist">
-      <button onclick="switchTab('tab-core')" id="btn-tab-core" class="tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg ring-2 ring-blue-600 ring-offset-2 ring-offset-gray-50 dark:ring-offset-slate-900">
-        Core Values
+    <div class="mb-20 flex justify-center relative animate-fadeIn" style="animation-delay: 0.1s;">
+      
+      <div class="hidden lg:flex absolute top-0 left-[15%] xl:left-[25%] flex-row-reverse gap-5 text-slate-400 dark:text-slate-600 font-sans select-none pointer-events-none transition-colors duration-300">
+        <div class="writing-vertical text-3xl font-bold border-b-2 border-current pb-4 ml-2">社是</div>
+        <div class="writing-vertical text-sm tracking-[0.2em] opacity-80">一、みんなで明るい職場にしよう</div>
+        <div class="writing-vertical text-sm tracking-[0.2em] opacity-80">一、みんなで会社を伸ばしてゆこう</div>
+        <div class="writing-vertical text-sm tracking-[0.2em] opacity-80">一、みんなで暮らしをよくしよう</div>
+      </div>
+
+      <div id="pyramid-container" class="relative w-full max-w-[380px] h-auto drop-shadow-2xl transition-transform hover:scale-105 duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
+        <svg viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto filter drop-shadow-xl">
+          <g class="group cursor-pointer transition-all duration-300 hover:-translate-y-2" onclick="openTab(event, 'tab-core')">
+            <path d="M200 20 L280 120 H120 L200 20Z" 
+                  class="fill-[#0ea5e9] transition-colors" 
+                  stroke="#0ea5e9" stroke-width="12" stroke-linejoin="round" />
+            <text x="200" y="95" text-anchor="middle" class="fill-white text-lg font-bold uppercase tracking-wider pointer-events-none drop-shadow-md">Principle</text>
+          </g>
+          <g class="group cursor-pointer transition-all duration-300 hover:-translate-y-2" onclick="openTab(event, 'tab-core')">
+            <path d="M110 135 H290 L330 225 H70 L110 135Z" 
+                  class="fill-[#0284c7] transition-colors" 
+                  stroke="#0284c7" stroke-width="12" stroke-linejoin="round" />
+            <text x="200" y="195" text-anchor="middle" class="fill-white text-lg font-bold uppercase tracking-wider pointer-events-none drop-shadow-md">Mission</text>
+          </g>
+          <g class="group cursor-pointer transition-all duration-300 hover:-translate-y-2" onclick="openTab(event, 'tab-policies')">
+            <path d="M60 240 H340 L390 330 H10 L60 240Z" 
+                  class="fill-[#004e80] transition-colors" 
+                  stroke="#004e80" stroke-width="12" stroke-linejoin="round" />
+            <text x="200" y="300" text-anchor="middle" class="fill-white text-lg font-bold uppercase tracking-wider pointer-events-none drop-shadow-md">Policies</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-16 border-b border-slate-200 dark:border-slate-800 pb-1" role="tablist">
+      <button onclick="openTab(event, 'tab-core')" class="tab-btn active-tab relative px-6 py-3 text-sm font-bold text-slate-500 hover:text-blue-600 transition-all focus:outline-none dark:text-slate-400 dark:hover:text-blue-400">
+        Principles & Mission
+        <span class="active-line absolute bottom-0 left-0 w-full h-1 bg-blue-600 rounded-t-full transform scale-x-0 transition-transform duration-300"></span>
       </button>
-      <button onclick="switchTab('tab-policies')" id="btn-tab-policies" class="tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 dark:hover:text-white">
+      <button onclick="openTab(event, 'tab-policies')" class="tab-btn relative px-6 py-3 text-sm font-bold text-slate-500 hover:text-blue-600 transition-all focus:outline-none dark:text-slate-400 dark:hover:text-blue-400">
         Our Policies
+        <span class="active-line absolute bottom-0 left-0 w-full h-1 bg-blue-600 rounded-t-full transform scale-x-0 transition-transform duration-300"></span>
       </button>
-      <button onclick="switchTab('tab-vision')" id="btn-tab-vision" class="tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 dark:hover:text-white">
+      <button onclick="openTab(event, 'tab-vision')" class="tab-btn relative px-6 py-3 text-sm font-bold text-slate-500 hover:text-blue-600 transition-all focus:outline-none dark:text-slate-400 dark:hover:text-blue-400">
         Vision 2030
+        <span class="active-line absolute bottom-0 left-0 w-full h-1 bg-blue-600 rounded-t-full transform scale-x-0 transition-transform duration-300"></span>
       </button>
     </div>
 
-    <div class="min-h-[400px]">
+    <div class="max-w-6xl mx-auto min-h-[500px]">
 
-      <div id="tab-core" class="tab-content transition-opacity duration-500 opacity-100 block">
+      <div id="tab-core" class="tab-content block animate-fadeIn">
         <div class="grid md:grid-cols-2 gap-8">
           
-          <div class="group relative p-8 bg-white rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all dark:bg-slate-800 dark:border-slate-700">
-            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-20 h-20 bg-blue-100 rounded-full blur-2xl opacity-50 dark:bg-blue-900"></div>
-            <div class="relative z-10">
-              <div class="flex items-center gap-3 mb-6">
-                <div class="p-3 bg-blue-600 rounded-lg text-white">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">The Principle</h3>
-              </div>
-              <blockquote class="italic text-gray-600 mb-6 border-l-4 border-blue-500 pl-4 dark:text-gray-300">
-                "Together We Work"
-              </blockquote>
-              <ul class="space-y-4 text-gray-600 dark:text-gray-400">
-                <li class="flex items-start">
-                  <span class="mr-3 text-blue-500 mt-1">✔</span>
-                  To make our workplace engaging and motivating.
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-blue-500 mt-1">✔</span>
-                  To make our company grow and flourish.
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-blue-500 mt-1">✔</span>
-                  To make our living standards better.
-                </li>
-              </ul>
+          <div class="liquid-card group">
+            <div class="shine-surface"></div>
+            <div class="card-border-glow"></div>
+            <div class="relative z-10 p-10">
+               <div class="w-12 h-12 mb-6 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+               </div>
+               <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Principle</h3>
+               <p class="text-lg font-medium text-blue-500 mb-8">"Together We Work"</p>
+               <ul class="space-y-4 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                 <li class="flex items-start"><span class="text-blue-500 mr-3 mt-0.5">●</span><span>To make our workplace engaging and motivating.</span></li>
+                 <li class="flex items-start"><span class="text-blue-500 mr-3 mt-0.5">●</span><span>To make our company grow and flourish.</span></li>
+                 <li class="flex items-start"><span class="text-blue-500 mr-3 mt-0.5">●</span><span>To make our living standards better.</span></li>
+               </ul>
             </div>
           </div>
 
-          <div class="group relative p-8 bg-white rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all dark:bg-slate-800 dark:border-slate-700">
-            <div class="absolute bottom-0 left-0 -mb-4 -ml-4 w-20 h-20 bg-teal-100 rounded-full blur-2xl opacity-50 dark:bg-teal-900"></div>
-            <div class="relative z-10">
-              <div class="flex items-center gap-3 mb-6">
-                <div class="p-3 bg-teal-500 rounded-lg text-white">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">The Mission</h3>
-              </div>
-              <blockquote class="italic text-gray-600 mb-6 border-l-4 border-teal-500 pl-4 dark:text-gray-300">
-                "Always Stay a Good Partner"
-              </blockquote>
-              <ul class="space-y-4 text-gray-600 dark:text-gray-400">
-                <li class="flex items-start">
-                  <span class="mr-3 text-teal-500 mt-1">✔</span>
-                  Bring trust and satisfaction to our customers.
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-teal-500 mt-1">✔</span>
-                  Bring thanks and happiness to employees & families.
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-teal-500 mt-1">✔</span>
-                  Bring harmony and contribution to the community.
-                </li>
-              </ul>
+          <div class="liquid-card group">
+            <div class="shine-surface"></div>
+            <div class="card-border-glow"></div>
+            <div class="relative z-10 p-10">
+               <div class="w-12 h-12 mb-6 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" /></svg>
+               </div>
+               <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Mission</h3>
+               <p class="text-lg font-medium text-sky-500 mb-8">"Always Stay a Good Partner"</p>
+               <ul class="space-y-4 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                 <li class="flex items-start"><span class="text-sky-500 mr-3 mt-0.5">●</span><span>To bring our customers trust and satisfaction.</span></li>
+                 <li class="flex items-start"><span class="text-sky-500 mr-3 mt-0.5">●</span><span>To bring our employees thanks and happiness.</span></li>
+                 <li class="flex items-start"><span class="text-sky-500 mr-3 mt-0.5">●</span><span>To bring the community harmony and contribution.</span></li>
+               </ul>
             </div>
           </div>
 
         </div>
       </div>
 
-      <div id="tab-policies" class="tab-content transition-opacity duration-500 opacity-0 hidden">
-        <div class="grid lg:grid-cols-3 gap-6">
+      <div id="tab-policies" class="tab-content hidden animate-fadeIn">
+        <div class="space-y-8">
           
-          <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-500 dark:bg-slate-800 dark:border-indigo-400">
-            <h4 class="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
-              <span class="text-indigo-500">#1</span> Management
-            </h4>
-            <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">
-              Striving to be a leading die-casting company that is safe, secure, and earth-friendly.
-            </p>
-            <ul class="text-sm space-y-2 text-gray-500 dark:text-gray-400">
-              <li>• Enhance profitability via global collaboration.</li>
-              <li>• Foster a workplace of hope and self-growth.</li>
-              <li>• Always satisfy our valued customers.</li>
-            </ul>
+          <div class="liquid-card group !bg-blue-900/90 !border-blue-400/20">
+             <div class="shine-surface"></div>
+             <div class="relative z-10 p-10 text-white">
+                <h3 class="text-2xl font-bold mb-8 border-b border-white/10 pb-4">Management Policy</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                  <div class="glass-inset p-6 rounded-2xl"><span class="text-4xl font-black opacity-20 block mb-3">01</span><p class="text-sm opacity-90 leading-relaxed">We will go for being a leading die-casting company with safe and secure as well as cleanest and earth-friendly facilities.</p></div>
+                  <div class="glass-inset p-6 rounded-2xl"><span class="text-4xl font-black opacity-20 block mb-3">02</span><p class="text-sm opacity-90 leading-relaxed">We will enhance our profitability by collaborating domestic efforts refining quality with overseas value generation.</p></div>
+                  <div class="glass-inset p-6 rounded-2xl"><span class="text-4xl font-black opacity-20 block mb-3">03</span><p class="text-sm opacity-90 leading-relaxed">We will foster a workplace that enables all our employees to have hopes, aspirations, and excitement.</p></div>
+                </div>
+             </div>
           </div>
 
-          <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500 dark:bg-slate-800 dark:border-green-400">
-            <h4 class="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
-              <span class="text-green-500">#2</span> Environment
-            </h4>
-            <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">
-              Sustaining the environment through efficient workplace practices.
-            </p>
-            <ul class="text-sm space-y-2 text-gray-500 dark:text-gray-400">
-              <li>• Energy Saving & 3Rs (Reduce, Reuse, Recycle).</li>
-              <li>• Green Procurement standards compliance.</li>
-              <li>• Observance of Plan-Do-Check-Action (PDCA).</li>
-            </ul>
-          </div>
+          <div class="grid lg:grid-cols-2 gap-8">
+            
+            <div class="liquid-card group">
+               <div class="shine-surface"></div>
+               <div class="card-border-glow"></div>
+               <div class="relative z-10 p-10">
+                  <div class="flex items-center gap-4 mb-6">
+                    <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-600 dark:text-green-400 shadow-inner">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22c4.97 0 9-4.03 9-9c0-4.97-9-13-9-13S3 8.03 3 13c0 4.97 4.03 9 9 9z" opacity="0.3"/><path d="M12 16c-2.21 0-4-1.79-4-4c0-1.33.69-2.5 1.74-3.19C9.27 8.33 9 7.7 9 7c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .7-.27 1.33-.74 1.81C17.31 9.5 18 10.67 18 12c0 2.21-1.79 4-4 4z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-900 dark:text-white m-0">Environment Policy</h4>
+                  </div>
+                  <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span>Energy saving.</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span>Implementation of the 3Rs (Reduce, Reuse, Recycle).</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span>Compliance with global green procurement standards.</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span>Observance of the PDCA scheme.</li>
+                  </ul>
+               </div>
+            </div>
 
-          <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500 dark:bg-slate-800 dark:border-red-400">
-            <h4 class="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
-              <span class="text-red-500">#3</span> Quality
-            </h4>
-            <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">
-              Maintaining our status as a trusted global partner.
-            </p>
-            <ul class="text-sm space-y-2 text-gray-500 dark:text-gray-400">
-              <li>• Implement 3Ps (Product, Place, People).</li>
-              <li>• Implement 3Gs (Gembutsu, Gemba, Genjitsu).</li>
-              <li>• Constant personal & professional development.</li>
-            </ul>
+            <div class="liquid-card group">
+               <div class="shine-surface"></div>
+               <div class="card-border-glow"></div>
+               <div class="relative z-10 p-10">
+                  <div class="flex items-center gap-4 mb-6">
+                    <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-600 dark:text-red-400 shadow-inner">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-900 dark:text-white m-0">Quality Policy</h4>
+                  </div>
+                  <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                    <li class="flex items-center"><span class="text-red-500 mr-3">✔</span>Product Safety Launch during Pre-Production.</li>
+                    <li class="flex items-center"><span class="text-red-500 mr-3">✔</span>Implement 3Ps (Product, Place, People).</li>
+                    <li class="flex items-center"><span class="text-red-500 mr-3">✔</span>Implement 3Gs (Gembutsu, Gemba, Genjitsu).</li>
+                    <li class="flex items-center"><span class="text-red-500 mr-3">✔</span>Provide constant training opportunities.</li>
+                  </ul>
+               </div>
+            </div>
           </div>
-
         </div>
       </div>
 
-      <div id="tab-vision" class="tab-content transition-opacity duration-500 opacity-0 hidden">
-        <div class="bg-white rounded-2xl shadow-xl p-8 dark:bg-slate-800">
-          <div class="text-center mb-10">
-            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Group Vision 2030</h3>
-            <p class="text-blue-600 font-medium dark:text-blue-400">Utilizing group synergy to be a Leading Die-Casting Company.</p>
-          </div>
-
-          <div class="relative">
-            <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 rounded dark:bg-slate-700"></div>
-
-            <div class="grid md:grid-cols-3 gap-8 relative z-10">
-              
-              <div class="group text-center">
-                <div class="w-16 h-16 mx-auto bg-white border-4 border-blue-200 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all dark:bg-slate-900 dark:border-slate-600 dark:text-blue-400">
-                  07
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Develop an Ability</h4>
-                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">FY 2022 - 2024</span>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 px-4">Refining quality and technical capabilities.</p>
+      <div id="tab-vision" class="tab-content hidden animate-fadeIn">
+        <div class="liquid-card group">
+           <div class="shine-surface"></div>
+           <div class="card-border-glow"></div>
+           <div class="relative z-10 p-10 sm:p-16">
+              <div class="text-center max-w-3xl mx-auto mb-16">
+                <h3 class="text-3xl font-black text-slate-900 dark:text-white mb-6">GROUP VISION 2030</h3>
+                <p class="text-xl text-blue-600 dark:text-blue-400 font-medium">"Utilize group synergy and go for being a Leading Die-casting Company with our technological strength and credibility."</p>
               </div>
-
-              <div class="group text-center">
-                <div class="w-16 h-16 mx-auto bg-white border-4 border-indigo-200 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:border-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all dark:bg-slate-900 dark:border-slate-600 dark:text-indigo-400">
-                  08
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Perform a Challenge</h4>
-                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">FY 2025 - 2027</span>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 px-4">Creating a challenging, eco-friendly workplace.</p>
+              <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="glass-inset p-6 rounded-2xl"><h4 class="font-bold text-lg text-slate-900 dark:text-white mb-3">1. Trusted Company</h4><p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">By refining the Quality and Technical Capabilities.</p></div>
+                <div class="glass-inset p-6 rounded-2xl"><h4 class="font-bold text-lg text-slate-900 dark:text-white mb-3">2. Earth-Friendly</h4><p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">By working on the Eco-friendly Manufacturing Facilities.</p></div>
+                <div class="glass-inset p-6 rounded-2xl"><h4 class="font-bold text-lg text-slate-900 dark:text-white mb-3">3. High Satisfaction</h4><p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">By creating a Challenging Workplace.</p></div>
               </div>
-
-              <div class="group text-center">
-                <div class="w-16 h-16 mx-auto bg-white border-4 border-teal-200 text-teal-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:border-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-all dark:bg-slate-900 dark:border-slate-600 dark:text-teal-400">
-                  09
+              <div class="border-t border-slate-200 dark:border-white/10 pt-10">
+                <h4 class="text-center font-bold text-slate-400 uppercase tracking-widest mb-8 text-xs">Mid-Term Plans Strategy</h4>
+                <div class="flex flex-col md:flex-row gap-6 justify-center text-center">
+                  <div class="flex-1 bg-blue-500/5 dark:bg-blue-500/10 p-5 rounded-2xl border border-blue-500/10"><span class="text-[10px] font-bold text-blue-600 bg-blue-100 dark:bg-blue-500/20 px-3 py-1 rounded-full">FY2022~2024</span><h5 class="text-sm font-bold mt-3 text-slate-900 dark:text-white">7th: DEVELOP AN ABILITY</h5></div>
+                  <div class="hidden md:block self-center text-slate-400">➜</div>
+                  <div class="flex-1 bg-indigo-500/5 dark:bg-indigo-500/10 p-5 rounded-2xl border border-indigo-500/10"><span class="text-[10px] font-bold text-indigo-600 bg-indigo-100 dark:bg-indigo-500/20 px-3 py-1 rounded-full">FY2025~2027</span><h5 class="text-sm font-bold mt-3 text-slate-900 dark:text-white">8th: PERFORM A CHALLENGE</h5></div>
+                  <div class="hidden md:block self-center text-slate-400">➜</div>
+                  <div class="flex-1 bg-teal-500/5 dark:bg-teal-500/10 p-5 rounded-2xl border border-teal-500/10"><span class="text-[10px] font-bold text-teal-600 bg-teal-100 dark:bg-teal-500/20 px-3 py-1 rounded-full">FY2028~2030</span><h5 class="text-sm font-bold mt-3 text-slate-900 dark:text-white">9th: MAKE A LEAP</h5></div>
                 </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Make a Leap</h4>
-                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">FY 2028 - 2030</span>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 px-4">Becoming a trusted, preferred, and earth-friendly corporation.</p>
               </div>
-
-            </div>
-          </div>
+           </div>
         </div>
       </div>
 
@@ -525,41 +537,254 @@
   </div>
 
   <script>
-    function switchTab(tabId) {
-      // 1. Hide all tab contents
-      document.querySelectorAll('.tab-content').forEach(el => {
-        el.classList.add('hidden');
-        el.classList.remove('block', 'opacity-100');
-        el.classList.add('opacity-0');
-      });
+    /* --- 1. SLOW & CALM PARTICLES --- */
+    (function() {
+      const canvas = document.getElementById('geo-canvas');
+      const ctx = canvas.getContext('2d');
+      let nodes = [];
+      let width, height;
+      const mouse = { x: null, y: null, radius: 250 };
 
-      // 2. Reset all buttons to default state
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        // Remove active classes
-        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-lg', 'ring-2', 'ring-blue-600', 'ring-offset-2', 'ring-offset-gray-50', 'dark:ring-offset-slate-900');
-        // Add inactive classes
-        btn.classList.add('bg-white', 'text-gray-600', 'hover:bg-gray-100', 'dark:bg-slate-800', 'dark:text-gray-300');
+      const section = document.getElementById('philosophy');
+      section.addEventListener('mousemove', (e) => {
+        const rect = section.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
       });
+      section.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
 
-      // 3. Show selected content
-      const selectedContent = document.getElementById(tabId);
-      if (selectedContent) {
-        selectedContent.classList.remove('hidden');
-        // Small delay to allow display:block to apply before opacity transition
-        setTimeout(() => {
-          selectedContent.classList.remove('opacity-0');
-          selectedContent.classList.add('opacity-100');
-        }, 10);
+      const nodeCount = 70; 
+      const connectionDist = 130;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = section.offsetHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+      setTimeout(resize, 200);
+
+      class Node {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          // VELOCITY REDUCED TO 0.1 FOR CALM DRIFT
+          this.vx = (Math.random() - 0.5) * 0.1;
+          this.vy = (Math.random() - 0.5) * 0.1;
+          this.size = Math.random() * 1.5 + 0.5; // Fine dots
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+
+          // Gentle Mouse Interaction
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx*dx + dy*dy);
+            if (distance < mouse.radius) {
+                const force = (mouse.radius - distance) / mouse.radius;
+                const angle = Math.atan2(dy, dx);
+                // Reduced push force to match slow speed
+                this.vx -= Math.cos(angle) * force * 0.02;
+                this.vy -= Math.sin(angle) * force * 0.02;
+            }
+          }
+        }
+        draw(isDark) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(30, 58, 138, 0.5)';
+          ctx.fill();
+        }
       }
 
-      // 4. Style the active button
-      const activeBtn = document.getElementById('btn-' + tabId);
-      if (activeBtn) {
-        activeBtn.classList.remove('bg-white', 'text-gray-600', 'hover:bg-gray-100', 'dark:bg-slate-800', 'dark:text-gray-300');
-        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-lg', 'ring-2', 'ring-blue-600', 'ring-offset-2', 'ring-offset-gray-50', 'dark:ring-offset-slate-900');
+      for (let i = 0; i < nodeCount; i++) nodes.push(new Node());
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        const isDark = document.documentElement.classList.contains('dark');
+
+        for (let i = 0; i < nodes.length; i++) {
+          nodes[i].update();
+          nodes[i].draw(isDark);
+          for (let j = i; j < nodes.length; j++) {
+            let dx = nodes[i].x - nodes[j].x;
+            let dy = nodes[i].y - nodes[j].y;
+            let dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < connectionDist) {
+              ctx.beginPath();
+              const colorStr = isDark ? '255, 255, 255' : '30, 58, 138';
+              ctx.strokeStyle = `rgba(${colorStr}, ${0.15 - (dist/connectionDist)*0.15})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+          if (mouse.x != null) {
+            let dx = nodes[i].x - mouse.x;
+            let dy = nodes[i].y - mouse.y;
+            let dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < mouse.radius) {
+               ctx.beginPath();
+               const colorStr = isDark ? '255, 255, 255' : '30, 58, 138';
+               ctx.strokeStyle = `rgba(${colorStr}, ${0.2 - (dist/mouse.radius)*0.2})`;
+               ctx.lineWidth = 0.6;
+               ctx.moveTo(nodes[i].x, nodes[i].y);
+               ctx.lineTo(mouse.x, mouse.y);
+               ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+      const observer = new ResizeObserver(() => resize());
+      observer.observe(section);
+    })();
+
+    /* --- 2. BALANCED LIQUID SPOTLIGHT --- */
+    document.addEventListener("DOMContentLoaded", function() {
+      const cards = document.querySelectorAll(".liquid-card");
+      const section = document.getElementById("philosophy");
+      section.addEventListener("mousemove", (e) => {
+        cards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty("--x", `${x}px`);
+          card.style.setProperty("--y", `${y}px`);
+        });
+      });
+    });
+
+    /* --- 3. TABS --- */
+    function openTab(evt, tabName) {
+      const contents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.add("hidden");
+        contents[i].classList.remove("block");
+      }
+      const buttons = document.getElementsByClassName("tab-btn");
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active-tab", "text-blue-600", "dark:text-blue-400");
+        buttons[i].classList.add("text-slate-500", "dark:text-slate-400");
+        const line = buttons[i].querySelector('.active-line');
+        if(line) line.classList.add('scale-x-0');
+      }
+      document.getElementById(tabName).classList.remove("hidden");
+      document.getElementById(tabName).classList.add("block");
+
+      if(evt.currentTarget.classList.contains('tab-btn')) {
+        evt.currentTarget.classList.remove("text-slate-500", "dark:text-slate-400");
+        evt.currentTarget.classList.add("active-tab", "text-blue-600", "dark:text-blue-400");
+        const line = evt.currentTarget.querySelector('.active-line');
+        if(line) line.classList.remove('scale-x-0');
+      } else {
+        const matchBtn = document.querySelector(`button[onclick="openTab(event, '${tabName}')"]`);
+        if(matchBtn) {
+           matchBtn.classList.remove("text-slate-500", "dark:text-slate-400");
+           matchBtn.classList.add("active-tab", "text-blue-600", "dark:text-blue-400");
+           const line = matchBtn.querySelector('.active-line');
+           if(line) line.classList.remove('scale-x-0');
+        }
       }
     }
   </script>
+
+  <style>
+    .writing-vertical { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.1em; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    
+    /* LIQUID GLASS + BALANCED SHINE */
+    .liquid-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 
+        0 10px 40px -10px rgba(0,0,0,0.05),
+        inset 0 0 0 1px rgba(255,255,255,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .dark .liquid-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 
+        0 10px 40px -10px rgba(0,0,0,0.5),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .liquid-card:hover {
+      transform: translateY(-4px) scale(1.005);
+    }
+
+    /* BALANCED WET SHINE (Smaller & Less Opacity) */
+    .shine-surface {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      /* Radius 500px (was 800px) and Opacity 0.25 (was 0.6) for subtlety */
+      background: radial-gradient(
+        500px circle at var(--x, 0) var(--y, 0),
+        rgba(255, 255, 255, 0.25),
+        transparent 40%
+      );
+      opacity: 0;
+      transition: opacity 0.4s;
+      mix-blend-mode: soft-light;
+    }
+    .liquid-card:hover .shine-surface { opacity: 1; }
+
+    /* BORDER BEAM (Refined) */
+    .card-border-glow {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border-radius: 24px;
+      padding: 1px;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      background: radial-gradient(
+        300px circle at var(--x, 0) var(--y, 0),
+        rgba(59, 130, 246, 0.6), /* Softer Blue */
+        transparent 40%
+      );
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .liquid-card:hover .card-border-glow { opacity: 1; }
+    .dark .card-border-glow {
+      background: radial-gradient(
+        300px circle at var(--x, 0) var(--y, 0),
+        rgba(255, 255, 255, 0.4),
+        transparent 40%
+      );
+    }
+
+    /* Inset Glass for inner elements */
+    .glass-inset {
+      background: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .dark .glass-inset {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+  </style>
 </section>
 
     <!-- Overview & Message -->
