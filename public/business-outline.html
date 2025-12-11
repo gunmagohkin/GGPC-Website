@@ -5,21 +5,16 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Gunma Gohkin Philippines Corporation - Business Outline</title>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
-    <!-- External Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <!-- Vanilla Tilt for interactive cards -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 
-    <!-- Global CSS -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -41,18 +36,28 @@
             },
         };
     </script>
+
+    <style>
+        .venn-circle {
+            backdrop-filter: blur(0px); 
+        }
+        :is(.dark .venn-circle) {
+            mix-blend-mode: screen;
+        }
+        .venn-text {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+    </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
 
-    <!-- Preloader & Backgrounds -->
-    <div id="preloader" class="fixed inset-0 z-[60] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500">
-        <img src="images/Picture14.png" alt="Loading GGPC" class="animate-pulse"/>
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500">
+        <img src="images/Picture14.png" alt="Loading GGPC" class="animate-pulse h-16"/>
     </div>
     
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-primary z-[60] transition-all duration-100"></div>
     <div id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a class="flex items-center" href="index.html">
@@ -81,7 +86,6 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="index.html">Home</a>
@@ -94,7 +98,6 @@
     </header>
 
     <main class="relative z-10">
-        <!-- Hero Section -->
         <section class="relative min-h-screen flex items-center justify-center pt-20" id="hero-business">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20"></div>
             <img alt="High-tech manufacturing facility with robotic arms" class="absolute inset-0 w-full h-full object-cover -z-10" src="images/manufacturing.jpg"/>
@@ -108,11 +111,9 @@
             </div>
         </section>
 
-        <!-- Products Carousel Section -->
-        <section class="py-20" id="products">
+        <section class="pt-20 pb-0" id="products"> 
             <div class="container mx-auto px-6">
                 
-                <!-- 1. Automobile Parts Carousel -->
                 <div class="mb-20 animate-on-scroll">
                     <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-4 border-l-4 border-primary pl-4">Automobile-Related Parts</h2>
                     <p class="text-text-muted-light dark:text-text-muted-dark mb-8">Specializing in critical components for the automotive industry, ensuring reliability and performance.</p>
@@ -120,360 +121,199 @@
                     <div class="relative product-carousel-wrapper automobile-carousel-wrapper">
                         <div class="swiper automobile-carousel">
                             <div class="swiper-wrapper py-8 px-2">
-                                <!-- Slide 1 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Pinion Case for Starter Motor" class="auto-resize-img" src="images/products/Pinion Case for Starter Motor.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Pinion Case for Starter Motor</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Crucial housing for starter motors.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 2 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Bracket for Power Steering" class="auto-resize-img" src="images/products/Bracket for Power Steering (Automobile 2).png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Bracket for Power Steering</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Secure mounting for steering systems.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 3 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Durable housing for steering hydraulics." class="auto-resize-img" src="images/products/Housing for Power Steering (Automobile 1).png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Housing for Power Steering</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Reinforced bracket for steering systems.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 4 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Handle Seat for Motorbike" class="auto-resize-img" src="images/products/Handle Seat for Motorbike.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Handle Seat for Motorbike</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Ergonomic grab bar for passenger safety.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 5 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Rear Wiper Frame" class="auto-resize-img" src="images/products/Rear Wiper Frame.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Rear Wiper Frame</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Protective housing for rear wiper motors.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 6 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Front Wiper Frame" class="auto-resize-img" src="images/products/Front Wiper Frame.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Front Wiper Frame</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Robust structure for front wiper systems.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Pinion Case for Starter Motor" class="auto-resize-img" src="images/products/Pinion Case for Starter Motor.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Pinion Case for Starter Motor</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Crucial housing for starter motors.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Bracket for Power Steering" class="auto-resize-img" src="images/products/Bracket for Power Steering (Automobile 2).png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Bracket for Power Steering</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Secure mounting for steering systems.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Housing for Power Steering" class="auto-resize-img" src="images/products/Housing for Power Steering (Automobile 1).png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Housing for Power Steering</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Reinforced bracket for steering systems.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Handle Seat for Motorbike" class="auto-resize-img" src="images/products/Handle Seat for Motorbike.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Handle Seat for Motorbike</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Ergonomic grab bar for passenger safety.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Rear Wiper Frame" class="auto-resize-img" src="images/products/Rear Wiper Frame.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Rear Wiper Frame</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Protective housing for rear wiper motors.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Front Wiper Frame" class="auto-resize-img" src="images/products/Front Wiper Frame.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Front Wiper Frame</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Robust structure for front wiper systems.</p></div></div></div>
                             </div>
                         </div>
-
-                        <!-- Navigation Buttons -->
-                        <div class="swiper-button-prev custom-swiper-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14 7l-5 5 5 5V7z"/></svg>
-                        </div>
-                        <div class="swiper-button-next custom-swiper-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg>
-                        </div>
+                        <div class="swiper-button-prev custom-swiper-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14 7l-5 5 5 5V7z"/></svg></div>
+                        <div class="swiper-button-next custom-swiper-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg></div>
                     </div>
                 </div>
 
-                <!-- 2. Industrial Parts Carousel -->
-                <div class="mb-20 animate-on-scroll">
+                <div class="mb-2 animate-on-scroll"> 
                     <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-4 border-l-4 border-primary pl-4">Industrial & IT Parts</h2>
                     <p class="text-text-muted-light dark:text-text-muted-dark mb-8">Durable die-cast parts for industrial machines and sophisticated housings for IT equipment.</p>
                     
                     <div class="relative product-carousel-wrapper industrial-carousel-wrapper">
                         <div class="swiper industrial-carousel">
                             <div class="swiper-wrapper py-8 px-2">
-                                <!-- Slide 1 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Frame for Cooling Fan" class="auto-resize-img" src="images/products/Frame for Cooling Fan.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Frame for Cooling Fan</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Secure frame for efficient cooling.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 2 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Frame for Fuel Cell" class="auto-resize-img" src="images/products/Frame for Fuel Cell.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Frame for Fuel Cell</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Precision casing for fuel cell systems.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 3 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Bracket Rear for Alternator" class="auto-resize-img" src="images/products/Bracket Rear for Alternator.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Bracket Rear for Alternator</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Lightweight support for vehicle alternators.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 4 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Flywheel for Power Tool" class="auto-resize-img" src="images/products/Flywheel for Power Tool.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Flywheel for Power Tool</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Balanced flywheel for high-performance tools.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 5 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Housing for Linear Air Pump" class="auto-resize-img" src="images/products/Housing_for_Linear_Air_Pump-removebg-preview.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Housing for Linear Air Pump</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Quiet enclosure for air pumps.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 6 -->
-                                <div class="swiper-slide h-auto !w-80">
-                                    <div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700">
-                                        <div class="product-image-wrapper">
-                                            <img alt="Bracket for Stepping Motor" class="auto-resize-img" src="images/products/Bracket for Stepping Motor.png"/>
-                                        </div>
-                                        <div class="p-6 flex-grow">
-                                            <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Bracket for Stepping Motor</h3>
-                                            <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Stable mount for stepping motors.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Frame for Cooling Fan" class="auto-resize-img" src="images/products/Frame for Cooling Fan.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Frame for Cooling Fan</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Secure frame for efficient cooling.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Frame for Fuel Cell" class="auto-resize-img" src="images/products/Frame for Fuel Cell.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Frame for Fuel Cell</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Precision casing for fuel cell systems.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Bracket Rear for Alternator" class="auto-resize-img" src="images/products/Bracket Rear for Alternator.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Bracket Rear for Alternator</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Lightweight support for vehicle alternators.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Flywheel for Power Tool" class="auto-resize-img" src="images/products/Flywheel for Power Tool.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Flywheel for Power Tool</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Balanced flywheel for high-performance tools.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Housing for Linear Air Pump" class="auto-resize-img" src="images/products/Housing_for_Linear_Air_Pump-removebg-preview.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Housing for Linear Air Pump</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Quiet enclosure for air pumps.</p></div></div></div>
+                                <div class="swiper-slide h-auto !w-80"><div class="bg-card-light dark:bg-card-dark rounded-lg shadow-lg overflow-hidden group h-full flex flex-col card-hover-effect border border-gray-100 dark:border-gray-700"><div class="product-image-wrapper"><img alt="Bracket for Stepping Motor" class="auto-resize-img" src="images/products/Bracket for Stepping Motor.png"/></div><div class="p-6 flex-grow"><h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Bracket for Stepping Motor</h3><p class="text-text-muted-light dark:text-text-muted-dark text-sm">Stable mount for stepping motors.</p></div></div></div>
                             </div>
                         </div>
-                        
-                        <!-- Navigation Buttons -->
-                        <div class="swiper-button-prev custom-swiper-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14 7l-5 5 5 5V7z"/></svg>
-                        </div>
-                        <div class="swiper-button-next custom-swiper-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg>
-                        </div>
+                        <div class="swiper-button-prev custom-swiper-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14 7l-5 5 5 5V7z"/></svg></div>
+                        <div class="swiper-button-next custom-swiper-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg></div>
                     </div>
                 </div>
             </div>
         </section>
 
-<section class="py-20 bg-background-light dark:bg-background-dark relative" id="what-is-diecasting">
-    <div class="container mx-auto px-6">
-        
-        <div class="mb-12 animate-on-scroll">
-    
-    <div id="tilt-card" class="rounded-lg shadow-lg overflow-hidden cursor-default transform-style-3d bg-white dark:bg-slate-800" 
-         style="transform-style: preserve-3d;">
-         
-        <div class="bg-primary px-6 py-4 flex items-center" style="transform: translateZ(20px)">
-            <span class="material-icons text-white text-2xl mr-3">info</span>
-            <h2 class="text-xl md:text-2xl font-bold text-white">What is Die-casting?</h2>
-        </div>
-        
-        <div class="p-6 md:p-8 transition-colors duration-300">
-            <p class="mb-4 leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-100" style="transform: translateZ(10px)">
-                Die-casting is a manufacturing process in which a high-precision mould is installed into a die-casting machine, and molten metal (mainly Aluminum, Zinc, and Magnesium) is injected into the mould at high pressure and high speed.
-            </p>
-            <p class="leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-100" style="transform: translateZ(10px)">
-                Compared to Iron metals, Aluminum is lighter and can produce geometrically complex metal parts. Aluminum is used in vehicles such as automobiles and motorcycles, as well as in electrical and information equipment. Aluminum die-casting is friendly to the environment since the low density of alloys can reduce waste and scrap materials are recyclable.
-            </p>
-        </div>
-    </div>
-</div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div class="group animate-on-scroll" style="transition-delay: 0ms;">
-                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/incoming.png', 'Incoming Aluminum Ingots')">
-                    <img src="images/die casting pics/incoming.png" alt="Incoming Aluminum Ingots" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+        <section class="pt-10 pb-20 bg-background-light dark:bg-background-dark relative" id="what-is-diecasting">
+            <div class="container mx-auto px-6">
+                <div class="mb-12 animate-on-scroll">
+                    <div id="tilt-card" class="rounded-lg shadow-lg overflow-hidden cursor-default transform-style-3d bg-white dark:bg-slate-800" style="transform-style: preserve-3d;">
+                        <div class="bg-primary px-6 py-4 flex items-center" style="transform: translateZ(20px)">
+                            <span class="material-icons text-white text-2xl mr-3">info</span>
+                            <h2 class="text-xl md:text-2xl font-bold text-white">What is Die-casting?</h2>
+                        </div>
+                        <div class="p-6 md:p-8 transition-colors duration-300">
+                            <p class="mb-4 leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-100" style="transform: translateZ(10px)">
+                                Die-casting is a manufacturing process in which a high-precision mould is installed into a die-casting machine, and molten metal (mainly Aluminum, Zinc, and Magnesium) is injected into the mould at high pressure and high speed.
+                            </p>
+                            <p class="leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-100" style="transform: translateZ(10px)">
+                                Compared to Iron metals, Aluminum is lighter and can produce geometrically complex metal parts. Aluminum is used in vehicles such as automobiles and motorcycles, as well as in electrical and information equipment. Aluminum die-casting is friendly to the environment since the low density of alloys can reduce waste and scrap materials are recyclable.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Incoming</h3>
-            </div>
 
-            <div class="group animate-on-scroll" style="transition-delay: 100ms;">
-                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/melting.png', 'Melting Process')">
-                    <img src="images/die casting pics/melting.png" alt="Melting Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="group animate-on-scroll" style="transition-delay: 0ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/incoming.png', 'Incoming Aluminum Ingots')">
+                            <img src="images/die casting pics/incoming.png" alt="Incoming Aluminum Ingots" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Incoming</h3>
+                    </div>
+                    <div class="group animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/melting.png', 'Melting Process')">
+                            <img src="images/die casting pics/melting.png" alt="Melting Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Melting</h3>
+                    </div>
+                    <div class="group animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/casting.png', 'Casting Process')">
+                            <img src="images/die casting pics/casting.png" alt="Casting Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Casting</h3>
+                    </div>
+                    <div class="group animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/trimming.png', 'Trimming Process')">
+                            <img src="images/die casting pics/trimming.png" alt="Trimming Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Trimming</h3>
                     </div>
                 </div>
-                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Melting</h3>
             </div>
 
-            <div class="group animate-on-scroll" style="transition-delay: 200ms;">
-                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/casting.png', 'Casting Process')">
-                    <img src="images/die casting pics/casting.png" alt="Casting Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+            <div id="lightbox-modal" class="fixed inset-0 z-[9999] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeLightbox()">
+                <button class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-[110]">
+                    <span class="material-icons text-5xl">close</span>
+                </button>
+                <div class="relative max-w-6xl w-full h-full flex items-center justify-center" onclick="event.stopPropagation()">
+                    <img id="lightbox-image" src="" alt="Full Screen" class="max-h-[85vh] max-w-full object-contain rounded-md shadow-2xl scale-95 transition-transform duration-300"/>
+                    <p id="lightbox-caption" class="absolute bottom-4 left-0 right-0 text-center text-white bg-black/50 p-3 backdrop-blur-sm font-bold text-lg translate-y-full transition-transform duration-300 rounded-b-md"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="design-analysis" class="relative w-full py-20 bg-transparent overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="mb-12 border-l-4 border-primary pl-4 animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-2">Design and Analysis</h2>
+                    <p class="text-text-muted-light dark:text-text-muted-dark max-w-2xl">
+                        Once the product drawing is received from the customer, it will be converted into a drawing for diecasting. 
+                        Then, the die mould design starts. A simulation of molten metal flow analysis will be done. Mould fabrication starts.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center justify-center relative mt-8 min-h-[500px] animate-on-scroll">
+                    <h3 class="text-4xl font-display font-bold text-text-light dark:text-text-dark mb-8 tracking-wide drop-shadow-md">Die Casting</h3>
+                    <div class="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] flex items-center justify-center select-none scale-90 sm:scale-100">
+                        <div id="circle-design" class="venn-circle absolute top-0 left-0 sm:left-4 w-52 h-52 sm:w-64 sm:h-64 bg-primary/80 dark:bg-blue-400/90 rounded-full flex items-center justify-center text-center p-6 transition-all duration-500 ease-out hover:z-20 hover:scale-110 cursor-pointer shadow-[0_0_30px_rgba(0,82,155,0.5)] dark:shadow-[0_0_30px_rgba(96,165,250,0.6)]" onmouseenter="handleHover('design')" onmouseleave="handleLeave('design')"><p class="venn-text font-bold text-white text-xl drop-shadow-md pointer-events-none">Design</p></div>
+                        <div id="circle-analysis" class="venn-circle absolute top-0 right-0 sm:right-4 w-52 h-52 sm:w-64 sm:h-64 bg-blue-600/80 dark:bg-blue-300/90 rounded-full flex items-center justify-center text-center p-6 transition-all duration-500 ease-out hover:z-20 hover:scale-110 cursor-pointer shadow-[0_0_30px_rgba(37,99,235,0.5)] dark:shadow-[0_0_30px_rgba(147,197,253,0.6)]" onmouseenter="handleHover('analysis')" onmouseleave="handleLeave('analysis')"><p class="venn-text font-bold text-white text-xl drop-shadow-md pointer-events-none">Analysis</p></div>
+                        <div id="circle-quality" class="venn-circle absolute bottom-0 left-1/2 -translate-x-1/2 w-52 h-52 sm:w-64 sm:h-64 bg-blue-800/80 dark:bg-blue-500/90 rounded-full flex items-center justify-center text-center p-6 transition-all duration-500 ease-out hover:z-20 hover:scale-110 cursor-pointer shadow-[0_0_30px_rgba(30,64,175,0.5)] dark:shadow-[0_0_30px_rgba(59,130,246,0.6)]" onmouseenter="handleHover('quality')" onmouseleave="handleLeave('quality')"><p class="venn-text font-bold text-white text-xl drop-shadow-md pointer-events-none">Quality</p></div>
                     </div>
                 </div>
-                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Casting</h3>
             </div>
+        </section>
 
-            <div class="group animate-on-scroll" style="transition-delay: 300ms;">
-                <div class="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] mb-3 bg-gray-200 dark:bg-gray-800 cursor-zoom-in" onclick="openLightbox('images/die casting pics/trimming.png', 'Trimming Process')">
-                    <img src="images/die casting pics/trimming.png" alt="Trimming Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+        <section id="superior-quality" class="relative w-full py-20 bg-transparent">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-12 animate-on-scroll">
+                    <h3 class="text-xl md:text-2xl font-semibold text-text-light dark:text-text-dark max-w-4xl mx-auto leading-relaxed">
+                        Superior Design and Analysis provides <span class="text-primary font-bold">High-Quality Die-casting Products.</span>
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="group animate-on-scroll" style="transition-delay: 0ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] border border-gray-200 dark:border-gray-700 cursor-zoom-in" onclick="openLightbox('images/superior design and analysis pics/mould design.png', '3D Mould Design')">
+                            <img src="images/superior design and analysis pics/mould design.png" alt="3D Mould Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-center text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Mould Design</p>
+                    </div>
+                    <div class="group animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] border border-gray-200 dark:border-gray-700 cursor-zoom-in" onclick="openLightbox('images/superior design and analysis pics/flow analysis.png', 'Flow Analysis')">
+                            <img src="images/superior design and analysis pics/flow analysis.png" alt="Flow Analysis" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-center text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Flow Analysis</p>
+                    </div>
+                    <div class="group animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] border border-gray-200 dark:border-gray-700 cursor-zoom-in" onclick="openLightbox('images/superior design and analysis pics/mould fabrication.png', 'Mould Fabrication')">
+                            <img src="images/superior design and analysis pics/mould fabrication.png" alt="Mould Fabrication" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-center text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Mould Fabrication</p>
+                    </div>
+                    <div class="group animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] border border-gray-200 dark:border-gray-700 cursor-zoom-in" onclick="openLightbox('images/superior design and analysis pics/inspection.png', 'Inspection')">
+                            <img src="images/superior design and analysis pics/inspection.png" alt="Inspection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-center text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Inspection</p>
                     </div>
                 </div>
-                <h3 class="font-bold text-lg text-text-light dark:text-text-dark group-hover:text-primary transition-colors">Trimming</h3>
             </div>
+        </section>
 
-        </div>
-    </div>
-
-    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeLightbox()">
-        <button class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-[110]">
-            <span class="material-icons text-5xl">close</span>
-        </button>
-        <div class="relative max-w-6xl w-full h-full flex items-center justify-center" onclick="event.stopPropagation()">
-            <img id="lightbox-image" src="" alt="Full Screen" class="max-h-[85vh] max-w-full object-contain rounded-md shadow-2xl scale-95 transition-transform duration-300"/>
-            <p id="lightbox-caption" class="absolute bottom-4 left-0 right-0 text-center text-white bg-black/50 p-3 backdrop-blur-sm font-bold text-lg translate-y-full transition-transform duration-300 rounded-b-md"></p>
-        </div>
-    </div>
-</section>
-
-        <!-- Process Timeline (ADDED PARTICLES & TILT) -->
         <section id="process-timeline" class="relative py-20 bg-slate-100 dark:bg-slate-900">
-            <!-- SECTION SPECIFIC PARTICLES -->
             <div id="timeline-particles" class="absolute inset-0 z-0"></div>
 
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Our Integrated Process</h2><p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">From concept to completion, we ensure quality at every step.</p></div>
                 <div class="relative wrap overflow-hidden p-10 h-full">
-                    
-                    <!-- 1. Order & Specs -->
-                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">receipt_long</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">1. Order & Specs</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Product Specifications Development & Purchase Order Receipt.</p>
-                        </div>
-                    </div>
-
-                    <!-- 2. Design -->
-                    <div class="timeline-item mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">3d_rotation</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">2. Design</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">3D Modeling & Die-Mould Design.</p>
-                        </div>
-                    </div>
-
-                    <!-- 3. Fabrication -->
-                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">construction</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">3. Fabrication</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Die-Mould Fabrication.</p>
-                        </div>
-                    </div>
-
-                    <!-- 4. Casting -->
-                    <div class="timeline-item mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">precision_manufacturing</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">4. Casting</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Diecasting & Trimming.</p>
-                        </div>
-                    </div>
-
-                    <!-- 5. Processing -->
-                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">build</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">5. Processing</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Shotblasting, Deburring, Machining & Insertion.</p>
-                        </div>
-                    </div>
-
-                    <!-- 6. Finishing -->
-                    <div class="timeline-item mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">format_paint</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">6. Finishing</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Painting & Coating.</p>
-                        </div>
-                    </div>
-
-                    <!-- 7. Inspection -->
-                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">fact_check</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">7. Inspection</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Measurement Inspection.</p>
-                        </div>
-                    </div>
-
-                    <!-- 8. Logistics -->
-                    <div class="timeline-item flex justify-between flex-row-reverse items-center w-full left-timeline relative">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">local_shipping</span></div>
-                        <div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4">
-                            <h3 class="font-bold text-primary text-xl mb-1">8. Logistics</h3>
-                            <p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Labeling, Packing, Documentation & Shipment (Domestic/Overseas).</p>
-                        </div>
-                    </div>
-
+                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">receipt_long</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">1. Order & Specs</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Product Specifications Development & Purchase Order Receipt.</p></div></div>
+                    <div class="timeline-item mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">3d_rotation</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">2. Design</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">3D Modeling & Die-Mould Design.</p></div></div>
+                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">construction</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">3. Fabrication</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Die-Mould Fabrication.</p></div></div>
+                    <div class="timeline-item mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">precision_manufacturing</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">4. Casting</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Diecasting & Trimming.</p></div></div>
+                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">build</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">5. Processing</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Shotblasting, Deburring, Machining & Insertion.</p></div></div>
+                    <div class="timeline-item mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">format_paint</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">6. Finishing</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Painting & Coating.</p></div></div>
+                    <div class="timeline-item mb-8 flex justify-between items-center w-full right-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">fact_check</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">7. Inspection</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Measurement Inspection.</p></div></div>
+                    <div class="timeline-item flex justify-between flex-row-reverse items-center w-full left-timeline relative"><div class="order-1 w-5/12"></div><div class="timeline-icon z-20 flex items-center order-1 bg-primary shadow-xl w-14 h-14 rounded-full"><span class="material-icons text-white mx-auto text-3xl">local_shipping</span></div><div class="timeline-card tilt-card order-1 bg-card-light dark:bg-card-dark rounded-lg shadow-xl w-5/12 px-6 py-4"><h3 class="font-bold text-primary text-xl mb-1">8. Logistics</h3><p class="text-sm leading-snug text-text-muted-light dark:text-text-muted-dark">Labeling, Packing, Documentation & Shipment (Domestic/Overseas).</p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Dual Plant Section -->
         <section class="py-20 bg-background-light dark:bg-background-dark">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Dual-Plant Production Power</h2><p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">Our two state-of-the-art facilities work in synergy.</p></div>
@@ -484,7 +324,6 @@
             </div>
         </section>
         
-        <!-- CTA Section -->
         <section class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center bg-primary/10 dark:bg-primary/20 p-10 rounded-lg">
@@ -509,25 +348,112 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/business-outline.js"></script>
 
     <script>
-    // Force Vanilla Tilt Initialization (Subtle Version)
+    // --- PRELOADER LOGIC (Hides the loading screen) ---
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.add('opacity-0');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    });
+
+    // Force Vanilla Tilt Initialization
     document.addEventListener("DOMContentLoaded", function() {
         if (typeof VanillaTilt !== 'undefined') {
             const card = document.getElementById("tilt-card");
-            VanillaTilt.init(card, {
-                max: 1.5,             // Drastically reduced tilt (was 5)
-                speed: 1000,          // Slower, smoother movement
-                glare: true,          
-                "max-glare": 0.1,     // Faint glare (was 0.2)
-                scale: 1.0,           // No zoom (was 1.02)
-                perspective: 1500     // Flattens the 3D effect slightly
-            });
+            if(card) {
+                VanillaTilt.init(card, {
+                    max: 1.5,
+                    speed: 1000,
+                    glare: true,
+                    "max-glare": 0.1,
+                    scale: 1.0,
+                    perspective: 1500
+                });
+            }
         }
     });
-</script>
+
+    // --- Venn Diagram Interactive Logic ---
+    const vennData = {
+        design: {
+            title: "Design",
+            desc: "Design ensures that the product is manufacturable, including shape, material, and tooling."
+        },
+        analysis: {
+            title: "Analysis",
+            desc: "Analysis involves testing and verifying the design to ensure that it meets criteria."
+        },
+        quality: {
+            title: "Quality",
+            desc: "Quality is about meeting the required standards, dimensional accuracy, defect prevention, and durability."
+        }
+    };
+
+    function handleHover(key) {
+        const circle = document.getElementById(`circle-${key}`);
+        const textEl = circle.querySelector('.venn-text');
+        
+        // Use HTML to allow span styling
+        textEl.innerHTML = `<span class="text-sm sm:text-base leading-tight font-medium">${vennData[key].desc}</span>`;
+        
+        // Dim other circles
+        const allCircles = document.querySelectorAll('.venn-circle');
+        allCircles.forEach(c => {
+            if (c !== circle) {
+                c.classList.add('opacity-40', 'blur-[2px]');
+            }
+        });
+    }
+
+    function handleLeave(key) {
+        const circle = document.getElementById(`circle-${key}`);
+        const textEl = circle.querySelector('.venn-text');
+
+        // Revert to Title
+        textEl.innerText = vennData[key].title;
+
+        // Restore other circles
+        const allCircles = document.querySelectorAll('.venn-circle');
+        allCircles.forEach(c => {
+            c.classList.remove('opacity-40', 'blur-[2px]');
+        });
+    }
+
+    // --- LIGHTBOX LOGIC (Crucial for zoom/fullscreen) ---
+    function openLightbox(src, caption) {
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-image');
+        const cap = document.getElementById('lightbox-caption');
+        
+        if(modal && img && cap) {
+            img.src = src;
+            cap.innerText = caption;
+            modal.classList.remove('hidden');
+            // Small timeout to allow transition to kick in
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+        } else {
+            console.error("Lightbox elements not found!");
+        }
+    }
+
+    function closeLightbox() {
+        const modal = document.getElementById('lightbox-modal');
+        if(modal) {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Match transition duration
+        }
+    }
+    </script>
 </body>
 </html>
