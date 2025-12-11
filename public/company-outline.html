@@ -339,167 +339,228 @@
     </section>
 
     <!-- PHILOSOPHY SECTION (FIXED: CENTERED, WIDE CARDS, BUTTONS OUTSIDE) -->
-    <section class="py-20 bg-slate-100 dark:bg-slate-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Philosophy</h2>
+<section id="philosophy" class="py-20 bg-gray-50 text-gray-800 transition-colors duration-300 dark:bg-slate-900 dark:text-gray-100">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="mb-16 text-center">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
+        Our Philosophy
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
+        Guided by the GGK Group Pyramid—uniting our principles, mission, and policies to drive sustainable growth and industry leadership.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-12" role="tablist">
+      <button onclick="switchTab('tab-core')" id="btn-tab-core" class="tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg ring-2 ring-blue-600 ring-offset-2 ring-offset-gray-50 dark:ring-offset-slate-900">
+        Core Values
+      </button>
+      <button onclick="switchTab('tab-policies')" id="btn-tab-policies" class="tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 dark:hover:text-white">
+        Our Policies
+      </button>
+      <button onclick="switchTab('tab-vision')" id="btn-tab-vision" class="tab-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 dark:hover:text-white">
+        Vision 2030
+      </button>
+    </div>
+
+    <div class="min-h-[400px]">
+
+      <div id="tab-core" class="tab-content transition-opacity duration-500 opacity-100 block">
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <div class="group relative p-8 bg-white rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all dark:bg-slate-800 dark:border-slate-700">
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-20 h-20 bg-blue-100 rounded-full blur-2xl opacity-50 dark:bg-blue-900"></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-blue-600 rounded-lg text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">The Principle</h3>
+              </div>
+              <blockquote class="italic text-gray-600 mb-6 border-l-4 border-blue-500 pl-4 dark:text-gray-300">
+                "Together We Work"
+              </blockquote>
+              <ul class="space-y-4 text-gray-600 dark:text-gray-400">
+                <li class="flex items-start">
+                  <span class="mr-3 text-blue-500 mt-1">✔</span>
+                  To make our workplace engaging and motivating.
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-blue-500 mt-1">✔</span>
+                  To make our company grow and flourish.
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-blue-500 mt-1">✔</span>
+                  To make our living standards better.
+                </li>
+              </ul>
             </div>
-            
-            <!-- Width Limiter Container for Alignment -->
-            <div class="philosophy-section-container">
-                
-                <!-- Buttons Positioned OUTSIDE the Swiper Wrapper -->
-                <div class="swiper-button-prev philosophy-carousel-nav philosophy-button-prev btn-wrapper-prev"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> 
+          </div>
+
+          <div class="group relative p-8 bg-white rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all dark:bg-slate-800 dark:border-slate-700">
+            <div class="absolute bottom-0 left-0 -mb-4 -ml-4 w-20 h-20 bg-teal-100 rounded-full blur-2xl opacity-50 dark:bg-teal-900"></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-teal-500 rounded-lg text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </div>
-                <div class="swiper-button-next philosophy-carousel-nav philosophy-button-next btn-wrapper-next"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg> 
-                </div>
-
-                <div class="swiper philosophy-carousel">
-                    <div class="swiper-wrapper">
-                        
-                        <!-- Slide 1: Title -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box">
-                                    <img src="images/Picture14.png" alt="Logo" class="h-24 mb-6">
-                                    <h3 class="phil-title" style="border: none;">GUNMA GOHKIN GROUP</h3>
-                                    <h4 class="text-4xl font-bold text-text-light dark:text-text-dark uppercase tracking-widest">PHILOSOPHY</h4>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 2: Welcome -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box">
-                                    <h3 class="phil-title">Welcome</h3>
-                                    <p class="phil-content text-center">
-                                        At Gunma Gohkin Group, we are committed to excellence, innovation, and sustainability. 
-                                        This Philosophy Book outlines our <b>principles</b>, <b>mission</b>, <b>management policies</b>, 
-                                        <b>vision</b>, and <b>environment and quality policy</b>—guiding us toward continuous growth.
-                                    </p>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 3: ROUNDED BLUE PYRAMID (SVG) -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box">
-                                    <h3 class="phil-title" style="border: none; margin-bottom: 5px;">Philosophy Pyramid</h3>
-                                    <div class="pyramid-container">
-                                        <svg viewBox="0 0 300 230" class="pyramid-svg">
-                                            <!-- Top (Light Blue) -->
-                                            <path d="M150,10 L210,60 L90,60 Z" fill="#38bdf8" stroke="#38bdf8" stroke-width="8" stroke-linejoin="round"/>
-                                            <text x="150" y="55" class="svg-text">Principle</text>
-                                            <!-- Mid (Medium Blue) -->
-                                            <path d="M80,75 L220,75 L240,125 L60,125 Z" fill="#0284c7" stroke="#0284c7" stroke-width="8" stroke-linejoin="round"/>
-                                            <text x="150" y="115" class="svg-text">Mission</text>
-                                            <!-- Base (Dark Blue) -->
-                                            <path d="M50,140 L250,140 L280,200 L20,200 Z" fill="#00529B" stroke="#00529B" stroke-width="8" stroke-linejoin="round"/>
-                                            <text x="150" y="185" class="svg-text">Management Policies</text>
-                                        </svg>
-                                        <span class="material-icons p-arrow">arrow_downward</span>
-                                        <h2 class="p-vision">GROUP VISION</h2>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 4: Principle -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box text-left">
-                                    <h3 class="phil-title">Principle</h3>
-                                    <p class="font-bold text-lg mb-4 text-primary text-center w-full">TOGETHER WE WORK,</p>
-                                    <ul class="phil-list pl-4">
-                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to make our workplace engaging and motivating.</li>
-                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to make our company grow and flourish.</li>
-                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to make our living standards better.</li>
-                                    </ul>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 5: Mission -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box text-left">
-                                    <h3 class="phil-title">Mission</h3>
-                                    <p class="font-bold text-lg mb-4 text-primary text-center w-full">We always stay a good partner,</p>
-                                    <ul class="phil-list pl-4">
-                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to bring our customers trust and satisfaction.</li>
-                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to bring our families thanks and happiness.</li>
-                                        <li><span class="material-icons text-blue-500 mr-3 mt-1">diamond</span> to bring the community harmony and contribution.</li>
-                                    </ul>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 6: Management Policy -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box text-left">
-                                    <h3 class="phil-title">Management Policy</h3>
-                                    <ol class="phil-list list-decimal pl-8 space-y-3">
-                                        <li><b>Leading Die-Casting Company:</b> Safe, clean, and earth-friendly to satisfy customers.</li>
-                                        <li><b>Enhance Profitability:</b> Collaborate domestic and overseas technical capabilities.</li>
-                                        <li><b>Foster a Workplace:</b> Enable employees to have hopes, aspirations, and self-growth.</li>
-                                    </ol>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 7: Policies -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box text-left">
-                                    <h3 class="phil-title">Policies</h3>
-                                    <div class="w-full grid grid-cols-2 gap-6">
-                                        <div>
-                                            <h4 class="font-bold text-green-600 mb-2 flex items-center uppercase text-sm"><span class="material-icons text-base mr-2">eco</span> Environment</h4>
-                                            <ul class="list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark space-y-2">
-                                                <li>Energy saving & 3Rs.</li>
-                                                <li>Green procurement compliance.</li>
-                                                <li>Plan-Do-Check-Action scheme.</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-blue-600 mb-2 flex items-center uppercase text-sm"><span class="material-icons text-base mr-2">verified</span> Quality</h4>
-                                            <ul class="list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark space-y-2">
-                                                <li>Product Safety Launch.</li>
-                                                <li>Implement 3Ps & 3Gs.</li>
-                                                <li>Constant professional development.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- Slide 8: Vision 2030 -->
-                        <div class="swiper-slide"> 
-                            <div class="phil-card">
-                                <div class="phil-content-box">
-                                    <h3 class="phil-title">Group Vision 2030</h3>
-                                    <p class="text-sm font-bold mb-6 text-center italic text-primary">"Leading Die-casting Company with technological strength and credibility."</p>
-                                    <div class="w-full space-y-3">
-                                        <div class="bg-blue-900 text-white p-3 rounded text-sm font-bold text-center shadow-md">FY22-24: DEVELOP AN ABILITY</div>
-                                        <div class="bg-blue-700 text-white p-3 rounded text-sm font-bold text-center shadow-md">FY25-27: PERFORM A CHALLENGE</div>
-                                        <div class="bg-blue-500 text-white p-3 rounded text-sm font-bold text-center shadow-md">FY28-30: MAKE A LEAP</div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-
-                    </div>
-                    <div class="philosophy-pagination swiper-pagination !bottom-0"></div>
-                </div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">The Mission</h3>
+              </div>
+              <blockquote class="italic text-gray-600 mb-6 border-l-4 border-teal-500 pl-4 dark:text-gray-300">
+                "Always Stay a Good Partner"
+              </blockquote>
+              <ul class="space-y-4 text-gray-600 dark:text-gray-400">
+                <li class="flex items-start">
+                  <span class="mr-3 text-teal-500 mt-1">✔</span>
+                  Bring trust and satisfaction to our customers.
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-teal-500 mt-1">✔</span>
+                  Bring thanks and happiness to employees & families.
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-teal-500 mt-1">✔</span>
+                  Bring harmony and contribution to the community.
+                </li>
+              </ul>
             </div>
+          </div>
+
         </div>
-    </section>
+      </div>
+
+      <div id="tab-policies" class="tab-content transition-opacity duration-500 opacity-0 hidden">
+        <div class="grid lg:grid-cols-3 gap-6">
+          
+          <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-500 dark:bg-slate-800 dark:border-indigo-400">
+            <h4 class="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
+              <span class="text-indigo-500">#1</span> Management
+            </h4>
+            <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">
+              Striving to be a leading die-casting company that is safe, secure, and earth-friendly.
+            </p>
+            <ul class="text-sm space-y-2 text-gray-500 dark:text-gray-400">
+              <li>• Enhance profitability via global collaboration.</li>
+              <li>• Foster a workplace of hope and self-growth.</li>
+              <li>• Always satisfy our valued customers.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500 dark:bg-slate-800 dark:border-green-400">
+            <h4 class="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
+              <span class="text-green-500">#2</span> Environment
+            </h4>
+            <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">
+              Sustaining the environment through efficient workplace practices.
+            </p>
+            <ul class="text-sm space-y-2 text-gray-500 dark:text-gray-400">
+              <li>• Energy Saving & 3Rs (Reduce, Reuse, Recycle).</li>
+              <li>• Green Procurement standards compliance.</li>
+              <li>• Observance of Plan-Do-Check-Action (PDCA).</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500 dark:bg-slate-800 dark:border-red-400">
+            <h4 class="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
+              <span class="text-red-500">#3</span> Quality
+            </h4>
+            <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">
+              Maintaining our status as a trusted global partner.
+            </p>
+            <ul class="text-sm space-y-2 text-gray-500 dark:text-gray-400">
+              <li>• Implement 3Ps (Product, Place, People).</li>
+              <li>• Implement 3Gs (Gembutsu, Gemba, Genjitsu).</li>
+              <li>• Constant personal & professional development.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="tab-vision" class="tab-content transition-opacity duration-500 opacity-0 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 dark:bg-slate-800">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Group Vision 2030</h3>
+            <p class="text-blue-600 font-medium dark:text-blue-400">Utilizing group synergy to be a Leading Die-Casting Company.</p>
+          </div>
+
+          <div class="relative">
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 rounded dark:bg-slate-700"></div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative z-10">
+              
+              <div class="group text-center">
+                <div class="w-16 h-16 mx-auto bg-white border-4 border-blue-200 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all dark:bg-slate-900 dark:border-slate-600 dark:text-blue-400">
+                  07
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Develop an Ability</h4>
+                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">FY 2022 - 2024</span>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 px-4">Refining quality and technical capabilities.</p>
+              </div>
+
+              <div class="group text-center">
+                <div class="w-16 h-16 mx-auto bg-white border-4 border-indigo-200 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:border-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all dark:bg-slate-900 dark:border-slate-600 dark:text-indigo-400">
+                  08
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Perform a Challenge</h4>
+                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">FY 2025 - 2027</span>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 px-4">Creating a challenging, eco-friendly workplace.</p>
+              </div>
+
+              <div class="group text-center">
+                <div class="w-16 h-16 mx-auto bg-white border-4 border-teal-200 text-teal-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:border-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-all dark:bg-slate-900 dark:border-slate-600 dark:text-teal-400">
+                  09
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Make a Leap</h4>
+                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">FY 2028 - 2030</span>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 px-4">Becoming a trusted, preferred, and earth-friendly corporation.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      // 1. Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block', 'opacity-100');
+        el.classList.add('opacity-0');
+      });
+
+      // 2. Reset all buttons to default state
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        // Remove active classes
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-lg', 'ring-2', 'ring-blue-600', 'ring-offset-2', 'ring-offset-gray-50', 'dark:ring-offset-slate-900');
+        // Add inactive classes
+        btn.classList.add('bg-white', 'text-gray-600', 'hover:bg-gray-100', 'dark:bg-slate-800', 'dark:text-gray-300');
+      });
+
+      // 3. Show selected content
+      const selectedContent = document.getElementById(tabId);
+      if (selectedContent) {
+        selectedContent.classList.remove('hidden');
+        // Small delay to allow display:block to apply before opacity transition
+        setTimeout(() => {
+          selectedContent.classList.remove('opacity-0');
+          selectedContent.classList.add('opacity-100');
+        }, 10);
+      }
+
+      // 4. Style the active button
+      const activeBtn = document.getElementById('btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-gray-600', 'hover:bg-gray-100', 'dark:bg-slate-800', 'dark:text-gray-300');
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-lg', 'ring-2', 'ring-blue-600', 'ring-offset-2', 'ring-offset-gray-50', 'dark:ring-offset-slate-900');
+      }
+    }
+  </script>
+</section>
 
     <!-- Overview & Message -->
     <section class="py-20">
