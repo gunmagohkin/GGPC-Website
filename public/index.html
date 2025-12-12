@@ -14,8 +14,16 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-   <script src="js/index.js"></script>
+    <script src="js/index.js"></script>
     <script src="loader.js"></script>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.5); border-radius: 20px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: rgba(156, 163, 175, 0.8); }
+        .text-shadow-strong { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+    </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
 
@@ -37,13 +45,14 @@
             </span>
         </a>
         <div class="flex items-center">
-<nav class="hidden md:flex items-center space-x-6">
-    <a class="text-text-light dark:text-text-dark active" href="index.html">Home</a>  <a class="text-text-light dark:text-text-dark" href="company-outline.html">Profile</a>
-    <a class="text-text-light dark:text-text-dark" href="business-outline.html">Outline</a>
-    <a class="text-text-light dark:text-text-dark" href="initiatives.html">Initiatives</a>
-    <a class="text-text-light dark:text-text-dark" href="opportunities.html">Opportunities</a>
-</nav>
-<div class="flex items-center ml-6">
+            <nav class="hidden md:flex items-center space-x-6">
+                <a class="text-text-light dark:text-text-dark active" href="index.html">Home</a>
+                <a class="text-text-light dark:text-text-dark" href="company-outline.html">Profile</a>
+                <a class="text-text-light dark:text-text-dark" href="business-outline.html">Outline</a>
+                <a class="text-text-light dark:text-text-dark" href="initiatives.html">Initiatives</a>
+                <a class="text-text-light dark:text-text-dark" href="opportunities.html">Opportunities</a>
+            </nav>
+            <div class="flex items-center ml-6">
                 <button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" onclick="toggleDarkMode()">
                     <span class="material-icons dark:hidden">dark_mode</span>
                     <span class="material-icons hidden dark:inline">light_mode</span>
@@ -64,7 +73,9 @@
         </div>
     </div>
 </header>
+
 <main class="relative z-10">
+    
     <section class="relative min-h-screen flex items-center justify-center pt-20" id="home">
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20"></div>
         <img alt="Aerial view of the Gunma Gohkin facility" class="absolute inset-0 w-full h-full object-cover -z-10" src="images/GGPC_Top.jpg"/>
@@ -75,7 +86,7 @@
             <div class="overflow-hidden pb-2">
                 <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-shadow-strong animate-reveal-up animation-delay-300">Providing high-quality transport vehicle parts for local and global markets, driven by Technology, Knowledge, and Passion.</p>
             </div>
-            <a class="bg-primary text-white font-bold py-3 px-8 rounded-full transform animate-pulse-glow transition-all duration-300 ease-in-out hover:bg-blue-800 hover:scale-110 hover:shadow-xl" href="company-profile.html">Learn More</a>
+            <a class="bg-primary text-white font-bold py-3 px-8 rounded-full transform animate-pulse-glow transition-all duration-300 ease-in-out hover:bg-blue-800 hover:scale-110 hover:shadow-xl" href="company-outline.html">Learn More</a>
         </div>
     </section>
 
@@ -89,7 +100,7 @@
                 <div class="space-y-6 stagger-child">
                     <p class="text-text-light dark:text-text-dark leading-relaxed">Since its establishment as a pioneer in die-casting technology, the Gunma Gohkin Group has been delivering high-quality automotive parts to both local and global markets. In 1995, the growing demand paved the way for the founding of Gunma Gohkin Philippines Corporation, marking a new chapter of growth and partnership in the region.</p>
                     <p class="text-text-light dark:text-text-dark leading-relaxed">Guided by the values of Technology, Knowledge, and Passion, GGPC continues to advance toward a sustainable and smarter future. United as one family, we remain committed to excellence, innovation, and trust—striving to achieve 100 Years of Excellent Service as the Preferred Supplier of our customers.</p>
-                    <a class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-colors" href="company-profile.html">Discover Our Story</a>
+                    <a class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-colors" href="company-outline.html">Discover Our Story</a>
                 </div>
                 <div class="parallax-hover-container rounded-lg shadow-xl overflow-hidden stagger-child" style="transition-delay: 150ms; aspect-ratio: 16/9;">
                     <img src="images/gate.png" alt="Modern office building exterior" class="parallax-img w-full h-full object-cover"/>
@@ -98,28 +109,75 @@
         </div>
     </section>
 
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Headlines</h2>
-                <p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">Stay Informed with Our Latest Updates</p>
+    <section class="py-20 relative overflow-hidden bg-slate-50 dark:bg-[#0f172a] transition-colors duration-300">
+        
+        <div class="absolute top-0 -left-40 w-80 h-80 bg-blue-400 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 dark:opacity-20 animate-blob pointer-events-none"></div>
+        <div class="absolute top-0 -right-40 w-80 h-80 bg-cyan-400 dark:bg-cyan-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 dark:opacity-20 animate-blob animation-delay-2000 pointer-events-none"></div>
+        <div class="absolute -bottom-40 left-20 w-80 h-80 bg-indigo-400 dark:bg-indigo-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 dark:opacity-20 animate-blob animation-delay-4000 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-12 text-left">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500 dark:from-blue-400 dark:to-cyan-400">
+                    Bulletin Board
+                </h2>
+                <p class="text-lg text-slate-600 dark:text-gray-400 mt-2">Latest updates from Gunma Gohkin</p>
             </div>
-            <div id="headlines-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <article class="auto-shine-card bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child" style="--shine-delay: 0s;">
-                    <h3 class="text-xl font-bold text-primary mb-2">GGPC joins PDMEX 2024</h3>
-                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">August 15, 2024</p>
-                    <p class="text-text-light dark:text-text-dark">GGPC is proud to announce its participation in the upcoming Philippine Die & Mould Machineries and Equipment Exhibition (PDMEX). Visit our booth to see our latest innovations.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <article class="lg:col-span-7 group relative rounded-[2rem] shadow-xl hover:shadow-2xl overflow-hidden [mask-image:radial-gradient(white,black)] transform transition-all duration-300 h-[500px] lg:h-auto bg-blue-50/80 dark:bg-blue-900/10 border border-blue-100 dark:border-white/10">
+                    
+                    <img src="images/headlines/30th (1).JPG" alt="GKG 30th Anniversary Logo" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-0 opacity-90 dark:opacity-100" />
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/30 to-transparent dark:from-black/90 dark:via-black/50 dark:to-black/10 pointer-events-none z-10"></div>
+
+                    <div class="absolute bottom-6 left-6 right-6 p-6 md:p-8 rounded-3xl bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/20 text-white shadow-lg z-20">
+                        <span class="inline-block px-3 py-1 mb-3 text-xs font-bold uppercase tracking-wider bg-blue-600 rounded-full text-white shadow-md">Milestone</span>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 drop-shadow-sm text-white">Celebrating 30 Years of Excellence</h3>
+                        <p class="text-blue-50 dark:text-gray-200 mb-4 text-sm md:text-base line-clamp-2 font-medium">
+                            Gunma Gohkin Philippines celebrated its 30th Anniversary, honoring three decades of teamwork and family spirit.
+                        </p>
+                        <div class="flex items-center justify-between text-sm font-medium text-blue-100 dark:text-gray-300 border-t border-white/30 dark:border-white/20 pt-4">
+                            <span>Sept 30, 2025</span>
+                            <button onclick="openNewsModal()" class="flex items-center text-white hover:text-cyan-200 transition-colors cursor-pointer focus:outline-none font-bold">
+                                Read Story <span class="material-icons text-base ml-1">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
                 </article>
-                <article class="auto-shine-card bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 150ms; --shine-delay: 1.5s;">
-                    <h3 class="text-xl font-bold text-primary mb-2">Annual Sports Fest Successfully Held</h3>
-                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">November 5, 2023</p>
-                    <p class="text-text-light dark:text-text-dark">Our annual sports festival brought employees together for a day of fun, games, and teamwork, strengthening camaraderie across all departments.</p>
-                </article>
-                <article class="auto-shine-card bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child lg:col-span-2 lg:justify-self-center lg:w-[calc(50%-1rem)]" style="transition-delay: 300ms; --shine-delay: 3s;">
-                    <h3 class="text-xl font-bold text-primary mb-2">30th Anniversary and Family Day</h3>
-                    <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">September 30, 2025</p>
-                    <p class="text-text-light dark:text-text-dark">Gunma Gohkin Philippines celebrated its 30th Anniversary and Family Day with a grand gathering that honored three decades of excellence, teamwork, and family spirit. The event brought together employees, families, and guests in a day filled with gratitude, fun, and memorable moments.</p>
-                </article>
+
+                <div class="lg:col-span-5 flex flex-col gap-6 h-full">
+                    <article class="flex-1 flex flex-col sm:flex-row rounded-[2rem] shadow-lg hover:shadow-xl overflow-hidden [mask-image:radial-gradient(white,black)] group transform transition-all duration-300 hover:-translate-y-1 bg-white dark:bg-gray-800/40 backdrop-blur-xl border border-blue-100 dark:border-white/20">
+                        <div class="relative sm:w-2/5 h-48 sm:h-auto overflow-hidden">
+                            <img src="images/headlines/2024 TN PDMEX POSTER 18x24in 5.jpg" alt="PDMEX Expo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            <div class="absolute inset-0 bg-blue-900/30 mix-blend-multiply z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center z-20">
+                                <h3 class="text-white text-xl font-bold text-center px-2 drop-shadow-md">PDMEX Expo</h3>
+                            </div>
+                        </div>
+                        <div class="sm:w-3/5 p-6 flex flex-col justify-center border-l border-gray-100 dark:border-white/10">
+                            <span class="text-xs font-bold text-blue-600 dark:text-blue-300 mb-2 uppercase">Exhibition</span>
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight group-hover:text-blue-600 transition-colors">GGPC showcases innovation at PDMEX 2024</h4>
+                            <a href="#" class="text-sm font-semibold text-slate-500 dark:text-gray-300 hover:text-blue-600 flex items-center mt-auto">See highlights <span class="material-icons text-sm ml-1">chevron_right</span></a>
+                        </div>
+                    </article>
+
+                    <article class="flex-1 flex flex-col sm:flex-row rounded-[2rem] shadow-lg hover:shadow-xl overflow-hidden [mask-image:radial-gradient(white,black)] group transform transition-all duration-300 hover:-translate-y-1 bg-white dark:bg-gray-800/40 backdrop-blur-xl border border-blue-100 dark:border-white/20">
+                        <div class="relative sm:w-2/5 h-48 sm:h-auto overflow-hidden">
+                            <img src="images/headlines/annual sportsfest.JPG" alt="Sports Fest" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            <div class="absolute inset-0 bg-green-900/30 mix-blend-multiply z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center z-20">
+                                <h3 class="text-white text-xl font-bold text-center px-2 drop-shadow-md">Sports Fest</h3>
+                            </div>
+                        </div>
+                        <div class="sm:w-3/5 p-6 flex flex-col justify-center border-l border-gray-100 dark:border-white/10">
+                            <span class="text-xs font-bold text-green-600 dark:text-green-300 mb-2 uppercase">Culture</span>
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight group-hover:text-green-600 transition-colors">Annual Sports Fest strengthens team spirit</h4>
+                            <a href="#" class="text-sm font-semibold text-slate-500 dark:text-gray-300 hover:text-green-600 flex items-center mt-auto">View gallery <span class="material-icons text-sm ml-1">chevron_right</span></a>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
@@ -151,6 +209,7 @@
     </section>
 
 </main>
+
 <footer class="relative z-10 bg-card-dark text-gray-300">
     <div class="container mx-auto px-6 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
@@ -162,6 +221,216 @@
         </div>
     </div>
 </footer>
+
+<div id="newsModal" class="fixed inset-0 z-[9999] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    
+    <div class="fixed inset-0 bg-slate-900/90 dark:bg-black/90 backdrop-blur-lg transition-opacity opacity-0" id="modalBackdrop"></div>
+
+    <div class="fixed inset-0 z-[10000] overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-0 sm:p-6">
+            
+            <div class="relative transform overflow-hidden rounded-t-2xl sm:rounded-3xl bg-slate-50 dark:bg-[#0f172a] text-left shadow-2xl transition-all w-full max-w-7xl border border-blue-100 dark:border-white/10 opacity-0 translate-y-12 scale-95" id="modalPanel">
+                
+                <div class="absolute top-6 right-6 z-50">
+                    <button type="button" onclick="closeNewsModal()" class="rounded-full bg-white/80 dark:bg-black/50 p-2 text-slate-700 dark:text-white hover:bg-red-500 hover:text-white backdrop-blur-md border border-gray-200 dark:border-white/10 transition-all focus:outline-none shadow-lg group">
+                        <span class="sr-only">Close</span>
+                        <span class="material-icons text-2xl group-hover:rotate-90 transition-transform duration-300">close</span>
+                    </button>
+                </div>
+
+                <div class="h-[85vh] sm:h-auto sm:max-h-[90vh] overflow-y-auto custom-scrollbar bg-slate-50 dark:bg-[#0f172a]">
+                    
+                    <div class="px-8 pt-12 pb-6 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-[#131c35]">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="px-3 py-1 text-xs font-bold text-white bg-blue-600 rounded-full shadow-md tracking-wider uppercase">Milestone Event</span>
+                            <span class="text-sm font-semibold text-slate-500 dark:text-blue-200">September 30, 2025</span>
+                        </div>
+                        <h3 class="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white">
+                            Gunma Gohkin Philippines Celebrates 30 Years of Excellence
+                        </h3>
+                    </div>
+
+                    <div class="px-8 py-10 space-y-16">
+                        
+                        <div class="grid lg:grid-cols-2 gap-12 items-start">
+                            
+                            <div class="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify leading-relaxed">
+                                <p class="mb-6">
+                                    This year marks a significant milestone for <strong class="text-slate-900 dark:text-white">Gunma Gohkin Philippines Corporation</strong> as we celebrate our <em class="text-blue-600 dark:text-blue-400 not-italic font-semibold">30th Anniversary</em> — three remarkable decades of excellence, unwavering teamwork, and consistent growth.
+                                </p>
+                                <p class="mb-6">
+                                    To commemorate this achievement, <strong class="text-slate-900 dark:text-white">we held a special Family Day for our valued employees and dedicated partners last September 13, 2025, at Villa Leonila Events Place.</strong> The event was a day filled with joy and unity, celebrating our shared journey.
+                                </p>
+                                <p>
+                                    During the celebration, we took the opportunity to honor the invaluable contributions of our incredible team. Their dedication, passion, and hard work have been instrumental in shaping Gunma Gohkin Philippines into the successful company it is today.
+                                </p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="relative group overflow-hidden rounded-2xl h-64 shadow-lg hover:shadow-2xl transition-all">
+                                    <img src="images/headlines/fireworks w ppl.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Event Crowd">
+                                </div>
+                                <div class="relative group overflow-hidden rounded-2xl h-64 shadow-lg hover:shadow-2xl transition-all">
+                                    <img src="images/headlines/fam day 2.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Happy Employees">
+                                </div>
+                                <div class="relative group overflow-hidden rounded-2xl h-64 col-span-2 shadow-lg hover:shadow-2xl transition-all">
+                                    <img src="images/headlines/famday1 (2).JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Group Photo">
+                                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                        <p class="text-white font-medium text-sm">United as One Family</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-gray-200 dark:bg-white/10 w-full"></div>
+
+                        <div class="grid lg:grid-cols-2 gap-12 items-start">
+                             
+                            <div class="grid grid-cols-2 gap-4 order-2 lg:order-1">
+                                <div class="relative group overflow-hidden rounded-2xl h-80 col-span-2 shadow-lg hover:shadow-2xl transition-all">
+                                    <img src="images/headlines/chairman bday.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-105" alt="Chairman Celebration">
+                                    <div class="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg text-white text-xs font-bold uppercase">Chairman's Birthday</div>
+                                </div>
+                                <div class="relative group overflow-hidden rounded-2xl h-48 shadow-lg hover:shadow-2xl transition-all">
+                                    <img src="images/headlines/party.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Party Moment">
+                                </div>
+                                <div class="relative group overflow-hidden rounded-2xl h-48 shadow-lg hover:shadow-2xl transition-all">
+                                    <img src="images/headlines/party 2.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Party Moment">
+                                </div>
+                            </div>
+
+                            <div class="order-1 lg:order-2">
+                                <h4 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">
+                                    Chairman’s Birthday & Family Day
+                                </h4>
+                                <div class="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify leading-relaxed space-y-6">
+                                    <p>
+                                        The day was a truly meaningful celebration — a moment to honor the past, appreciate the present, and look forward to the bright future of <strong class="text-slate-900 dark:text-white">Gunma Gohkin</strong>.
+                                    </p>
+                                    <p>
+                                        Reconnecting with colleagues, both past and present, reinforced the sense of community and shared purpose that makes GGPC such a special place to belong to. The camaraderie, joy, and enthusiasm that filled the day perfectly captured the true spirit of the GGPC family.
+                                    </p>
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-500/30">
+                                        <p class="italic font-medium text-slate-700 dark:text-blue-200 m-0">
+                                            "As we look ahead, we do so with renewed optimism. With the passion, talent, and unity of our people, we are ready to write the next chapter of GGPC's story."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-white/5 p-8 rounded-3xl border border-gray-200 dark:border-white/5 shadow-sm">
+                            <div class="max-w-3xl mb-8">
+                                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Kaizen Recognition & SDG Kickoff</h4>
+                                <p class="text-slate-600 dark:text-gray-300 text-lg">
+                                    Recognizing outstanding contributions to process improvement and reaffirming our commitment to the <strong class="text-blue-600 dark:text-blue-400">United Nations Sustainable Development Goals</strong>.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/kaizen_1.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Kaizen Awardee">
+                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                        <span class="text-white font-bold text-sm">Kaizen Awardees</span>
+                                    </div>
+                                </div>
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/kaizen_2.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Innovation">
+                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                        <span class="text-white font-bold text-sm">Innovation</span>
+                                    </div>
+                                </div>
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/sdg_1.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="SDG Goals">
+                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                        <span class="text-white font-bold text-sm">SDG Commitment</span>
+                                    </div>
+                                </div>
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/sdg_2.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Team Spirit">
+                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                        <span class="text-white font-bold text-sm">Team Spirit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="sticky bottom-0 bg-slate-50/90 dark:bg-[#0f172a]/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 p-6 flex justify-end items-center z-30">
+                        <button type="button" onclick="closeNewsModal()" class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-10 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all">
+                            Close Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="lightbox" class="fixed inset-0 z-[11000] hidden bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-white/70 hover:text-white p-2 focus:outline-none z-50">
+        <span class="material-icons text-4xl">close</span>
+    </button>
+    <img id="lightbox-img" src="" alt="Full screen view" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default" onclick="event.stopPropagation()">
+</div>
+
+<script>
+    const modal = document.getElementById('newsModal');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalPanel = document.getElementById('modalPanel');
+
+    function openNewsModal() {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modalBackdrop.classList.remove('opacity-0');
+            modalPanel.classList.remove('opacity-0', 'translate-y-12', 'scale-95');
+            modalPanel.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeNewsModal() {
+        modalBackdrop.classList.add('opacity-0');
+        modalPanel.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+        modalPanel.classList.add('opacity-0', 'translate-y-12', 'scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('flex')) closeNewsModal();
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.remove('hidden');
+        setTimeout(() => {
+            lightboxImg.classList.remove('scale-95');
+            lightboxImg.classList.add('scale-100');
+        }, 10);
+    }
+
+    function closeLightbox() {
+        lightboxImg.classList.remove('scale-100');
+        lightboxImg.classList.add('scale-95');
+        setTimeout(() => {
+            lightbox.classList.add('hidden');
+        }, 200);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (!lightbox.classList.contains('hidden')) closeLightbox();
+            else if (!modal.classList.contains('hidden')) closeNewsModal();
+        }
+    });
+</script>
 
 </body>
 </html>
