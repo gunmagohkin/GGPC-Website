@@ -23,6 +23,10 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.5); border-radius: 20px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: rgba(156, 163, 175, 0.8); }
         .text-shadow-strong { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+        
+        /* Hide scrollbar for slideshows */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
@@ -140,7 +144,7 @@
                         </p>
                         <div class="flex items-center justify-between text-sm font-medium text-blue-100 dark:text-gray-300 border-t border-white/30 dark:border-white/20 pt-4">
                             <span>Sept 30, 2025</span>
-                            <button onclick="openNewsModal()" class="flex items-center text-white hover:text-cyan-200 transition-colors cursor-pointer focus:outline-none font-bold">
+                            <button onclick="openModal('newsModal')" class="flex items-center text-white hover:text-cyan-200 transition-colors cursor-pointer focus:outline-none font-bold">
                                 Read Story <span class="material-icons text-base ml-1">arrow_forward</span>
                             </button>
                         </div>
@@ -148,6 +152,7 @@
                 </article>
 
                 <div class="lg:col-span-5 flex flex-col gap-6 h-full">
+                    
                     <article class="flex-1 flex flex-col sm:flex-row rounded-[2rem] shadow-lg hover:shadow-xl overflow-hidden [mask-image:radial-gradient(white,black)] group transform transition-all duration-300 hover:-translate-y-1 bg-white dark:bg-gray-800/40 backdrop-blur-xl border border-blue-100 dark:border-white/20">
                         <div class="relative sm:w-2/5 h-48 sm:h-auto overflow-hidden">
                             <img src="images/headlines/2024 TN PDMEX POSTER 18x24in 5.jpg" alt="PDMEX Expo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -159,7 +164,9 @@
                         <div class="sm:w-3/5 p-6 flex flex-col justify-center border-l border-gray-100 dark:border-white/10">
                             <span class="text-xs font-bold text-blue-600 dark:text-blue-300 mb-2 uppercase">Exhibition</span>
                             <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight group-hover:text-blue-600 transition-colors">GGPC showcases innovation at PDMEX 2024</h4>
-                            <a href="#" class="text-sm font-semibold text-slate-500 dark:text-gray-300 hover:text-blue-600 flex items-center mt-auto">See highlights <span class="material-icons text-sm ml-1">chevron_right</span></a>
+                            <button onclick="openModal('pdmexModal')" class="text-sm font-semibold text-slate-500 dark:text-gray-300 hover:text-blue-600 flex items-center mt-auto focus:outline-none text-left">
+                                See highlights <span class="material-icons text-sm ml-1">chevron_right</span>
+                            </button>
                         </div>
                     </article>
 
@@ -173,7 +180,7 @@
                         </div>
                         <div class="sm:w-3/5 p-6 flex flex-col justify-center border-l border-gray-100 dark:border-white/10">
                             <span class="text-xs font-bold text-green-600 dark:text-green-300 mb-2 uppercase">Culture</span>
-                            <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight group-hover:text-green-600 transition-colors">Annual Sports Fest strengthens team spirit</h4>
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight group-hover:text-green-600 transition-colors">2024 Annual Sports Fest strengthens team spirit</h4>
                             <a href="#" class="text-sm font-semibold text-slate-500 dark:text-gray-300 hover:text-green-600 flex items-center mt-auto">View gallery <span class="material-icons text-sm ml-1">chevron_right</span></a>
                         </div>
                     </article>
@@ -223,23 +230,17 @@
 </footer>
 
 <div id="newsModal" class="fixed inset-0 z-[9999] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    
-    <div class="fixed inset-0 bg-slate-900/90 dark:bg-black/90 backdrop-blur-lg transition-opacity opacity-0" id="modalBackdrop"></div>
-
+    <div class="fixed inset-0 bg-slate-900/90 dark:bg-black/90 backdrop-blur-lg transition-opacity opacity-0" id="modalBackdrop-newsModal"></div>
     <div class="fixed inset-0 z-[10000] overflow-y-auto">
         <div class="flex min-h-full items-end justify-center p-0 sm:p-6">
-            
-            <div class="relative transform overflow-hidden rounded-t-2xl sm:rounded-3xl bg-slate-50 dark:bg-[#0f172a] text-left shadow-2xl transition-all w-full max-w-7xl border border-blue-100 dark:border-white/10 opacity-0 translate-y-12 scale-95" id="modalPanel">
-                
+            <div class="relative transform overflow-hidden rounded-t-2xl sm:rounded-3xl bg-slate-50 dark:bg-[#0f172a] text-left shadow-2xl transition-all w-full max-w-7xl border border-blue-100 dark:border-white/10 opacity-0 translate-y-12 scale-95" id="modalPanel-newsModal">
                 <div class="absolute top-6 right-6 z-50">
-                    <button type="button" onclick="closeNewsModal()" class="rounded-full bg-white/80 dark:bg-black/50 p-2 text-slate-700 dark:text-white hover:bg-red-500 hover:text-white backdrop-blur-md border border-gray-200 dark:border-white/10 transition-all focus:outline-none shadow-lg group">
+                    <button type="button" onclick="closeModal('newsModal')" class="rounded-full bg-white/80 dark:bg-black/50 p-2 text-slate-700 dark:text-white hover:bg-red-500 hover:text-white backdrop-blur-md border border-gray-200 dark:border-white/10 transition-all focus:outline-none shadow-lg group">
                         <span class="sr-only">Close</span>
                         <span class="material-icons text-2xl group-hover:rotate-90 transition-transform duration-300">close</span>
                     </button>
                 </div>
-
                 <div class="h-[85vh] sm:h-auto sm:max-h-[90vh] overflow-y-auto custom-scrollbar bg-slate-50 dark:bg-[#0f172a]">
-                    
                     <div class="px-8 pt-12 pb-6 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-[#131c35]">
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="px-3 py-1 text-xs font-bold text-white bg-blue-600 rounded-full shadow-md tracking-wider uppercase">Milestone Event</span>
@@ -249,23 +250,13 @@
                             Gunma Gohkin Philippines Celebrates 30 Years of Excellence
                         </h3>
                     </div>
-
                     <div class="px-8 py-10 space-y-16">
-                        
                         <div class="grid lg:grid-cols-2 gap-12 items-start">
-                            
                             <div class="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify leading-relaxed">
-                                <p class="mb-6">
-                                    This year marks a significant milestone for <strong class="text-slate-900 dark:text-white">Gunma Gohkin Philippines Corporation</strong> as we celebrate our <em class="text-blue-600 dark:text-blue-400 not-italic font-semibold">30th Anniversary</em> — three remarkable decades of excellence, unwavering teamwork, and consistent growth.
-                                </p>
-                                <p class="mb-6">
-                                    To commemorate this achievement, <strong class="text-slate-900 dark:text-white">we held a special Family Day for our valued employees and dedicated partners last September 13, 2025, at Villa Leonila Events Place.</strong> The event was a day filled with joy and unity, celebrating our shared journey.
-                                </p>
-                                <p>
-                                    During the celebration, we took the opportunity to honor the invaluable contributions of our incredible team. Their dedication, passion, and hard work have been instrumental in shaping Gunma Gohkin Philippines into the successful company it is today.
-                                </p>
+                                <p class="mb-6">This year marks a significant milestone for <strong class="text-slate-900 dark:text-white">Gunma Gohkin Philippines Corporation</strong> as we celebrate our <em class="text-blue-600 dark:text-blue-400 not-italic font-semibold">30th Anniversary</em> — three remarkable decades of excellence, unwavering teamwork, and consistent growth.</p>
+                                <p class="mb-6">To commemorate this achievement, <strong class="text-slate-900 dark:text-white">we held a special Family Day for our valued employees and dedicated partners last September 13, 2025, at Villa Leonila Events Place.</strong> The event was a day filled with joy and unity, celebrating our shared journey. As we reflected on our history, the celebration was not just about looking back, but also about strengthening our culture for the future. The festivities included team activities and shared meals that symbolized our gratitude for the past 30 years and our excitement for the decades to come.
+</p>
                             </div>
-                            
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="relative group overflow-hidden rounded-2xl h-64 shadow-lg hover:shadow-2xl transition-all">
                                     <img src="images/headlines/fireworks w ppl.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Event Crowd">
@@ -275,21 +266,15 @@
                                 </div>
                                 <div class="relative group overflow-hidden rounded-2xl h-64 col-span-2 shadow-lg hover:shadow-2xl transition-all">
                                     <img src="images/headlines/famday1 (2).JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Group Photo">
-                                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                        <p class="text-white font-medium text-sm">United as One Family</p>
-                                    </div>
+                                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"><p class="text-white font-medium text-sm">United as One Family</p></div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="h-px bg-gray-200 dark:bg-white/10 w-full"></div>
-
                         <div class="grid lg:grid-cols-2 gap-12 items-start">
-                             
-                            <div class="grid grid-cols-2 gap-4 order-2 lg:order-1">
+                             <div class="grid grid-cols-2 gap-4 order-2 lg:order-1">
                                 <div class="relative group overflow-hidden rounded-2xl h-80 col-span-2 shadow-lg hover:shadow-2xl transition-all">
                                     <img src="images/headlines/chairman bday.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-105" alt="Chairman Celebration">
-                                    <div class="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg text-white text-xs font-bold uppercase">Chairman's Birthday</div>
                                 </div>
                                 <div class="relative group overflow-hidden rounded-2xl h-48 shadow-lg hover:shadow-2xl transition-all">
                                     <img src="images/headlines/party.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Party Moment">
@@ -298,59 +283,193 @@
                                     <img src="images/headlines/party 2.JPG" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-transform duration-700 group-hover:scale-110" alt="Party Moment">
                                 </div>
                             </div>
-
                             <div class="order-1 lg:order-2">
-                                <h4 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">
-                                    Chairman’s Birthday & Family Day
-                                </h4>
+                                <h4 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">Chairman’s Birthday & Family Day</h4>
                                 <div class="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify leading-relaxed space-y-6">
-                                    <p>
-                                        The day was a truly meaningful celebration — a moment to honor the past, appreciate the present, and look forward to the bright future of <strong class="text-slate-900 dark:text-white">Gunma Gohkin</strong>.
-                                    </p>
-                                    <p>
-                                        Reconnecting with colleagues, both past and present, reinforced the sense of community and shared purpose that makes GGPC such a special place to belong to. The camaraderie, joy, and enthusiasm that filled the day perfectly captured the true spirit of the GGPC family.
-                                    </p>
+                                    <p>The day was a truly meaningful celebration — a moment to honor the past, appreciate the present, and look forward to the bright future of <strong>Gunma Gohkin</strong>. It was a time to reflect on our incredible journey together, recognizing the unwavering dedication and hard work of every individual.</p>
+                                    <p>Reconnecting with colleagues, both past and present, reinforced the sense of community and shared purpose that makes GGPC such a special place to belong to.</p>
                                     <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-500/30">
-                                        <p class="italic font-medium text-slate-700 dark:text-blue-200 m-0">
-                                            "As we look ahead, we do so with renewed optimism. With the passion, talent, and unity of our people, we are ready to write the next chapter of GGPC's story."
-                                        </p>
+                                        <p class="italic font-medium text-slate-700 dark:text-blue-200 m-0">"As we look ahead, we do so with renewed optimism and determination. With the passion, talent, and unity of our people, we are ready to write the next chapter of GGPC's story."</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="bg-white dark:bg-white/5 p-8 rounded-3xl border border-gray-200 dark:border-white/5 shadow-sm">
                             <div class="max-w-3xl mb-8">
                                 <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Kaizen Recognition & SDG Kickoff</h4>
-                                <p class="text-slate-600 dark:text-gray-300 text-lg">
-                                    Recognizing outstanding contributions to process improvement and reaffirming our commitment to the <strong class="text-blue-600 dark:text-blue-400">United Nations Sustainable Development Goals</strong>.
-                                </p>
+                                <p class="text-slate-600 dark:text-gray-300 text-lg">During the program, <strong>Kaizen Awardees</strong> were recognized for their outstanding contributions to process improvement. Their projects demonstrated creative solutions that enhanced productivity, safety, and operational efficiency across various departments.</p>
+                                <p class="text-slate-600 dark:text-gray-300 text-lg mt-4">This event highlights not only our commitment to the <strong>UN SDGs</strong> but also our dedication to fostering a culture of <em>Kaizen</em>. Our SDG initiatives are thoughtfully crafted to address key global challenges, reducing our environmental footprint, optimizing resource efficiency, and upholding ethical practices.</p>
                             </div>
-
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                                 <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
-                                    <img src="images/kaizen_1.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Kaizen Awardee">
-                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                        <span class="text-white font-bold text-sm">Kaizen Awardees</span>
-                                    </div>
+                                    <img src="images/kaizen_1.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Kaizen">
                                 </div>
                                 <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
-                                    <img src="images/kaizen_2.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Innovation">
-                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                        <span class="text-white font-bold text-sm">Innovation</span>
-                                    </div>
+                                    <img src="images/kaizen_2.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Kaizen">
                                 </div>
                                 <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
-                                    <img src="images/sdg_1.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="SDG Goals">
-                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                        <span class="text-white font-bold text-sm">SDG Commitment</span>
-                                    </div>
+                                    <img src="images/sdg_1.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="SDG">
                                 </div>
                                 <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
-                                    <img src="images/sdg_2.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Team Spirit">
-                                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                        <span class="text-white font-bold text-sm">Team Spirit</span>
-                                    </div>
+                                    <img src="images/sdg_2.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Team">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sticky bottom-0 bg-slate-50/90 dark:bg-[#0f172a]/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 p-6 flex justify-end items-center z-30">
+                        <button type="button" onclick="closeModal('newsModal')" class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-10 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all">
+                            Close Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pdmexModal" class="fixed inset-0 z-[9999] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-slate-900/90 dark:bg-black/90 backdrop-blur-lg transition-opacity opacity-0" id="modalBackdrop-pdmexModal"></div>
+    <div class="fixed inset-0 z-[10000] overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-0 sm:p-6">
+            <div class="relative transform overflow-hidden rounded-t-2xl sm:rounded-3xl bg-slate-50 dark:bg-[#0f172a] text-left shadow-2xl transition-all w-full max-w-7xl border border-blue-100 dark:border-white/10 opacity-0 translate-y-12 scale-95" id="modalPanel-pdmexModal">
+                <div class="absolute top-6 right-6 z-50">
+                    <button type="button" onclick="closeModal('pdmexModal')" class="rounded-full bg-white/80 dark:bg-black/50 p-2 text-slate-700 dark:text-white hover:bg-red-500 hover:text-white backdrop-blur-md border border-gray-200 dark:border-white/10 transition-all focus:outline-none shadow-lg group">
+                        <span class="sr-only">Close</span>
+                        <span class="material-icons text-2xl group-hover:rotate-90 transition-transform duration-300">close</span>
+                    </button>
+                </div>
+                <div class="h-[85vh] sm:h-auto sm:max-h-[90vh] overflow-y-auto custom-scrollbar bg-slate-50 dark:bg-[#0f172a]">
+                    <div class="px-8 pt-12 pb-6 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-[#131c35]">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="px-3 py-1 text-xs font-bold text-white bg-blue-700 rounded-full shadow-md tracking-wider uppercase">Exhibition</span>
+                            <span class="text-sm font-semibold text-slate-500 dark:text-blue-200">August 28-31, 2024</span>
+                        </div>
+                        <h3 class="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white">
+                            GGPC Showcases Innovation at PDMEX 2024
+                        </h3>
+                    </div>
+                    
+                    <div class="px-8 py-10 space-y-12">
+                        
+                        <div class="space-y-6">
+                            <div class="relative w-full h-auto overflow-hidden rounded-2xl shadow-lg">
+                                <img src="images/headlines/pdmex intro.webp" onclick="openLightbox(this.src)" class="w-full h-auto max-h-[600px] object-cover rounded-2xl cursor-zoom-in" alt="Intro Poster">
+                            </div>
+                            <div class="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify max-w-none">
+                                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Introduction</h4>
+                                <p>Gunma Gohkin Philippines Corp. (GGPC) proudly participated in the 11th edition of the Philippine Die & Mould Machineries and Equipment Exhibition (PDMEX) held at the World Trade Center in Pasay City, Manila. As an esteemed PEZA Pavilion member, GGPC showcased its latest innovations and capabilities. This opportunity allowed GGPC to demonstrate its commitment to excellence in the die and mould industry.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative w-full max-w-md mx-auto aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="images/headlines/pdmex 2k24.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in" alt="Booth">
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">GGPC Booth #380 at PEZA Pavilion</h4>
+                                <p>At Booth 380, GGPC highlighted one of its flagship products—high-precision cast components known for their exceptional durability and performance. These components have been engineered to withstand the rigorous demands of various industrial applications. By presenting these innovations, GGPC demonstrated its technical capacity and reinforced its position as a leader in the manufacturing sector.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative w-full max-w-md mx-auto aspect-[2000/2001] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="images/headlines/pdmex Team Force & Exhibitors.webp" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in" alt="Team Force">
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Team Force & Exhibitors</h4>
+                                <p>GGPC's representatives actively engaged with fellow exhibitors, industry experts, and potential clients. Additionally, GGPC highlighted its commitment to sustainability by discussing eco-friendly manufacturing practices and energy-efficient technologies. These interactions helped identify new business opportunities and potential partnerships.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative group w-full max-w-md mx-auto aspect-[4/3] rounded-2xl shadow-lg">
+                                <div class="auto-slideshow relative w-full h-full rounded-2xl overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                                    <img src="images/headlines/ingress 1.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Ingress 1">
+                                    <img src="images/headlines/ingress 2.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Ingress 2">
+                                </div>
+                                <button onclick="manualScroll(this, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_left</span></button>
+                                <button onclick="manualScroll(this, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_right</span></button>
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">INGRESS PHOTOS & FEEDBACK (Aug 27, 2024)</h4>
+                                <p>The Ingress phase sets the stage for the exhibition. It's when all the behind-the-scenes action happens, with exhibitors coming together to get their booths right. This period is all about careful planning and making sure everything looks perfect for when the visitors arrive. The hard work during Ingress shows just how committed everyone is to putting their best foot forward.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative group w-full max-w-md mx-auto aspect-[4/3] rounded-2xl shadow-lg">
+                                <div class="auto-slideshow relative w-full h-full rounded-2xl overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                                    <img src="images/headlines/d1 1.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Day1 Slide 1">
+                                    <img src="images/headlines/d1 2.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Day1 Slide 2">
+                                </div>
+                                <button onclick="manualScroll(this, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_left</span></button>
+                                <button onclick="manualScroll(this, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_right</span></button>
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">DAY 1 PHOTOS & FEEDBACK (Aug 28, 2024)</h4>
+                                <p>Officially, PDMEX 2024 opened with a grand opening ceremony featuring speeches from industry leaders and government officials. Attendees were treated to a showcase of cutting-edge technologies and innovations in the die and mould sector. Exhibitors, including GGPC, felt the excitement as they showcased their latest products to their audience.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative group w-full max-w-md mx-auto aspect-[4/3] rounded-2xl shadow-lg">
+                                <div class="auto-slideshow relative w-full h-full rounded-2xl overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                                    <img src="images/headlines/d2 1.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Day2 Slide 1">
+                                    <img src="images/headlines/d2 2.png" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Day2 Slide 2">
+                                </div>
+                                <button onclick="manualScroll(this, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_left</span></button>
+                                <button onclick="manualScroll(this, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_right</span></button>
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">DAY 2 PHOTOS & FEEDBACK (Aug 29, 2024)</h4>
+                                <p>On the second day, many visitors, including students and professionals, filled the exhibition halls. Students were especially excited to see the latest technologies firsthand. Exhibitors enjoyed sharing insights about new trends in the die and mould industry. The lively mix of curious students and experienced professionals created an energetic atmosphere.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative group w-full max-w-md mx-auto aspect-[4/3] rounded-2xl shadow-lg">
+                                <div class="auto-slideshow relative w-full h-full rounded-2xl overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                                    <img src="images/headlines/d3 1.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Day3 Slide 1">
+                                    <img src="images/headlines/d3 2.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Day3 Slide 2">
+                                </div>
+                                <button onclick="manualScroll(this, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_left</span></button>
+                                <button onclick="manualScroll(this, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_right</span></button>
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">DAY 3 PHOTOS & FEEDBACK (Aug 30, 2024)</h4>
+                                <p>Just like the second day, the third day stayed busy. It was clear that PDMEX is not just about business, but about building connections and exchanging ideas. In the exhibition hall, interactive displays allowed students to get hands-on experience with cutting-edge tools. Many companies offered live demonstrations which captivated the audience.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative group w-full max-w-md mx-auto aspect-[4/3] rounded-2xl shadow-lg">
+                                <div class="auto-slideshow relative w-full h-full rounded-2xl overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+                                    <img src="images/headlines/egress 1.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Egress Slide 1">
+                                    <img src="images/headlines/egress 2.jpg" onclick="openLightbox(this.src)" class="min-w-full h-full object-cover snap-center cursor-zoom-in" alt="Egress Slide 2">
+                                </div>
+                                <button onclick="manualScroll(this, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_left</span></button>
+                                <button onclick="manualScroll(this, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-icons">chevron_right</span></button>
+                            </div>
+                            <div class="prose prose-sm prose-slate dark:prose-invert text-slate-600 dark:text-gray-300 text-justify">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">EGRESS PHOTOS & FEEDBACK</h4>
+                                <p>After the final day as attendees exited, it signified the start of fresh possibilities. The dedication shown by all attendees has raised expectations for upcoming events, with everyone excited to see what PDMEX 2026 has in store. With a common goal of advancing, the community is prepared to move forward.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-white/5 shadow-sm">
+                            <h5 class="text-xl font-bold text-slate-800 dark:text-white mb-4">Event Gallery</h5>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/headlines/2024 TN PDMEX POSTER 18x24in 5.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Gallery 1">
+                                </div>
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/headlines/2024 TN PDMEX POSTER 18x24in 5.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Gallery 2">
+                                </div>
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/headlines/2024 TN PDMEX POSTER 18x24in 5.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Gallery 3">
+                                </div>
+                                <div class="group relative rounded-xl overflow-hidden h-64 shadow-md hover:shadow-xl transition-all">
+                                    <img src="images/headlines/2024 TN PDMEX POSTER 18x24in 5.jpg" onclick="openLightbox(this.src)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" alt="Gallery 4">
                                 </div>
                             </div>
                         </div>
@@ -358,8 +477,8 @@
                     </div>
                     
                     <div class="sticky bottom-0 bg-slate-50/90 dark:bg-[#0f172a]/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 p-6 flex justify-end items-center z-30">
-                        <button type="button" onclick="closeNewsModal()" class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-10 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all">
-                            Close Story
+                        <button type="button" onclick="closeModal('pdmexModal')" class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-10 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all">
+                            Close Article
                         </button>
                     </div>
                 </div>
@@ -376,32 +495,71 @@
 </div>
 
 <script>
-    const modal = document.getElementById('newsModal');
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalPanel = document.getElementById('modalPanel');
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const backdrop = document.getElementById('modalBackdrop-' + modalId);
+        const panel = document.getElementById('modalPanel-' + modalId);
+        
+        if (!modal || !backdrop || !panel) return;
 
-    function openNewsModal() {
         modal.classList.remove('hidden');
         setTimeout(() => {
-            modalBackdrop.classList.remove('opacity-0');
-            modalPanel.classList.remove('opacity-0', 'translate-y-12', 'scale-95');
-            modalPanel.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            backdrop.classList.remove('opacity-0');
+            panel.classList.remove('opacity-0', 'translate-y-12', 'scale-95');
+            panel.classList.add('opacity-100', 'translate-y-0', 'scale-100');
         }, 10);
+        
         document.body.style.overflow = 'hidden';
+
+        if(modalId === 'pdmexModal') {
+            initAutoScroll();
+        }
     }
 
-    function closeNewsModal() {
-        modalBackdrop.classList.add('opacity-0');
-        modalPanel.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
-        modalPanel.classList.add('opacity-0', 'translate-y-12', 'scale-95');
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const backdrop = document.getElementById('modalBackdrop-' + modalId);
+        const panel = document.getElementById('modalPanel-' + modalId);
+
+        if (!modal || !backdrop || !panel) return;
+
+        backdrop.classList.add('opacity-0');
+        panel.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+        panel.classList.add('opacity-0', 'translate-y-12', 'scale-95');
+        
         setTimeout(() => {
             modal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }, 300);
     }
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('flex')) closeNewsModal();
+    // Auto-Scroll (3.5 seconds) + Manual Navigation
+    function initAutoScroll() {
+        if(window.slideshowInterval) clearInterval(window.slideshowInterval);
+
+        const sliders = document.querySelectorAll('.auto-slideshow');
+        
+        window.slideshowInterval = setInterval(() => {
+            sliders.forEach(slider => {
+                // If scroll reached end, reset to 0, else add width
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+                    slider.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+                }
+            });
+        }, 3500); // 3.5 seconds
+    }
+
+    function manualScroll(btn, direction) {
+        const slider = btn.parentElement.querySelector('.auto-slideshow');
+        slider.scrollBy({ left: direction * slider.clientWidth, behavior: 'smooth' });
+        // Optional: Reset interval on manual interaction could be added here
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target.id.includes('newsModal') && e.target.classList.contains('flex')) closeModal('newsModal');
+        if (e.target.id.includes('pdmexModal') && e.target.classList.contains('flex')) closeModal('pdmexModal');
     });
 
     const lightbox = document.getElementById('lightbox');
@@ -426,8 +584,14 @@
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (!lightbox.classList.contains('hidden')) closeLightbox();
-            else if (!modal.classList.contains('hidden')) closeNewsModal();
+            if (!lightbox.classList.contains('hidden')) {
+                closeLightbox();
+            } else {
+                ['newsModal', 'pdmexModal'].forEach(id => {
+                    const m = document.getElementById(id);
+                    if (m && !m.classList.contains('hidden')) closeModal(id);
+                });
+            }
         }
     });
 </script>
