@@ -5,28 +5,33 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Gunma Gohkin Philippines Corporation - Our Initiatives</title>
     
-    <!-- External Libraries (JS) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
-    <!-- Your Master Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 
-     <script src="js/initiatives.js"></script>
+    <script src="js/initiatives.js"></script>
     <script src="loader.js"></script>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.5); border-radius: 20px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: rgba(156, 163, 175, 0.8); }
+        .text-shadow-strong { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+    </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300 custom-scrollbar">
 
 <div id="preloader"><img src="images/Picture14.png" alt="Loading GGPC Logo"/></div>
 <div id="scroll-progress"></div>
 <div id="particles-js"></div>
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md">
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-md dark:shadow-none dark:border-b dark:border-white/10 transition-all duration-300">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a class="flex items-center" href="index.html">
             <img class="h-12 mr-3 transition-all duration-300" src="images/Picture14.png" alt="GGPC Logo"/>
@@ -37,24 +42,24 @@
         </a>
         <div class="flex items-center">
             <nav class="hidden md:flex items-center space-x-6">
-                <a class="text-text-light dark:text-text-dark" href="index.html">Home</a>
-                <a class="text-text-light dark:text-text-dark" href="company-outline.html">Profile</a>
-                <a class="text-text-light dark:text-text-dark" href="business-outline.html">Outline</a>
-                <a class="text-text-light dark:text-text-dark active" href="initiatives.html">Initiatives</a>
-                <a class="text-text-light dark:text-text-dark" href="opportunities.html">Opportunities</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="company-outline.html">Profile</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="business-outline.html">Outline</a>
+                <a class="text-primary font-bold" href="initiatives.html">Initiatives</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="opportunities.html">Opportunities</a>
             </nav>
             <div class="flex items-center ml-6">
-                <button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" onclick="toggleDarkMode()">
+                <button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none" onclick="toggleDarkMode()">
                     <span class="material-icons dark:hidden">dark_mode</span>
                     <span class="material-icons hidden dark:inline">light_mode</span>
                 </button>
-                <button class="md:hidden ml-4 p-2 rounded-md text-text-light dark:text-text-dark" onclick="toggleMobileMenu()">
+                <button class="md:hidden ml-4 p-2 rounded-md text-text-light dark:text-text-dark focus:outline-none" onclick="toggleMobileMenu()">
                     <span class="material-icons">menu</span>
                 </button>
             </div>
         </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark shadow-lg">
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark shadow-lg border-t dark:border-white/10">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="index.html">Home</a>
             <a class="block px-3 py-2 rounded-md text-base font-medium text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-700" href="company-outline.html">Company Outline</a>
@@ -87,17 +92,17 @@
                 <p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">Innovating for a greener manufacturing process.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-10 text-center">
-                <div class="tilt-card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child" data-tilt>
+                <div class="tilt-card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg dark:shadow-none dark:border dark:border-white/10 stagger-child" data-tilt>
                     <span class="material-icons text-5xl text-primary mb-4">recycling</span>
                     <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Waste Reduction</h3>
                     <p class="text-text-muted-light dark:text-text-muted-dark">Implementing comprehensive recycling programs and minimizing production scrap.</p>
                 </div>
-                <div class="tilt-card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child" style="transition-delay: 150ms;" data-tilt>
+                <div class="tilt-card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg dark:shadow-none dark:border dark:border-white/10 stagger-child" style="transition-delay: 150ms;" data-tilt>
                     <span class="material-icons text-5xl text-primary mb-4">bolt</span>
                     <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Energy Efficiency</h3>
                     <p class="text-text-muted-light dark:text-text-muted-dark">Upgrading to energy-efficient machinery and optimizing our power consumption.</p>
                 </div>
-                <div class="tilt-card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg stagger-child" style="transition-delay: 300ms;" data-tilt>
+                <div class="tilt-card bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-lg dark:shadow-none dark:border dark:border-white/10 stagger-child" style="transition-delay: 300ms;" data-tilt>
                     <span class="material-icons text-5xl text-primary mb-4">water_drop</span>
                     <h3 class="font-bold text-xl mb-2 text-text-light dark:text-text-dark">Water Conservation</h3>
                     <p class="text-text-muted-light dark:text-text-muted-dark">Utilizing advanced water treatment and recycling systems to reduce our footprint.</p>
@@ -113,22 +118,22 @@
                 <p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">Giving back to the communities that support us.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child">
+                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 transition-shadow hover:shadow-lg stagger-child">
                     <h3 class="text-xl font-bold text-primary mb-2">Annual Tree Planting Drive</h3>
                     <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">June 5, 2024</p>
                     <p class="text-text-light dark:text-text-dark">In celebration of World Environment Day, GGPC employees volunteered to plant over 500 saplings in local watershed areas.</p>
                 </article>
-                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 150ms;">
+                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 150ms;">
                     <h3 class="text-xl font-bold text-primary mb-2">Local School Support Program</h3>
                     <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">August 20, 2024</p>
                     <p class="text-text-light dark:text-text-dark">Donated educational materials and sponsored classroom repairs for nearby public schools to support youth education.</p>
                 </article>
-                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 300ms;">
+                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 300ms;">
                     <h3 class="text-xl font-bold text-primary mb-2">Disaster Relief Operations</h3>
                     <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">Ongoing</p>
                     <p class="text-text-light dark:text-text-dark">Actively participating in relief efforts by providing essential goods and support to communities affected by natural calamities.</p>
                 </article>
-                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 450ms;">
+                <article class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 transition-shadow hover:shadow-lg stagger-child" style="transition-delay: 450ms;">
                     <h3 class="text-xl font-bold text-primary mb-2">Livelihood Training Partnership</h3>
                     <p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-3">Launched October 2023</p>
                     <p class="text-text-light dark:text-text-dark">Partnering with local NGOs to provide skills training and livelihood opportunities for underprivileged families.</p>
@@ -137,7 +142,177 @@
         </div>
     </section>
 
-     <section class="py-20 bg-slate-100 dark:bg-slate-900">
+    <section class="py-20 bg-slate-50 dark:bg-slate-800/50 border-y border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Kaizen Culture</h2>
+                <p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">Relentless pursuit of perfection through continuous improvement.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-lg dark:shadow-none dark:border dark:border-white/10 border-l-4 border-primary hover:-translate-y-2 transition-transform duration-300 stagger-child">
+                    <div class="flex items-center mb-4">
+                        <span class="material-icons text-4xl text-primary bg-primary/10 p-3 rounded-full">cleaning_services</span>
+                        <h3 class="ml-4 text-xl font-bold text-text-light dark:text-text-dark">The 5S Methodology</h3>
+                    </div>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">
+                        Sort, Set in order, Shine, Standardize, and Sustain. We maintain an organized workspace to maximize efficiency and safety.
+                    </p>
+                </div>
+
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-lg dark:shadow-none dark:border dark:border-white/10 border-l-4 border-primary hover:-translate-y-2 transition-transform duration-300 stagger-child" style="transition-delay: 100ms;">
+                    <div class="flex items-center mb-4">
+                        <span class="material-icons text-4xl text-primary bg-primary/10 p-3 rounded-full">sync</span>
+                        <h3 class="ml-4 text-xl font-bold text-text-light dark:text-text-dark">PDCA Cycle</h3>
+                    </div>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">
+                        Plan, Do, Check, Act. Our iterative management method ensures that our processes are constantly evaluated and optimized.
+                    </p>
+                </div>
+
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-lg dark:shadow-none dark:border dark:border-white/10 border-l-4 border-primary hover:-translate-y-2 transition-transform duration-300 stagger-child" style="transition-delay: 200ms;">
+                    <div class="flex items-center mb-4">
+                        <span class="material-icons text-4xl text-primary bg-primary/10 p-3 rounded-full">groups</span>
+                        <h3 class="ml-4 text-xl font-bold text-text-light dark:text-text-dark">Quality Circles</h3>
+                    </div>
+                    <p class="text-text-muted-light dark:text-text-muted-dark">
+                        Small employee groups meet regularly to identify, analyze, and solve work-related problems, fostering a bottom-up innovation culture.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-background-light dark:bg-background-dark">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="stagger-child">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Alignment with UN SDGs</h2>
+                    <p class="text-text-light dark:text-text-dark text-lg mb-6 leading-relaxed">
+                        Gunma Gohkin Philippines Corporation is committed to the United Nations Sustainable Development Goals. We focus our efforts on areas where we can make the most significant impact as a manufacturing entity.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="material-icons text-green-500 dark:text-green-400 mr-3 mt-1">check_circle</span>
+                            <span class="text-text-muted-light dark:text-text-muted-dark">Promoting inclusive and sustainable economic growth.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-green-500 dark:text-green-400 mr-3 mt-1">check_circle</span>
+                            <span class="text-text-muted-light dark:text-text-muted-dark">Building resilient infrastructure and fostering innovation.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-green-500 dark:text-green-400 mr-3 mt-1">check_circle</span>
+                            <span class="text-text-muted-light dark:text-text-muted-dark">Ensuring sustainable consumption and production patterns.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 stagger-child" style="transition-delay: 200ms;">
+                    <div class="bg-[#A21942] text-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+                        <span class="material-icons text-5xl mb-2">trending_up</span>
+                        <h4 class="font-bold text-lg">Goal 8</h4>
+                        <p class="text-sm opacity-90 mt-1">Decent Work & Economic Growth</p>
+                    </div>
+                    <div class="bg-[#FD6925] text-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+                        <span class="material-icons text-5xl mb-2">precision_manufacturing</span>
+                        <h4 class="font-bold text-lg">Goal 9</h4>
+                        <p class="text-sm opacity-90 mt-1">Industry, Innovation & Infrastructure</p>
+                    </div>
+                    <div class="bg-[#BF8B2E] text-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+                        <span class="material-icons text-5xl mb-2">recycling</span>
+                        <h4 class="font-bold text-lg">Goal 12</h4>
+                        <p class="text-sm opacity-90 mt-1">Responsible Consumption & Production</p>
+                    </div>
+                    <div class="bg-[#3F7E44] text-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+                        <span class="material-icons text-5xl mb-2">public</span>
+                        <h4 class="font-bold text-lg">Goal 13</h4>
+                        <p class="text-sm opacity-90 mt-1">Climate Action</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 dark:bg-slate-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary staggered-reveal-title">Corporate Social Responsibility</h2>
+                <p class="text-lg text-text-muted-light dark:text-text-muted-dark mt-2">Operating with integrity, accountability, and ethical standards.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 border-t-4 border-blue-500 stagger-child">
+                    <div class="mb-4 text-blue-500 dark:text-blue-400">
+                        <span class="material-icons text-5xl">gavel</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-light dark:text-text-dark mb-3">Ethical Governance</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark text-sm leading-relaxed">
+                        We adhere to the highest standards of corporate governance, ensuring transparency, anti-corruption, and strict compliance with all local and international laws.
+                    </p>
+                </div>
+
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 border-t-4 border-green-500 stagger-child" style="transition-delay: 150ms;">
+                    <div class="mb-4 text-green-500 dark:text-green-400">
+                        <span class="material-icons text-5xl">handshake</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-light dark:text-text-dark mb-3">Fair Business Practices</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark text-sm leading-relaxed">
+                        We build trust with our partners through fair competition and responsible supply chain management, ensuring that our suppliers also uphold human rights and safety standards.
+                    </p>
+                </div>
+
+                <div class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-md dark:shadow-none dark:border dark:border-white/10 border-t-4 border-orange-500 stagger-child" style="transition-delay: 300ms;">
+                    <div class="mb-4 text-orange-500 dark:text-orange-400">
+                        <span class="material-icons text-5xl">diversity_3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-light dark:text-text-dark mb-3">Diversity & Inclusion</h3>
+                    <p class="text-text-muted-light dark:text-text-muted-dark text-sm leading-relaxed">
+                        Creating a workplace where everyone is welcome. We actively promote equal opportunity and prohibit discrimination based on gender, age, or background.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900 transition-colors">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/20 z-0 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Industry 4.0</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mt-2 staggered-reveal-title">Digital Transformation</h2>
+                <p class="text-slate-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">Embracing the future of manufacturing through smart systems and data-driven decision making.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-lg dark:shadow-none hover:shadow-xl dark:hover:bg-white/10 transition-all stagger-child">
+                    <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-6 shadow-md dark:shadow-none">
+                        <span class="material-icons text-white">cloud_sync</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Paperless Operations</h3>
+                    <p class="text-slate-600 dark:text-gray-400">Transitioning to cloud-based documentation and digital workflows to reduce waste and improve information accessibility.</p>
+                </div>
+
+                <div class="bg-white dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-lg dark:shadow-none hover:shadow-xl dark:hover:bg-white/10 transition-all stagger-child" style="transition-delay: 150ms;">
+                    <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-6 shadow-md dark:shadow-none">
+                        <span class="material-icons text-white">hub</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">IoT Integration</h3>
+                    <p class="text-slate-600 dark:text-gray-400">Connecting machinery to a centralized network for real-time monitoring, predictive maintenance, and efficiency tracking.</p>
+                </div>
+
+                <div class="bg-white dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-lg dark:shadow-none hover:shadow-xl dark:hover:bg-white/10 transition-all stagger-child" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-6 shadow-md dark:shadow-none">
+                        <span class="material-icons text-white">insights</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Data Analytics</h3>
+                    <p class="text-slate-600 dark:text-gray-400">Leveraging big data to identify production trends, optimize supply chains, and drive strategic business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-20 bg-slate-100 dark:bg-slate-900">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="stagger-child">
