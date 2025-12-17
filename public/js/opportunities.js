@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function createJobCard(record, delay) {
-    const codes = { job: 'Job', jobCode: 'Job_Code', employmentStatus: 'Employment_Status', jobDescription: 'Job_Description', positionCategory: 'Position_Category', experienceLevel: 'Experience_Level' };
+    const codes = { job: 'Job_Name', jobCode: 'Job_Code', employmentStatus: 'Employment_Status', jobDescription: 'Job_Description', positionCategory: 'Position_Category', experienceLevel: 'Experience_Level' };
     const job = {
         title: record[codes.job]?.value || 'Untitled Job',
         code: record[codes.jobCode]?.value,

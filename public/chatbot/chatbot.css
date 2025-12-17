@@ -12,7 +12,7 @@
     --header-color: #FFFFFF;    /* Header text color */
     --bot-msg-bg: #F0F2F5;       /* Bot message bubble background */
     --user-msg-bg: var(--primary-color); /* User message bubble background */
-    --font-family: 'Roboto', sans-serif;
+    --font-family: 'Poppins', sans-serif;
 }
 
 /* === GENERAL STYLES === */
