@@ -178,6 +178,26 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
 
+    // --- MOULD DESIGN CAROUSEL INIT (Auto-Swipe) ---
+    new Swiper('.mould-design-carousel', {
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        navigation: {
+            nextEl: '.mould-design-carousel .swiper-button-next',
+            prevEl: '.mould-design-carousel .swiper-button-prev',
+        },
+        pagination: {
+            el: '.mould-design-carousel .swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+    });
+
     // --- VANILLA TILT INIT (For Timeline Cards) ---
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
@@ -208,109 +228,70 @@ window.addEventListener('scroll', () => {
     }
 });
 
-/* =========================================
-   Fullscreen / Zoom Logic
-   ========================================= */
+// =========================================
+// MOULD DESIGN GALLERY LOGIC (Zoom & Navigate)
+// =========================================
 
-function openFullscreen(imageSrc, captionText) {
-    const modal = document.getElementById('fullscreen-modal');
-    const img = document.getElementById('fullscreen-image');
-    const caption = document.getElementById('fullscreen-caption');
+// 1. Image Data (Exact filenames you requested)
+const mouldImages = [
+    { src: 'images/superior design and analysis pics/1 (1).JPG', caption: 'Mould Design - View 1' },
+    { src: 'images/superior design and analysis pics/2 (1).JPG', caption: 'Mould Design - View 2' },
+    { src: 'images/superior design and analysis pics/3 (1).JPG', caption: 'Mould Design - View 3' },
+    { src: 'images/superior design and analysis pics/4 (1).JPG', caption: 'Mould Design - View 4' },
+    { src: 'images/superior design and analysis pics/5 (1).JPG', caption: 'Mould Design - View 5' },
+    { src: 'images/superior design and analysis pics/6 (1).JPG', caption: 'Mould Design - View 6' },
+    { src: 'images/superior design and analysis pics/7 (1).JPG', caption: 'Mould Design - View 7' }
+];
+
+let currentGalleryIndex = 0;
+let isGalleryMode = false;
+
+// 2. Open Gallery Function
+window.openMouldGallery = function(index) {
+    currentGalleryIndex = index;
+    isGalleryMode = true;
     
-    // Set source
-    img.src = imageSrc;
-    caption.textContent = captionText || '';
+    // Show arrow buttons
+    document.getElementById('lightbox-prev').classList.remove('hidden');
+    document.getElementById('lightbox-next').classList.remove('hidden');
     
-    // Show Modal
+    updateLightboxContent();
+    
+    const modal = document.getElementById('lightbox-modal');
     modal.classList.remove('hidden');
-    
-    // Animation timing
-    setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        img.classList.remove('scale-95');
-        img.classList.add('scale-100'); // Zoom In
-        caption.classList.remove('translate-y-full'); // Slide caption up
-    }, 10);
-    
-    // Lock scroll
+    setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
     document.body.style.overflow = 'hidden';
 }
 
-function closeFullscreen() {
-    const modal = document.getElementById('fullscreen-modal');
-    const img = document.getElementById('fullscreen-image');
-    const caption = document.getElementById('fullscreen-caption');
+// 3. Update Content
+function updateLightboxContent() {
+    const data = mouldImages[currentGalleryIndex];
+    const img = document.getElementById('lightbox-image');
+    const cap = document.getElementById('lightbox-caption');
 
-    // Fade Out
+    img.src = data.src;
+    cap.innerText = data.caption;
+}
+
+// 4. Change Image (Next/Prev)
+window.changeGalleryImage = function(direction) {
+    currentGalleryIndex += direction;
+    if (currentGalleryIndex < 0) currentGalleryIndex = mouldImages.length - 1;
+    if (currentGalleryIndex >= mouldImages.length) currentGalleryIndex = 0;
+    updateLightboxContent();
+}
+
+// 5. Close Function Override (Clean up buttons)
+const originalCloseLightbox = window.closeLightbox || closeLightbox;
+window.closeLightbox = function() {
+    document.getElementById('lightbox-prev').classList.add('hidden');
+    document.getElementById('lightbox-next').classList.add('hidden');
+    isGalleryMode = false;
+    
+    const modal = document.getElementById('lightbox-modal');
     modal.classList.add('opacity-0');
-    img.classList.remove('scale-100');
-    img.classList.add('scale-95');
-    caption.classList.add('translate-y-full');
-
-    // Hide after animation
     setTimeout(() => {
         modal.classList.add('hidden');
-        img.src = ''; 
-        document.body.style.overflow = ''; // Unlock scroll
+        document.body.style.overflow = '';
     }, 300);
-}
-
-// Escape Key Listener
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-        closeFullscreen();
-    }
-});
-
-/* =========================================
-   Lightbox / Image Zoom Functionality
-   ========================================= */
-function openLightbox(imageSrc, captionText) {
-    const modal = document.getElementById('lightbox-modal');
-    const img = document.getElementById('lightbox-image');
-    const caption = document.getElementById('lightbox-caption');
-    
-    // 1. Set the image source and caption
-    img.src = imageSrc;
-    caption.textContent = captionText || '';
-    
-    // 2. Unhide the modal
-    modal.classList.remove('hidden');
-    
-    // 3. Trigger animations (Small delay to allow display:block to render)
-    setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        img.classList.remove('scale-95'); 
-        img.classList.add('scale-100'); // Zoom in effect
-        caption.classList.remove('translate-y-full'); // Slide caption up
-    }, 10);
-    
-    // 4. Disable scrolling on the body while modal is open
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-    const modal = document.getElementById('lightbox-modal');
-    const img = document.getElementById('lightbox-image');
-    const caption = document.getElementById('lightbox-caption');
-
-    // 1. Start fade out animations
-    modal.classList.add('opacity-0');
-    img.classList.remove('scale-100');
-    img.classList.add('scale-95');
-    caption.classList.add('translate-y-full');
-
-    // 2. Hide modal after animation finishes (300ms matches CSS duration)
-    setTimeout(() => {
-        modal.classList.add('hidden');
-        img.src = ''; // Clear source to prevent ghosting
-        document.body.style.overflow = ''; // Re-enable scrolling
-    }, 300);
-}
-
-// Close Lightbox when pressing the "Escape" key
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-        closeLightbox();
-    }
-});
+};

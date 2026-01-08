@@ -69,7 +69,6 @@
             </a>
             <div class="flex items-center">
                  <nav class="hidden md:flex items-center space-x-6">
-               
                 <a class="text-text-light dark:text-text-dark" href="index.html">Home</a>
                 <a class="text-text-light dark:text-text-dark" href="company-outline.html">Profile</a>
                 <a class="text-text-light dark:text-text-dark active" href="business-outline.html">Outline</a>
@@ -114,11 +113,9 @@
 
         <section class="pt-20 pb-0" id="products"> 
             <div class="container mx-auto px-6">
-                
                 <div class="mb-20 animate-on-scroll">
                     <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-4 border-l-4 border-primary pl-4">Automobile-Related Parts</h2>
                     <p class="text-text-muted-light dark:text-text-muted-dark mb-8">Specializing in critical components for the automotive industry, ensuring reliability and performance.</p>
-                    
                     <div class="relative product-carousel-wrapper automobile-carousel-wrapper">
                         <div class="swiper automobile-carousel">
                             <div class="swiper-wrapper py-8 px-2">
@@ -136,9 +133,8 @@
                 </div>
 
                 <div class="mb-2 animate-on-scroll"> 
-                    <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-4 border-l-4 border-primary pl-4">Industrial & IT Parts</h2>
+                    <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-4 border-l-4 border-primary pl-4">Industrial & IT Related Parts</h2>
                     <p class="text-text-muted-light dark:text-text-muted-dark mb-8">Durable die-cast parts for industrial machines and sophisticated housings for IT equipment.</p>
-                    
                     <div class="relative product-carousel-wrapper industrial-carousel-wrapper">
                         <div class="swiper industrial-carousel">
                             <div class="swiper-wrapper py-8 px-2">
@@ -215,16 +211,6 @@
                     </div>
                 </div>
             </div>
-
-            <div id="lightbox-modal" class="fixed inset-0 z-[9999] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeLightbox()">
-                <button class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-[110]">
-                    <span class="material-icons text-5xl">close</span>
-                </button>
-                <div class="relative max-w-6xl w-full h-full flex items-center justify-center" onclick="event.stopPropagation()">
-                    <img id="lightbox-image" src="" alt="Full Screen" class="max-h-[85vh] max-w-full object-contain rounded-md shadow-2xl scale-95 transition-transform duration-300"/>
-                    <p id="lightbox-caption" class="absolute bottom-4 left-0 right-0 text-center text-white bg-black/50 p-3 backdrop-blur-sm font-bold text-lg translate-y-full transition-transform duration-300 rounded-b-md"></p>
-                </div>
-            </div>
         </section>
 
         <section id="design-analysis" class="relative w-full py-20 bg-transparent overflow-hidden">
@@ -258,10 +244,41 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="group animate-on-scroll" style="transition-delay: 0ms;">
-                        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] border border-gray-200 dark:border-gray-700 cursor-zoom-in" onclick="openLightbox('images/superior design and analysis pics/mould design.png', '3D Mould Design')">
-                            <img src="images/superior design and analysis pics/mould design.png" alt="3D Mould Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <span class="material-icons text-white text-4xl drop-shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] border border-gray-200 dark:border-gray-700">
+                            
+                            <div class="swiper mould-design-carousel h-full w-full">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(0)">
+                                        <img src="images/superior design and analysis pics/1 (1).JPG" alt="Mould Design 1" class="w-full h-full object-cover"/>
+                                    </div>
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(1)">
+                                        <img src="images/superior design and analysis pics/2 (1).JPG" alt="Mould Design 2" class="w-full h-full object-cover"/>
+                                    </div>
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(2)">
+                                        <img src="images/superior design and analysis pics/3 (1).JPG" alt="Mould Design 3" class="w-full h-full object-cover"/>
+                                    </div>
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(3)">
+                                        <img src="images/superior design and analysis pics/4 (1).JPG" alt="Mould Design 4" class="w-full h-full object-cover"/>
+                                    </div>
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(4)">
+                                        <img src="images/superior design and analysis pics/5 (1).JPG" alt="Mould Design 5" class="w-full h-full object-cover"/>
+                                    </div>
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(5)">
+                                        <img src="images/superior design and analysis pics/6 (1).JPG" alt="Mould Design 6" class="w-full h-full object-cover"/>
+                                    </div>
+                                    <div class="swiper-slide cursor-zoom-in" onclick="openMouldGallery(6)">
+                                        <img src="images/superior design and analysis pics/7 (1).JPG" alt="Mould Design 7" class="w-full h-full object-cover"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="swiper-button-next after:!text-sm after:font-bold !text-white !w-8 !h-8 bg-black/30 rounded-full hover:bg-primary/80 transition-all opacity-0 group-hover:opacity-100"></div>
+                                <div class="swiper-button-prev after:!text-sm after:font-bold !text-white !w-8 !h-8 bg-black/30 rounded-full hover:bg-primary/80 transition-all opacity-0 group-hover:opacity-100"></div>
+                                
+                                <div class="swiper-pagination"></div>
+                            </div>
+
+                            <div class="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                <span class="material-icons text-white drop-shadow-md bg-black/20 rounded-full p-1">zoom_in</span>
                             </div>
                         </div>
                         <p class="mt-3 text-center text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Mould Design</p>
@@ -339,11 +356,30 @@
         </div>
     </footer>
 
+    <div id="lightbox-modal" class="fixed inset-0 z-[9999] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center" onclick="closeLightbox()">
+        
+        <button class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-[120]" onclick="closeLightbox()">
+            <span class="material-icons text-5xl">close</span>
+        </button>
+        
+        <button id="lightbox-prev" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-[120] bg-black/40 hover:bg-black/80 rounded-full p-3 backdrop-blur-sm hidden" onclick="event.stopPropagation(); changeGalleryImage(-1)">
+            <span class="material-icons text-4xl md:text-6xl">chevron_left</span>
+        </button>
+
+        <button id="lightbox-next" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-[120] bg-black/40 hover:bg-black/80 rounded-full p-3 backdrop-blur-sm hidden" onclick="event.stopPropagation(); changeGalleryImage(1)">
+            <span class="material-icons text-4xl md:text-6xl">chevron_right</span>
+        </button>
+
+        <div class="relative w-full h-full flex items-center justify-center p-4 md:p-10" onclick="event.stopPropagation()">
+            <img id="lightbox-image" src="" alt="Full Screen" class="max-h-full max-w-full object-contain shadow-2xl transition-transform duration-300"/>
+            <p id="lightbox-caption" class="absolute bottom-8 left-0 right-0 text-center text-white/90 bg-black/60 p-4 backdrop-blur-md font-medium text-lg rounded-lg mx-auto max-w-xl pointer-events-none"></p>
+        </div>
+    </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/business-outline.js"></script>
 
     <script>
-    // --- PRELOADER LOGIC (Hides the loading screen) ---
+    // --- PRELOADER LOGIC ---
     window.addEventListener('load', function() {
         const preloader = document.getElementById('preloader');
         if (preloader) {
@@ -418,21 +454,24 @@
     }
 
     // --- LIGHTBOX LOGIC (Crucial for zoom/fullscreen) ---
+    // Note: The specific Mould Design Gallery logic is inside js/business-outline.js
+    
     function openLightbox(src, caption) {
         const modal = document.getElementById('lightbox-modal');
         const img = document.getElementById('lightbox-image');
         const cap = document.getElementById('lightbox-caption');
         
+        // Hide nav buttons for single images
+        document.getElementById('lightbox-prev').classList.add('hidden');
+        document.getElementById('lightbox-next').classList.add('hidden');
+
         if(modal && img && cap) {
             img.src = src;
             cap.innerText = caption;
             modal.classList.remove('hidden');
-            // Small timeout to allow transition to kick in
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
             }, 10);
-        } else {
-            console.error("Lightbox elements not found!");
         }
     }
 
@@ -442,7 +481,9 @@
             modal.classList.add('opacity-0');
             setTimeout(() => {
                 modal.classList.add('hidden');
-            }, 300); // Match transition duration
+                // Ensure scrolling is re-enabled if it was disabled
+                document.body.style.overflow = '';
+            }, 300);
         }
     }
     </script>

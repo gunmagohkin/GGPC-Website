@@ -536,3 +536,57 @@ header nav a.active::after { transform: scaleX(1); transform-origin: left; }
     .solar-system-3d { transform: scale(0.55) rotateX(60deg); }
     .scene-3d-container { height: 450px; }
 }
+
+/* =========================================
+   3D INTEGRATED PROCESS (NASA STYLE)
+   ========================================= */
+
+/* The Main Container */
+#integrated-process-3d {
+    background: radial-gradient(circle at center, #1e293b 0%, #050b18 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* The Canvas (Where Three.js draws) */
+#solar-system-container {
+    width: 100%;
+    height: 100%;
+    outline: none; /* Removes click border */
+}
+
+/* NASA-Style Glassmorphism Panel */
+#planet-info-panel {
+    /* Hidden by default (off-screen right) */
+    transform: translateX(120%); 
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Active State for Panel (Slide In) */
+#planet-info-panel.active {
+    transform: translateX(0);
+}
+
+/* Custom Scrollbar for Panel Content */
+#panel-content::-webkit-scrollbar {
+    width: 6px;
+}
+#panel-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+#panel-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 82, 155, 0.5); 
+    border-radius: 3px;
+}
+
+/* Pulse Animation for the "Real Rate" indicator */
+@keyframes signal-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+.signal-dot {
+    animation: signal-pulse 2s infinite;
+}
