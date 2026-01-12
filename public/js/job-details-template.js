@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function populateJobDetails(record) {
-    const codes = { job: 'Job', jobCode: 'Job_Code', location: 'Location', jobType: 'Job_Type', employmentStatus: 'Employment_Status', shiftAndSchedule: 'Shift_and_Schedule', positionCategory: 'Position_Category', experienceLevel: 'Experience_Level', jobDescription: 'Job_Description', qualifications: 'Qualifications', benefits: 'Benefits', supplementalPay: 'Supplemental_Pay' };
+    const codes = { job: 'Job_Name', jobCode: 'Job_Code', location: 'Location', jobType: 'Job_Type', employmentStatus: 'Employment_Status', shiftAndSchedule: 'Shift_and_Schedule', positionCategory: 'Position_Category', experienceLevel: 'Experience_Level', jobDescription: 'Job_Description', qualifications: 'Qualifications', benefits: 'Benefits', supplementalPay: 'Supplemental_Pay' };
     const data = {
         jobTitle: record[codes.job]?.value || 'N/A',
         jobCode: record[codes.jobCode]?.value || 'N/A',

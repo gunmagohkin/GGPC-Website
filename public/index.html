@@ -27,6 +27,12 @@
         /* Hide scrollbar for slideshows */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Ensure videos cover the card nicely */
+        video { object-fit: cover; }
+        
+        /* Lightbox video specific: ensure controls are visible */
+        #lightbox-video { object-fit: contain; background: black; width: 100%; height: 100%; }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
@@ -139,68 +145,92 @@
 
             <div id="reelsContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory no-scrollbar scroll-smooth">
                 
-                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" onclick="openLightbox('images/die casting pics/casting.png')">
-                    <img src="images/die casting pics/casting.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Production">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80"></div>
+                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" 
+                     onclick="openLightbox('images/index vids/PROCESS VID.mp4', true)">
                     
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100">
+                    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <source src="images/index vids/PROCESS VID.mp4" type="video/mp4">
+                        <img src="images/die casting pics/casting.png" class="w-full h-full object-cover" alt="Production">
+                    </video>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 pointer-events-none"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100 pointer-events-none">
                         <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-lg">
                             <span class="material-icons text-white text-3xl">play_arrow</span>
                         </div>
                     </div>
 
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="absolute bottom-0 left-0 p-6 w-full pointer-events-none">
                         <span class="px-3 py-1 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block shadow-lg">The Grind</span>
                         <h3 class="text-2xl font-bold text-white leading-tight mb-1">Making Metal Move</h3>
                         <p class="text-white/80 text-sm font-medium">See our die-casting magic in action.</p>
                     </div>
                 </div>
 
-                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" onclick="openLightbox('images/headlines/team.JPG')">
-                    <img src="images/headlines/team.JPG" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Team">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80"></div>
+                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" 
+                     onclick="openLightbox('images/videos/team.mp4', true)">
                     
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100">
+                    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <source src="images/videos/team.mp4" type="video/mp4">
+                        <img src="images/headlines/team.JPG" class="w-full h-full object-cover" alt="Team">
+                    </video>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 pointer-events-none"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100 pointer-events-none">
                         <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-lg">
                             <span class="material-icons text-white text-3xl">sentiment_satisfied_alt</span>
                         </div>
                     </div>
 
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="absolute bottom-0 left-0 p-6 w-full pointer-events-none">
                         <span class="px-3 py-1 bg-pink-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block shadow-lg">Culture</span>
                         <h3 class="text-2xl font-bold text-white leading-tight mb-1">The Squad</h3>
                         <p class="text-white/80 text-sm font-medium">Work hard, play hard. Meet the team.</p>
                     </div>
                 </div>
 
-                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" onclick="openLightbox('images/products/Pinion Case for Starter Motor.png')">
-                    <img src="images/products/Pinion Case for Starter Motor.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 bg-white" alt="Quality">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80"></div>
+                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" 
+                     onclick="openLightbox('images/index vids/product_highlight.mp4', true)">
                     
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100">
+                    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <source src="images/index vids/product_highlight.mp4" type="video/mp4">
+                        <img src="images/products/Pinion Case for Starter Motor.png" class="w-full h-full object-cover bg-white" alt="Quality">
+                    </video>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 pointer-events-none"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100 pointer-events-none">
                         <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-lg">
-                            <span class="material-icons text-white text-3xl">search</span>
+                            <span class="material-icons text-white text-3xl">play_arrow</span>
                         </div>
                     </div>
 
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="absolute bottom-0 left-0 p-6 w-full pointer-events-none">
                         <span class="px-3 py-1 bg-violet-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block shadow-lg">Tech</span>
                         <h3 class="text-2xl font-bold text-white leading-tight mb-1">Zero Defects</h3>
                         <p class="text-white/80 text-sm font-medium">Precision is the name of the game.</p>
                     </div>
                 </div>
 
-                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" onclick="openLightbox('images/headlines/party.JPG')">
-                    <img src="images/headlines/party.JPG" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Events">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80"></div>
+                <div class="relative min-w-[280px] sm:min-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer snap-center border border-slate-100 dark:border-white/10" 
+                     onclick="openLightbox('images/index vids/events_recap.mp4', true)">
                     
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100">
+                    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <source src="images/index vids/events_recap.mp4" type="video/mp4">
+                        <img src="images/headlines/party.JPG" class="w-full h-full object-cover" alt="Events">
+                    </video>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 pointer-events-none"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100 pointer-events-none">
                         <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-lg">
-                            <span class="material-icons text-white text-3xl">celebration</span>
+                            <span class="material-icons text-white text-3xl">play_arrow</span>
                         </div>
                     </div>
 
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="absolute bottom-0 left-0 p-6 w-full pointer-events-none">
                         <span class="px-3 py-1 bg-orange-500 text-white text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block shadow-lg">Happenings</span>
                         <h3 class="text-2xl font-bold text-white leading-tight mb-1">Good Vibes Only</h3>
                         <p class="text-white/80 text-sm font-medium">Parties, sports, and celebrations.</p>
@@ -709,10 +739,21 @@
 </div>
 
 <div id="lightbox" class="fixed inset-0 z-[11000] hidden bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
+    
     <button class="absolute top-6 right-6 text-white/70 hover:text-white p-2 focus:outline-none z-50">
         <span class="material-icons text-4xl">close</span>
     </button>
-    <img id="lightbox-img" src="" alt="Full screen view" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default" onclick="event.stopPropagation()">
+    
+    <button id="fullscreen-btn" onclick="toggleFullScreen(event)" class="absolute top-6 right-20 text-white/70 hover:text-white p-2 focus:outline-none z-50 hidden">
+        <span class="material-icons text-4xl">fullscreen</span>
+    </button>
+    
+    <img id="lightbox-img" src="" alt="Full screen view" class="hidden max-w-full max-h-[90vh] rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default" onclick="event.stopPropagation()">
+    
+    <video id="lightbox-video" controls autoplay playsinline class="hidden max-w-full max-h-[90vh] rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default bg-black" onclick="event.stopPropagation()">
+        <source id="lightbox-video-src" src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </div>
 
 <script>
@@ -784,24 +825,81 @@
         if (e.target.id.includes('sportsfest2025Modal') && e.target.classList.contains('flex')) closeModal('sportsfest2025Modal');
     });
 
+    // UPDATED LIGHTBOX SCRIPT FOR VIDEO SUPPORT
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const lightboxVideoSrc = document.getElementById('lightbox-video-src');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
 
-    function openLightbox(src) {
-        lightboxImg.src = src;
+    // Updated function to accept 'isVideo' boolean
+    function openLightbox(src, isVideo = false) {
         lightbox.classList.remove('hidden');
-        setTimeout(() => {
-            lightboxImg.classList.remove('scale-95');
-            lightboxImg.classList.add('scale-100');
-        }, 10);
+
+        if (isVideo) {
+            // Hide Image, Show Video
+            lightboxImg.classList.add('hidden');
+            lightboxVideo.classList.remove('hidden');
+            fullscreenBtn.classList.remove('hidden'); // Show dedicated fullscreen button
+            
+            // Set source and load
+            lightboxVideoSrc.src = src;
+            lightboxVideo.load();
+            lightboxVideo.play(); // Auto play when opened
+
+            setTimeout(() => {
+                lightboxVideo.classList.remove('scale-95');
+                lightboxVideo.classList.add('scale-100');
+            }, 10);
+        } else {
+            // Hide Video, Show Image
+            lightboxVideo.classList.add('hidden');
+            fullscreenBtn.classList.add('hidden'); // Hide fullscreen button for images
+            lightboxVideo.pause(); // Stop video if it was playing
+            lightboxImg.classList.remove('hidden');
+            
+            lightboxImg.src = src;
+            
+            setTimeout(() => {
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+        }
     }
 
     function closeLightbox() {
-        lightboxImg.classList.remove('scale-100');
-        lightboxImg.classList.add('scale-95');
+        // Scale down animation
+        if (!lightboxImg.classList.contains('hidden')) {
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+        }
+        if (!lightboxVideo.classList.contains('hidden')) {
+            lightboxVideo.classList.remove('scale-100');
+            lightboxVideo.classList.add('scale-95');
+            lightboxVideo.pause(); // Important: Stop video when closing
+        }
+
         setTimeout(() => {
             lightbox.classList.add('hidden');
+            // Reset sources
+            lightboxImg.src = '';
+            lightboxVideoSrc.src = '';
         }, 200);
+    }
+    
+    // NEW: Function to handle Full Screen toggle cross-browser
+    function toggleFullScreen(event) {
+        if(event) event.stopPropagation(); // Prevent closing lightbox
+        
+        const video = document.getElementById('lightbox-video');
+        
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) { /* Safari */
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { /* IE11 */
+            video.msRequestFullscreen();
+        }
     }
 
     document.addEventListener('keydown', (e) => {
@@ -816,6 +914,18 @@
             }
         }
     });
+
+    // REELS SCROLL LOGIC
+    function scrollReels(direction) {
+        const container = document.getElementById('reelsContainer');
+        const scrollAmount = 340; // Approx card width + gap
+        if(container) {
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
 </script>
 
 </body>
